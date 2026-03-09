@@ -911,39 +911,43 @@ p  { font-size: 15px; color: var(--muted-foreground-am); }
 .services-team-btn-am { width: 100%; margin-top: 10px; }
 .services-team-footer-am { margin-top: 26px; }
 
-.services-faq-section-am { padding-top: 70px; }
-.services-faq-container-am { max-width: 860px; }
-.services-faq-list-am {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-}
-.services-faq-item-am {
-    border: 1px solid var(--border-am);
-    border-radius: var(--radius-lg-am);
-    background: #ffffff;
-    padding: 0;
-}
-.services-faq-item-am summary {
-    list-style: none;
-    cursor: pointer;
-    padding: 18px;
-    font-weight: 600;
-    color: var(--foreground-am);
-}
-.services-faq-item-am summary::-webkit-details-marker { display: none; }
-.services-faq-answer-am {
-    border-top: 1px solid var(--border-am);
-    padding: 16px 18px;
-}
-.services-faq-answer-am p {
-    margin-bottom: 12px;
-}
-.services-faq-answer-am ul,
-.services-faq-answer-am ol {
-    margin: 0 0 12px;
-    padding-left: 20px;
-}
+/* FAQ */
+        .faq-section-am {
+          padding: 96px 0;
+          max-width: 800px;
+          margin: 0 auto;
+        }
+        .faq-item-am {
+          border: 1px solid var(--border-am);
+          border-radius: var(--radius-lg-am);
+          margin-bottom: 16px;
+          overflow: hidden;
+        }
+        .faq-question-am {
+          padding: 24px;
+          background-color: var(--card-am);
+          font-weight: 600;
+          font-size: 16px;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          cursor: pointer;
+        }
+        .faq-answer-am {
+          padding: 0 24px 24px;
+          background-color: var(--card-am);
+          color: var(--muted-foreground-am);
+          border-top: 1px solid var(--border-am);
+          margin-top: -1px;
+          padding-top: 24px;
+        }
+        .faq-answer-am ul {
+          margin-top: 16px;
+          padding-left: 20px;
+        }
+        .faq-answer-am li {
+          margin-bottom: 8px;
+        }
 
 @media (max-width: 1024px) {
     .services-hero-grid-am,
