@@ -74,7 +74,7 @@ $service_options = !empty($form_group['service_options']) && is_array($form_grou
             </div>
         </section>
 
-        <section class="contact-wrapper-am">
+        <section class="contact-wrapper-am"> 
             <div class="container-am contact-grid-am">
                 <div class="contact-info-section-am">
                     <h2><?php echo esc_html($info_heading); ?></h2>
