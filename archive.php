@@ -22,7 +22,7 @@ $current_category = get_queried_object();
         </header>
 
         <nav class="category-filter-am">
-            <a href="<?php echo get_post_type_archive_link('post'); ?>" class="category-btn-am">All Articles</a>
+            <a href="<?php echo get_permalink( get_page_by_path('blog') ); ?>" class="category-btn-am">All Articles</a>
             <?php
             $categories = get_categories();
             foreach($categories as $category) {

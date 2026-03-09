@@ -6,22 +6,22 @@
    ============================================================ */
 :root {
     --background-am:          #fbfef9;
-    --foreground-am:          #123029;
+    --foreground-am:          #2d4f36;
     --border-am:              rgba(0,0,0,0.08);
     --input-am:               #ffffff;
-    --primary-am:             #1b6d12;
+    --primary-am:             #2d4f36;
     --primary-foreground-am:  #ffffff;
     --secondary-am:           #eaf7ea;
-    --secondary-foreground-am:#123029;
+    --secondary-foreground-am:#2d4f36;
     --muted-am:               #f4f6f5;
     --muted-foreground-am:    #6b7280;
-    --success-am:             #16a34a;
+    --success-am:             #B7C6A5;
     --accent-am:              #9bd34a;
-    --accent-foreground-am:   #123029;
+    --accent-foreground-am:   #2d4f36;
     --destructive-am:         #dc2626;
     --warning-am:             #f59e0b;
     --card-am:                #ffffff;
-    --card-foreground-am:     #123029;
+    --card-foreground-am:     #2d4f36;
     --radius-sm-am:           4px;
     --radius-md-am:           6px;
     --radius-lg-am:           8px;
@@ -86,7 +86,7 @@ p  { font-size: 15px; color: var(--muted-foreground-am); }
 .btn-primary-am  { background-color: var(--primary-am); color: var(--primary-foreground-am); border-color: var(--primary-am); }
 .btn-outline-am  { background-color: transparent; color: var(--foreground-am); border-color: var(--border-am); }
 .btn-ghost-am    { background-color: transparent; color: var(--foreground-am); border-color: transparent; }
-.btn-lg-am       { padding: 12px 28px; font-size: 15px; }
+.btn-lg-am       { padding: 12px 28px; font-size: 15px; text-align: center; }
 
 /* ============================================================
    BADGE / PILL
@@ -375,7 +375,7 @@ p  { font-size: 15px; color: var(--muted-foreground-am); }
     width: 100%;
     height: 100%;
     object-fit: cover;
-    object-position: top;
+    /* object-position: top; */
     display: block;
 }
 .team-card-content-am {
