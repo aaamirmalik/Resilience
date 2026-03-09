@@ -12,12 +12,16 @@
             </div>
             <div class="topbar-group-am">
                 <span>
+                    <a href="tel:<?php echo esc_attr(get_field('topbar_phone', 'option')); ?>">
                     <iconify-icon icon="lucide:phone"></iconify-icon>
                     <?php echo esc_html(get_field('topbar_phone', 'option') ?: '+1 (548) 866-0366'); ?>
+                    </a>
                 </span>
                 <span>
+                    <a href="mailto:<?php echo esc_attr(get_field('topbar_email', 'option')); ?>">
                     <iconify-icon icon="lucide:mail"></iconify-icon>
                     <?php echo esc_html(get_field('topbar_email', 'option') ?: 'mail@resiliencec.com'); ?>
+                    </a>
                 </span>
             </div>
         </div>

@@ -86,12 +86,16 @@ if($sidebar){
                 </div>
                 <div class="hero-side-contact-am">
                     <div class="hero-side-contact-item-am">
+                        <a href="tel:<?php echo esc_attr(get_field('topbar_phone', 'option')); ?>">
                         <iconify-icon icon="lucide:phone"></iconify-icon>
                         <?php echo esc_html(get_field('topbar_phone', 'option')); ?>
+                        </a>
                     </div>
                     <div class="hero-side-contact-item-am">
+                        <a href="mailto:<?php echo esc_attr(get_field('topbar_email', 'option')); ?>">
                         <iconify-icon icon="lucide:mail"></iconify-icon>
                         <?php echo esc_html(get_field('topbar_email', 'option')); ?>
+                        </a>
                     </div>
                     <a href="<?php echo esc_url(get_field('appointment_url', 'option') ?: '#'); ?>"
                         class="btn-am btn-primary-am btn-lg-am" style="width:100%; display:block; margin-top:8px;">

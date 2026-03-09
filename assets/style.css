@@ -6,22 +6,22 @@
    ============================================================ */
 :root {
     --background-am:          #fbfef9;
-    --foreground-am:          #2d4f36;
+    --foreground-am:          #4c782b;
     --border-am:              rgba(0,0,0,0.08);
     --input-am:               #ffffff;
-    --primary-am:             #2d4f36;
+    --primary-am:             #4c782b;
     --primary-foreground-am:  #ffffff;
     --secondary-am:           #eaf7ea;
-    --secondary-foreground-am:#2d4f36;
+    --secondary-foreground-am:#4c782b;
     --muted-am:               #f4f6f5;
     --muted-foreground-am:    #6b7280;
     --success-am:             #B7C6A5;
     --accent-am:              #9bd34a;
-    --accent-foreground-am:   #2d4f36;
+    --accent-foreground-am:   #4c782b;
     --destructive-am:         #dc2626;
     --warning-am:             #f59e0b;
     --card-am:                #ffffff;
-    --card-foreground-am:     #2d4f36;
+    --card-foreground-am:     #4c782b;
     --radius-sm-am:           4px;
     --radius-md-am:           6px;
     --radius-lg-am:           8px;
@@ -118,6 +118,7 @@ p  { font-size: 15px; color: var(--muted-foreground-am); }
 .topbar-am { background-color: #102019; color: #e5e7eb; padding: 6px 0; font-size: 13px; }
 .topbar-inner-am { display: flex; justify-content: space-between; align-items: center; column-gap: 32px; flex-wrap: wrap; row-gap: 4px; }
 .topbar-group-am { display: flex; align-items: center; column-gap: 20px; row-gap: 4px; flex-wrap: wrap; }
+.topbar-group-am a{display: flex; align-items: center; gap: 4px;}
 .topbar-am span { display: flex; align-items: center; gap: 6px; white-space: nowrap; }
 .topbar-am iconify-icon { font-size: 14px; color: #9ca3af; }
 
@@ -191,6 +192,7 @@ p  { font-size: 15px; color: var(--muted-foreground-am); }
 .hero-side-languages-am { font-size: 12px; color: var(--muted-foreground-am); }
 .hero-side-contact-am   { margin-top: 4px; display: flex; flex-direction: column; gap: 8px; font-size: 13px; color: var(--foreground-am); }
 .hero-side-contact-item-am { display: flex; align-items: center; gap: 8px; }
+.hero-side-contact-item-am a{ display: flex; align-items: center; gap: 5px; }
 .hero-side-contact-item-am iconify-icon { font-size: 16px; color: var(--muted-foreground-am); }
 
 /* ============================================================
@@ -447,6 +449,19 @@ p  { font-size: 15px; color: var(--muted-foreground-am); }
 /* ============================================================
    RESPONSIVE
    ============================================================ */
+@media (max-width: 1176px) {
+.hero-meta-row-am { 
+    gap: 10px;
+}
+.hero-meta-item-am{
+    padding: 10px;
+}
+.hero-meta-value-am{
+    font-size: 12px;
+}
+}
+
+
 @media (max-width: 1024px) {
     .hero-inner-am        { grid-template-columns: 1fr; }
     .hero-side-card-am    { margin-top: 32px; }
