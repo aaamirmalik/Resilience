@@ -47,7 +47,7 @@ $current_category = get_queried_object();
                         <small style="margin-bottom: 8px; color: var(--muted-foreground-am); display: block;">
                             <?php echo get_the_date(); ?>
                         </small>
-                        <h3 style="font-size: 20px; margin-bottom: 12px; line-height: 1.4;">
+                        <h3 class="trimmed-title" style="font-size: 20px; margin-bottom: 12px; line-height: 1.4;">
                             <?php the_title(); ?>
                         </h3>
                         <p style="font-size: 14px; color: var(--muted-foreground-am); margin-bottom: 20px;">

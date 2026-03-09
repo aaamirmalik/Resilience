@@ -83,7 +83,7 @@ get_header();
                     </div>
                     <div class="blog-card-content-am">
                         <small style="margin-bottom: 10px; display: block;"><?php echo get_the_date(); ?></small>
-                        <h3><?php the_title(); ?></h3>
+                        <h3 class="trimmed-title"><?php the_title(); ?></h3>
                         <p><?php echo wp_trim_words(get_the_excerpt(), 15); ?></p>
                         <a href="<?php the_permalink(); ?>" class="read-more-link-am">Read Article →</a>
                     </div>
@@ -98,7 +98,7 @@ get_header();
                     </div>
                     <div class="blog-card-content-am">
                         <small style="margin-bottom: 10px; display: block;"><?php echo get_the_date(); ?></small>
-                        <h3><?php the_title(); ?></h3>
+                        <h3 class="trimmed-title"><?php the_title(); ?></h3>
                         <p><?php echo wp_trim_words(get_the_excerpt(), 15); ?></p>
                         <a href="<?php the_permalink(); ?>" class="read-more-link-am">Read Article →</a>
                     </div>
