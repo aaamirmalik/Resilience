@@ -1381,7 +1381,7 @@ textarea.form-control-am {
   display: -webkit-box;
   -webkit-line-clamp: 3; /* Set this to 2 or 3 lines */
   -webkit-box-orient: vertical;  
-  overflow: hidden;
+  overflow: hidden; 
   line-height: 1.4em; /* Adjust based on your font */
   max-height: 4.2em;  /* line-height multiplied by number of lines */
 }
