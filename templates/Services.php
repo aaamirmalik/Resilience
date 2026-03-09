@@ -289,7 +289,7 @@ $team_query = new WP_Query([
                 <?php endif; ?>
 
                 <div class="text-center-am" style="margin-top: 48px">
-                    <a href="<?php echo esc_url($team_group['button_url'] ?? get_post_type_archive_link('team') ?? '#'); ?>"
+                    <a href="<?php echo get_permalink( get_page_by_path('our-team-psychotherapists') ); ?>"
                         class="btn btn-am btn-primary btn-primary-am btn-lg btn-lg-am" data-media-type="banani-button">
                         <?php echo esc_html($team_group['button_label'] ?? 'View Full Team'); ?>
                     </a>
