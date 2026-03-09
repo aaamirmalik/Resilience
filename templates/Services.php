@@ -313,7 +313,7 @@ $team_query = new WP_Query([
             </div>
           </div>
           <div class="faq-answer services-faq-answer-am"<?php echo $index > 0 ? ' style="display:none"' : ''; ?>>
-            <?php echo wp_kses_post($faq['answer'] ?? ''); ?>
+            <?php echo wp_kses_post($faq['answer'] ?? ''); ?> 
           </div>
         </div>
         <?php endforeach; ?>
