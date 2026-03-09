@@ -31,3 +31,22 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
 });
+
+
+  document.querySelectorAll('.faq-item-am').forEach(item => {
+  const question = item.querySelector('.faq-question-am');
+  
+  question.addEventListener('click', () => {
+    const isActive = item.classList.contains('active');
+
+    // 1. Optional: Close all other FAQ items first (Accordion Style)
+    document.querySelectorAll('.faq-item-am').forEach(otherItem => {
+      otherItem.classList.remove('active');
+    });
+
+    // 2. Toggle the clicked item
+    if (!isActive) {
+      item.classList.add('active');
+    }
+  });
+});

@@ -949,6 +949,44 @@ p  { font-size: 15px; color: var(--muted-foreground-am); }
           margin-bottom: 8px;
         }
 
+
+            /* Hide answers by default */
+.faq-answer-am {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease-out, padding 0.3s ease;
+  padding-top: 0;
+  padding-bottom: 0;
+  opacity: 0;
+}
+
+/* State when the item is active */
+.faq-item-am.active .faq-answer-am {
+  max-height: 1000px; /* Large enough to fit content */
+  padding-top: 16px;
+  padding-bottom: 16px;
+  opacity: 1;
+}
+
+/* Rotate the icon when active */
+.faq-item-am.active iconify-icon {
+  transform: rotate(180deg);
+  color: var(--primary) !important; /* Optional: change color on open */
+}
+
+/* Smooth icon transition */
+iconify-icon {
+  transition: transform 0.3s ease;
+}
+
+/* Visual cue for clickable area */
+.faq-question-am {
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
 @media (max-width: 1024px) {
     .services-hero-grid-am,
     .services-approach-grid-am,
