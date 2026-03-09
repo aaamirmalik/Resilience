@@ -733,9 +733,9 @@ p  { font-size: 15px; color: var(--muted-foreground-am); }
     margin-top: 28px;
 }
 .services-hero-stat-am {
-    background-color: #ffffff;
-    border: 1px solid var(--border-am);
-    border-radius: var(--radius-md-am);
+    /* background-color: #ffffff; */
+    /* border: 1px solid var(--border-am); */
+    /* border-radius: var(--radius-md-am); */
     padding: 12px;
 }
 .services-hero-stat-am h4 {
