@@ -726,12 +726,6 @@ p  { font-size: 15px; color: var(--muted-foreground-am); }
     align-items: center;
 }
 .services-hero-copy-am p { font-size: 17px; margin-top: 12px; max-width: 620px; }
-.services-hero-actions-am {
-    margin-top: 20px;
-    display: flex;
-    gap: 12px;
-    flex-wrap: wrap;
-}
 .services-hero-stats-am {
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
