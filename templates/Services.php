@@ -47,7 +47,7 @@ $team_query = new WP_Query([
 <div class="page-container-am page-container services-page-am">
   <main>
     <section class="services-hero section-am services-hero-am">
-      <div class="container container-am services-hero-grid services-hero-grid-am">
+      <div class="container-am services-hero-grid services-hero-grid-am">
         <div class="services-hero-content services-hero-copy-am">
           <?php if (!empty($hero_group['eyebrow'])) : ?>
           <div class="eyebrow-am section-subtitle"><?php echo esc_html($hero_group['eyebrow']); ?></div>
