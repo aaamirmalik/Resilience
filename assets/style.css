@@ -1386,3 +1386,198 @@ textarea.form-control-am {
   max-height: 4.2em;  /* line-height multiplied by number of lines */
 }
 
+/* ============================================================
+   SINGLE TEAM TEMPLATE
+   ============================================================ */
+.single-team-main-am,
+.single-service-main-am {
+    padding-top: 42px;
+}
+
+.single-team-hero-am {
+    padding-bottom: 28px;
+}
+
+.single-team-hero-grid-am {
+    display: grid;
+    grid-template-columns: 1fr 1.1fr;
+    gap: 34px;
+    align-items: start;
+}
+
+.single-team-image-wrap-am {
+    border-radius: var(--radius-lg-am);
+    overflow: hidden;
+    border: 1px solid var(--border-am);
+    background-color: var(--muted-am);
+}
+
+.single-team-image-am {
+    width: 100%;
+    height: 100%;
+    min-height: 420px;
+    object-fit: cover;
+    display: block;
+}
+
+.single-team-summary-am {
+    background-color: #ffffff;
+    border: 1px solid var(--border-am);
+    border-radius: var(--radius-lg-am);
+    padding: 28px;
+}
+
+.single-team-title-am {
+    margin-bottom: 12px;
+}
+
+.single-team-role-am {
+    color: var(--primary-am);
+    font-weight: 600;
+    font-size: 16px;
+    margin-bottom: 16px;
+}
+
+.single-team-meta-am {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-bottom: 20px;
+}
+
+.single-team-meta-am span {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    border: 1px solid var(--border-am);
+    border-radius: var(--radius-xl-am);
+    padding: 8px 12px;
+    font-size: 13px;
+    color: var(--foreground-am);
+    background: var(--secondary-am);
+}
+
+.single-team-actions-am {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.single-team-content-wrap-am,
+.single-service-content-wrap-am {
+    max-width: 900px;
+}
+
+.single-team-related-am {
+    border-top: 1px solid var(--border-am);
+}
+
+/* ============================================================
+   SINGLE SERVICE TEMPLATE
+   ============================================================ */
+.single-service-hero-am {
+    padding-bottom: 24px;
+}
+
+.single-service-hero-grid-am {
+    display: grid;
+    grid-template-columns: 1.1fr 1fr;
+    gap: 30px;
+    align-items: center;
+}
+
+.single-service-title-am {
+    margin-bottom: 14px;
+}
+
+.single-service-summary-am {
+    font-size: 17px;
+    line-height: 1.75;
+    margin-bottom: 24px;
+    max-width: 680px;
+}
+
+.single-service-actions-am {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.single-service-media-am {
+    border-radius: var(--radius-lg-am);
+    overflow: hidden;
+    border: 1px solid var(--border-am);
+    background-color: var(--muted-am);
+}
+
+.single-service-media-am img {
+    width: 100%;
+    height: 100%;
+    min-height: 360px;
+    object-fit: cover;
+    display: block;
+}
+
+.single-service-cta-am {
+    background: linear-gradient(135deg, var(--primary-am) 0%, #1f3f2b 100%);
+    border-radius: var(--radius-lg-am);
+    color: #ffffff;
+    padding: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.single-service-cta-am h3 {
+    color: #ffffff;
+    margin-bottom: 8px;
+}
+
+.single-service-cta-am p {
+    color: rgba(255, 255, 255, 0.88);
+    margin: 0;
+}
+
+.single-service-cta-btn-am {
+    background-color: #ffffff;
+    color: var(--primary-am);
+    border-color: #ffffff;
+}
+
+.single-service-related-am {
+    border-top: 1px solid var(--border-am);
+}
+
+@media (max-width: 1024px) {
+    .single-team-hero-grid-am,
+    .single-service-hero-grid-am {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 768px) {
+    .single-team-main-am,
+    .single-service-main-am {
+        padding-top: 28px;
+    }
+
+    .single-team-summary-am {
+        padding: 20px;
+    }
+
+    .single-team-image-am {
+        min-height: 320px;
+    }
+
+    .single-service-media-am img {
+        min-height: 280px;
+    }
+
+    .single-service-cta-am {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 22px;
+    }
+}
+
