@@ -61,7 +61,7 @@ $team_query = new WP_Query([
             <?php foreach ($hero_group['stats'] as $stat) : ?>
             <div class="stat-item services-hero-stat-am">
               <h3><?php echo esc_html($stat['value'] ?? ''); ?></h3>
-              <p><?php echo esc_html($stat['label'] ?? ''); ?></p>
+              <p><?php echo esc_html($stat['label'] ?? ''); ?></p> 
             </div>
             <?php endforeach; ?>
           </div>
