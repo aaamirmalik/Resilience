@@ -938,7 +938,7 @@ p  { font-size: 15px; color: var(--muted-foreground-am); }
     text-align: center;
 }
         .faq-section-am {
-          padding: 96px 0;
+          padding: 96px 0; 
           max-width: 800px;
           margin: 0 auto;
         }
