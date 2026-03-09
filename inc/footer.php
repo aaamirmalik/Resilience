@@ -20,8 +20,8 @@
                 <div class="footer-col-am">
                     <div class="footer-brand-am">
                         <div class="footer-logo-am">
-                            <?php if (has_custom_logo()) : ?>
-                            <?php the_custom_logo(); ?>
+                        <?php if (get_field('footer_logo', 'option')) : ?>
+                            <img src="<?php echo get_field('footer_logo', 'option') ?>" alt="<?php echo get_field('footer_logo', 'option') ?>">
                         <?php else : ?>
                             <iconify-icon icon="lucide:leaf"></iconify-icon>
                         <?php endif; ?>
