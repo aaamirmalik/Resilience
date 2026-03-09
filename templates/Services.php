@@ -88,7 +88,7 @@ $team_query = new WP_Query([
     </section>
 
     <section class="services-grid-section section-am">
-      <div class="container container-am">
+      <div class="container-am">
         <div class="section-title-wrapper section-header-am text-center-am">
           <?php if (!empty($cards_group['eyebrow'])) : ?>
           <div class="eyebrow-am section-subtitle"><?php echo esc_html($cards_group['eyebrow']); ?></div>
