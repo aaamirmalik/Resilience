@@ -39,7 +39,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   revealTargets.forEach((el, index) => {
     el.classList.add("reveal-on-scroll-am");
-    el.style.setProperty("--reveal-delay-am", `${(index % 6) * 70}ms`);
+    el.style.setProperty("--reveal-delay-am", `${(index % 7) * 120}ms`);
   });
 
   const revealObserver = new IntersectionObserver(
@@ -89,14 +89,14 @@ function animateCounter(el) {
   const suffix = originalText.slice((numberMatch.index || 0) + numberMatch[0].length);
   const decimals = rawNumber.includes(".") ? rawNumber.split(".")[1].length : 0;
 
-  const duration = 1400;
+  const duration = 3000;
   const startTime = performance.now();
-  const easeOutCubic = (t) => 1 - Math.pow(1 - t, 3);
+  const easeOutQuart = (t) => 1 - Math.pow(1 - t, 4);
 
   function frame(now) {
     const elapsed = now - startTime;
     const progress = Math.min(elapsed / duration, 1);
-    const currentValue = endValue * easeOutCubic(progress);
+    const currentValue = endValue * easeOutQuart(progress);
 
     const formatted =
       decimals > 0
