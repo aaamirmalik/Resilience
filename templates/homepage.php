@@ -295,7 +295,7 @@ if($train){
 
             <div class="text-center-am" style="margin-top:20px">
 
-                <a href="<?php echo esc_url(get_field('team_button_link') ?: '#'); ?>" class="btn-am btn-outline-am"
+                <a href="<?php echo get_permalink( get_page_by_path('our-team-psychotherapists') ); ?>" class="btn-am btn-outline-am"
                     data-media-type="banani-button">
                     <?php echo esc_html(get_field('team_button_text') ?: 'View full team'); ?>
                 </a>
