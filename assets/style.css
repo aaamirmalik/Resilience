@@ -219,7 +219,7 @@ p  { font-size: 15px; color: var(--muted-foreground-am); }
 
 .about-image-am       { position: relative; }
 .about-image-frame-am { position: relative; border-radius: 18px; overflow: hidden; background-color: #ffffff; border: 1px solid var(--border-am); box-shadow: 0 20px 40px rgba(0,0,0,0.06); }
-.about-image-frame-am img { width: 100%; display: block; height: 350px; object-fit: cover; }
+.about-image-frame-am img { width: 100%; display: block; }
 .about-image-tag-am   { position: absolute; bottom: 16px; left: 16px; padding: 8px 12px; border-radius: var(--radius-xl-am); background-color: rgba(12,31,21,0.9); color: #f9fafb; font-size: 12px; }
 
 /* ============================================================
