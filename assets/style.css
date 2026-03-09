@@ -109,7 +109,7 @@ p  { font-size: 15px; color: var(--muted-foreground-am); }
     border: 1px solid var(--border-am);
     background-color: #ffffff;
     font-size: 13px;
-    color: var(--muted-foreground-am);
+    color: var(--muted-foreground-am); 
 }
 
 /* ============================================================
