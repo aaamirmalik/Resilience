@@ -302,7 +302,7 @@ $team_query = new WP_Query([
         <section class="faq-section-am container-am">
             <div class="section-title-wrapper-am">
                 <h2><?php echo esc_html($faq_group['heading'] ?? 'Frequently Asked Questions'); ?></h2>
-                <?php echo $faq_group['description'] ?? 'Common questions about how therapy works and insurance coverage.'; ?>
+                <p  style="max-width: 600px; margin: 16px auto 0;"><?php echo $faq_group['description'] ?? 'Common questions about how therapy works and insurance coverage.'; ?></p>
             </div>
 
 

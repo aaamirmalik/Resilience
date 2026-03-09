@@ -917,7 +917,7 @@ p  { font-size: 15px; color: var(--muted-foreground-am); }
 .approach-list li::before {
     content: "";
     position: absolute;
-    left: 0;
+    left: -20px;
     top: 6px;
     width: 16px;
     height: 16px;
@@ -928,8 +928,14 @@ p  { font-size: 15px; color: var(--muted-foreground-am); }
 }
 
 /* FAQ */
+.faq-list-am{
+    height: 500px;
+}
 .section-title-wrapper-am{
     margin-bottom: 30px;
+}
+.section-title-wrapper-am h2,.section-title-wrapper-am p{
+    text-align: center;
 }
         .faq-section-am {
           padding: 96px 0;
