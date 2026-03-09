@@ -911,7 +911,9 @@ p  { font-size: 15px; color: var(--muted-foreground-am); }
 .services-team-btn-am { width: 100%; margin-top: 10px; }
 .services-team-footer-am { margin-top: 26px; }
 
-
+.approach-list li{
+    position: relative;
+}
 .approach-list li::before {
     content: "";
     position: absolute;
