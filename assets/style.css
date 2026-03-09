@@ -1033,3 +1033,103 @@ iconify-icon {
         align-items: flex-start;
     }
 }
+
+/* ============================================================
+   INTERACTIONS & ANIMATIONS
+   ============================================================ */
+.reveal-on-scroll-am {
+    opacity: 0;
+    transform: translateY(24px) scale(0.98);
+    transition:
+        opacity 620ms ease,
+        transform 620ms cubic-bezier(0.22, 1, 0.36, 1);
+    transition-delay: var(--reveal-delay-am, 0ms);
+    will-change: opacity, transform;
+}
+.reveal-on-scroll-am.is-visible-am {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+}
+
+.btn-am {
+    transition:
+        transform 220ms ease,
+        box-shadow 220ms ease,
+        opacity 220ms ease;
+}
+.btn-am:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 24px rgba(0, 0, 0, 0.12);
+}
+
+.service-card-am,
+.services-card-am,
+.team-card-am,
+.services-team-card-am,
+.blog-card-am,
+.featured-post-am,
+.pillar-item,
+.services-pillar-am,
+.approach-col,
+.services-approach-col-am,
+.faq-item-am {
+    transition:
+        transform 240ms ease,
+        box-shadow 240ms ease,
+        border-color 240ms ease;
+}
+
+.service-card-am:hover,
+.services-card-am:hover,
+.team-card-am:hover,
+.services-team-card-am:hover,
+.blog-card-am:hover,
+.featured-post-am:hover,
+.pillar-item:hover,
+.services-pillar-am:hover,
+.approach-col:hover,
+.services-approach-col-am:hover,
+.faq-item-am:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 18px 34px rgba(0, 0, 0, 0.10);
+    border-color: rgba(45, 79, 54, 0.22);
+}
+
+.service-link,
+.read-more-link-am {
+    transition: gap 220ms ease, color 220ms ease, transform 220ms ease;
+}
+.service-link:hover,
+.read-more-link-am:hover {
+    gap: 10px;
+    color: var(--foreground-am);
+}
+
+.faq-question-am iconify-icon,
+.faq-question iconify-icon {
+    transition: transform 220ms ease, color 220ms ease;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .reveal-on-scroll-am {
+        opacity: 1;
+        transform: none;
+        transition: none;
+    }
+    .btn-am,
+    .service-card-am,
+    .services-card-am,
+    .team-card-am,
+    .services-team-card-am,
+    .blog-card-am,
+    .featured-post-am,
+    .pillar-item,
+    .services-pillar-am,
+    .approach-col,
+    .services-approach-col-am,
+    .faq-item-am,
+    .service-link,
+    .read-more-link-am {
+        transition: none;
+    }
+}
