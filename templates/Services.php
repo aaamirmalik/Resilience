@@ -150,7 +150,7 @@ $team_query = new WP_Query([
     </section>
 
     <section class="why-choose-section section-am section-muted-am">
-      <div class="container container-am">
+      <div class="container-am">
         <?php if (!empty($why_group['cta_heading']) || !empty($why_group['cta_description'])) : ?>
         <div class="cta-banner services-cta-am">
           <div>
@@ -193,7 +193,7 @@ $team_query = new WP_Query([
     </section>
 
     <section class="approach-section section-am">
-      <div class="container container-am">
+      <div class="container-am">
         <div class="section-title-wrapper section-header-am text-center-am">
           <?php if (!empty($approach_group['eyebrow'])) : ?>
           <div class="eyebrow-am section-subtitle"><?php echo esc_html($approach_group['eyebrow']); ?></div>
@@ -235,7 +235,7 @@ $team_query = new WP_Query([
     </section>
 
     <section class="team-teaser-section section-am section-muted-am">
-      <div class="container container-am">
+      <div class="container-am">
         <div class="section-title-wrapper section-header-am text-center-am">
           <?php if (!empty($team_group['eyebrow'])) : ?>
           <div class="eyebrow-am section-subtitle"><?php echo esc_html($team_group['eyebrow']); ?></div>
