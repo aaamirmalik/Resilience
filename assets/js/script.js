@@ -72,6 +72,8 @@ document.addEventListener("DOMContentLoaded", function () {
   );
 
   counterTargets.forEach((el) => counterObserver.observe(el));
+
+  initContactFormAjax();
 });
 
 function animateCounter(el) {
@@ -114,4 +116,76 @@ function animateCounter(el) {
   }
 
   requestAnimationFrame(frame);
+}
+
+function initContactFormAjax() {
+  const form = document.querySelector("#contact-form-am");
+  if (!form) return;
+
+  const submitBtn = form.querySelector('button[type="submit"]');
+  const statusEl = form.querySelector("#contact-form-status-am");
+  const defaultBtnLabel = submitBtn?.dataset.defaultLabel || "Send Message";
+
+  const setStatus = (message, type) => {
+    if (!statusEl) return;
+    statusEl.textContent = message || "";
+    statusEl.classList.add("is-visible-am");
+    statusEl.classList.remove("is-success-am", "is-error-am");
+    statusEl.classList.add(type === "success" ? "is-success-am" : "is-error-am");
+  };
+
+  form.addEventListener("submit", async (event) => {
+    event.preventDefault();
+
+    if (!window.resilienceAjax || !window.resilienceAjax.ajaxUrl) {
+      setStatus("AJAX configuration is missing.", "error");
+      return;
+    }
+
+    const firstName = form.querySelector('input[name="first_name"]')?.value.trim();
+    const lastName = form.querySelector('input[name="last_name"]')?.value.trim();
+    const email = form.querySelector('input[name="email"]')?.value.trim();
+    const reason = form.querySelector('select[name="reason"]')?.value.trim();
+
+    if (!firstName || !lastName || !email || !reason) {
+      setStatus("Please complete all required fields.", "error");
+      return;
+    }
+
+    const formData = new FormData(form);
+    formData.set("nonce", window.resilienceAjax.nonce || "");
+
+    if (submitBtn) {
+      submitBtn.disabled = true;
+      submitBtn.textContent = window.resilienceAjax.sendingText || "Sending...";
+    }
+
+    try {
+      const response = await fetch(window.resilienceAjax.ajaxUrl, {
+        method: "POST",
+        body: formData,
+      });
+      const result = await response.json();
+
+      if (result?.success) {
+        setStatus(
+          result?.data?.message || window.resilienceAjax.successText || "Message sent.",
+          "success"
+        );
+        form.reset();
+      } else {
+        setStatus(
+          result?.data?.message || window.resilienceAjax.errorText || "Unable to send message.",
+          "error"
+        );
+      }
+    } catch (error) {
+      setStatus(window.resilienceAjax.errorText || "Unable to send message.", "error");
+    } finally {
+      if (submitBtn) {
+        submitBtn.disabled = false;
+        submitBtn.textContent = defaultBtnLabel;
+      }
+    }
+  });
 }
