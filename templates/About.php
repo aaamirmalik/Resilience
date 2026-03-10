@@ -113,24 +113,24 @@ if (empty($trust_items)) {
                     <h2><?php echo esc_html($psychotherapy_heading); ?></h2>
                 </div>
 
-<div class="about-video-shell-am">
-    <?php if (!empty($video_url)) : ?>
-        <video 
-            controls 
-            preload="metadata" 
-            playsinline
-            class="about-video-player-am"
-            style="width:100%; height:auto; display: block; aspect-ratio: 16/9; background: #000;">
-            <source src="<?php echo esc_url($video_url); ?>" type="video/webm">
-            Your browser does not support the video tag.
-        </video>
-    <?php else : ?>
-        <div class="about-video-placeholder-am">
-            <iconify-icon icon="lucide:video" aria-hidden="true"></iconify-icon>
-            <p><strong>Debug Info:</strong> No video URL found. Check if the field name <code>psychotherapy_video_file</code> is correct inside the <code>about_page_group</code>.</p>
-        </div>
-    <?php endif; ?>
-</div>
+                <div class="about-video-shell-am">
+                    <?php if (!empty($video_url)) : ?>
+                        <video 
+                            controls 
+                            preload="metadata" 
+                            playsinline
+                            class="about-video-player-am"
+                            style="width:100%; height:auto; display: block; aspect-ratio: 16/9; background: #000;">
+                            <source src="<?php echo esc_url($video_url); ?>" type="video/webm">
+                            Your browser does not support the video tag.
+                        </video>
+                    <?php else : ?>
+                        <div class="about-video-placeholder-am">
+                            <iconify-icon icon="lucide:video" aria-hidden="true"></iconify-icon>
+                            <p><strong>Debug Info:</strong> No video URL found. Check if the field name <code>psychotherapy_video_file</code> is correct inside the <code>about_page_group</code>.</p>
+                        </div>
+                    <?php endif; ?>
+                </div>
             </div>
         </section>
 
