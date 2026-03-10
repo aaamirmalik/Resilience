@@ -112,16 +112,21 @@ if (empty($trust_items)) {
                         <video 
                             controls 
                             preload="metadata" 
-                            loading="lazy"
+                            playsinline
                             class="about-video-player-am"
-                            style="width:100%; height:auto; aspect-ratio: 16/9;">
-                            <source src="<?php echo esc_url($video_url); ?>" type="video/mp4">
-                            Your browser does not support the video tag.
+                            style="width:100%; height:auto; display: block;">
+                            
+                            <?php // Explicitly set type to video/webm ?>
+                            <source src="<?php echo esc_url($video_url); ?>" type="video/webm">
+                            
+                            <p>Your browser does not support WebM videos. 
+                            <a href="<?php echo esc_url($video_url); ?>">Download the video</a> instead.
+                            </p>
                         </video>
                     <?php else : ?>
                         <div class="about-video-placeholder-am">
                             <iconify-icon icon="lucide:video" aria-hidden="true"></iconify-icon>
-                            <p>Add ACF File: <strong>about_page_group > psychotherapy_video_file</strong> (MP4 format recommended).</p>
+                            <p>Add ACF WebM File: <strong>about_page_group > psychotherapy_video_file</strong>.</p>
                         </div>
                     <?php endif; ?>
                 </div>
