@@ -83,7 +83,7 @@ $blog_page_url = $page_for_posts_id ? get_permalink($page_for_posts_id) : home_u
                 </div>
             </div>
 
-            <div class="container-am">
+            <!-- <div class="container-am">
                 <section class="single-author-box-am">
                     <div class="single-author-avatar-am">
                         <?php echo get_avatar($author_id, 160, '', esc_attr(get_the_author())); ?>
@@ -99,7 +99,7 @@ $blog_page_url = $page_for_posts_id ? get_permalink($page_for_posts_id) : home_u
                         </a>
                     </div>
                 </section>
-            </div>
+            </div> -->
         </article>
 
         <section class="single-related-am">
