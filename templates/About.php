@@ -43,7 +43,13 @@ $psychotherapy_heading = $about_group['psychotherapy_heading'] ?? 'What is Psych
 $video_file = $about_group['psychotherapy_video'] ?? null;
 
 // 2. Extract the URL from the array
-$video_url = (is_array($video_file) && isset($video_file['url'])) ? $video_file['url'] : '';
+$video_url = '';
+if ( is_array($video_file) && !empty($video_file['url']) ) {
+    $video_url = $video_file['url'];
+} elseif ( is_string($video_file) && !empty($video_file) ) {
+    // Fallback in case ACF is returning just the ID or URL string
+    $video_url = is_numeric($video_file) ? wp_get_attachment_url($video_file) : $video_file;
+}
 
 $trust_eyebrow = $about_group['trust_eyebrow'] ?? 'WHY PEOPLE TRUST US?';
 $trust_heading = $about_group['trust_heading'] ?? 'People Trust Us';
@@ -107,29 +113,24 @@ if (empty($trust_items)) {
                     <h2><?php echo esc_html($psychotherapy_heading); ?></h2>
                 </div>
 
-                <div class="about-video-shell-am">
-                    <?php if (!empty($video_url)) : ?>
-                        <video 
-                            controls 
-                            preload="metadata" 
-                            playsinline
-                            class="about-video-player-am"
-                            style="width:100%; height:auto; display: block;">
-                            
-                            <?php // Explicitly set type to video/webm ?>
-                            <source src="<?php echo esc_url($video_url); ?>" type="video/webm">
-                            
-                            <p>Your browser does not support WebM videos. 
-                            <a href="<?php echo esc_url($video_url); ?>">Download the video</a> instead.
-                            </p>
-                        </video>
-                    <?php else : ?>
-                        <div class="about-video-placeholder-am">
-                            <iconify-icon icon="lucide:video" aria-hidden="true"></iconify-icon>
-                            <p>Add ACF WebM File: <strong>about_page_group > psychotherapy_video_file</strong>.</p>
-                        </div>
-                    <?php endif; ?>
-                </div>
+<div class="about-video-shell-am">
+    <?php if (!empty($video_url)) : ?>
+        <video 
+            controls 
+            preload="metadata" 
+            playsinline
+            class="about-video-player-am"
+            style="width:100%; height:auto; display: block; aspect-ratio: 16/9; background: #000;">
+            <source src="<?php echo esc_url($video_url); ?>" type="video/webm">
+            Your browser does not support the video tag.
+        </video>
+    <?php else : ?>
+        <div class="about-video-placeholder-am">
+            <iconify-icon icon="lucide:video" aria-hidden="true"></iconify-icon>
+            <p><strong>Debug Info:</strong> No video URL found. Check if the field name <code>psychotherapy_video_file</code> is correct inside the <code>about_page_group</code>.</p>
+        </div>
+    <?php endif; ?>
+</div>
             </div>
         </section>
 
