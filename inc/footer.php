@@ -39,7 +39,7 @@
                         Email: <?php echo esc_html(get_field('topbar_email', 'option') ?: 'mail@resiliencec.com'); ?><br>
                         Cell No: <?php echo esc_html(get_field('footer_cell_no', 'option') ?: 'mail@resiliencec.com'); ?><br>
                         Fax: <?php echo esc_html(get_field('footer_fax', 'option') ?: 'mail@resiliencec.com'); ?>
-                    </p>
+                    </p> 
                     <p>
                         <?php echo esc_html(get_field('topbar_hours', 'option') ?: 'Mon–Fri: 11:00 AM – 7:00 PM'); ?><br>
                         <?php echo esc_html(get_field('footer_weekend', 'option') ?: 'Weekends & holidays: Closed'); ?>
