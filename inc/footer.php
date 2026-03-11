@@ -34,7 +34,7 @@
                     <p>
                         <?php echo get_field('footer_address', 'option') ?: "111 Waterloo St Unit 406\nLondon, ON N6B 2M4"; ?>
                     </p>
-                    <p>
+                    <p> 
                         Email: <?php echo esc_html(get_field('topbar_email', 'option') ?: 'mail@resiliencec.com'); ?><br>
                         Phone: <?php echo esc_html(get_field('topbar_phone', 'option') ?: '+1 (548) 866-0366'); ?><br>
                         Cell No: <?php echo esc_html(get_field('footer_cell_no', 'option') ?: 'mail@resiliencec.com'); ?><br>
