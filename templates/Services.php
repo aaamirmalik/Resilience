@@ -46,7 +46,7 @@ $team_query = new WP_Query([
 
 <div class="page-container-am page-container services-page-am">
     <main>
-        <section class="services-hero section-am services-hero-am">
+        <section class="services-hero section-am services-hero-am" style="cursor: pointer;" onclick="window.location='<?php echo $permalink; ?>';">
             <div class="container-am services-hero-grid services-hero-grid-am">
                 <div class="services-hero-content services-hero-copy-am">
                     <?php if (!empty($hero_group['eyebrow'])) : ?>
@@ -97,7 +97,7 @@ $team_query = new WP_Query([
                 </div>
 
                 <?php if ($service_query->have_posts()) : ?>
-                <div class="service-cards services-cards-grid-am">
+                <div class="service-cards services-cards-grid-am" >
                     <?php while ($service_query->have_posts()) : $service_query->the_post(); ?>
                     <?php
           $service_image = get_field('service_image');
@@ -125,7 +125,7 @@ $team_query = new WP_Query([
               }
           }
           ?>
-                    <div class="service-card services-card-am">
+                    <div class="service-card services-card-am" style="cursor: pointer;" onclick="window.location='<?php echo the_permalink(); ?>';">
                         <?php if (!empty($card_url)) : ?>
                         <div class="service-card-img services-card-image-am">
                             <img src="<?php echo esc_url($card_url); ?>" alt="<?php echo esc_attr($card_alt); ?>">

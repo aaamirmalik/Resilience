@@ -118,7 +118,7 @@ if (!$archive_url) {
                             $related_button = get_field('service_button_label');
                             $card_desc = !empty($related_desc) ? $related_desc : wp_trim_words(get_the_excerpt(), 20);
                         ?>
-                        <article class="services-card-am">
+                        <article class="services-card-am" style="cursor: pointer;" onclick="window.location='<?php echo the_permalink(); ?>';">
                             <?php if (is_array($related_image) && !empty($related_image['url'])) : ?>
                                 <div class="services-card-image-am">
                                     <img src="<?php echo esc_url($related_image['url']); ?>" alt="<?php echo esc_attr($related_image['alt'] ?? get_the_title()); ?>" />

@@ -1,0 +1,203 @@
+{
+    "description": "DO NOT DELETE THIS FILE. This file is used to keep track of which files have been synced in the most recent deployment. If you delete this file a resync will need to be done (which can take a while) - read more: https://github.com/SamKirkland/FTP-Deploy-Action",
+    "version": "1.0.0",
+    "generatedTime": 1773213675257,
+    "data": [
+        {
+            "type": "file",
+            "name": "404.php",
+            "size": 551,
+            "hash": "d4a568e4b2eb42dc100c02b315815fabbdfa0e68999981ac868e0baf519953d6"
+        },
+        {
+            "type": "folder",
+            "name": "acf-json"
+        },
+        {
+            "type": "file",
+            "name": "archive.php",
+            "size": 3097,
+            "hash": "db32dab1c0e9e6cfdaf9bca507ae37dca1879e260b0edc9862fde31c165ef3eb"
+        },
+        {
+            "type": "folder",
+            "name": "assets"
+        },
+        {
+            "type": "file",
+            "name": "footer.php",
+            "size": 955,
+            "hash": "c90113c704822a833dab1f008e27dbf33c70aa56cbfabce42634f12a47f3a7ff"
+        },
+        {
+            "type": "file",
+            "name": "functions.php",
+            "size": 4839,
+            "hash": "33b66f81c14eb916833d6e4ae5b8bec3b42463babcfbe4f781672b374b270d28"
+        },
+        {
+            "type": "file",
+            "name": "header.php",
+            "size": 426,
+            "hash": "c26d99db31dfa63840e7f4a4bd5a2a78036199d51583ea0f8a3105f85e3f6a3b"
+        },
+        {
+            "type": "folder",
+            "name": "inc"
+        },
+        {
+            "type": "file",
+            "name": "index.php",
+            "size": 717,
+            "hash": "d4ca278e654386c0150a02fcdeb39a44ae3cfc12ce1e7ae8dc72df9fd1f39911"
+        },
+        {
+            "type": "file",
+            "name": "search.php",
+            "size": 193,
+            "hash": "a495aac0d085d5109ae09eb2b6425269d22ed7300de7bf48fc021ef5ac22f5d1"
+        },
+        {
+            "type": "file",
+            "name": "searchform.php",
+            "size": 375,
+            "hash": "948d4d1d0eea004b3dfe1b9b1b5dbcc0ad84820c3a53b52458cc8a57fa7468a2"
+        },
+        {
+            "type": "file",
+            "name": "single-service.php",
+            "size": 6994,
+            "hash": "47ce6375edfd90efc5f9c9f546c36f4c6ed1ec9b46b5bfd8f257de34be65be63"
+        },
+        {
+            "type": "file",
+            "name": "single-team.php",
+            "size": 9829,
+            "hash": "0d4f85b3ab99fde3419116674ab52838917510bde5c603e8e719e4fdbf8f12ac"
+        },
+        {
+            "type": "file",
+            "name": "single.php",
+            "size": 6430,
+            "hash": "f2f8800da4711552358ec2cd156cfd0e57d5a961e34931bf973441b3024bfb3d"
+        },
+        {
+            "type": "file",
+            "name": "style.css",
+            "size": 145,
+            "hash": "98d48e853447a72e16b69f476cffe514566f00285477fa285e7771c243d7978a"
+        },
+        {
+            "type": "folder",
+            "name": "template-parts"
+        },
+        {
+            "type": "folder",
+            "name": "templates"
+        },
+        {
+            "type": "file",
+            "name": "acf-json/group_contact_us_template.json",
+            "size": 17490,
+            "hash": "8128bea4925e9a5c6e44bc501ed4278f6f641de3808bdfe45fa3aceb4059b920"
+        },
+        {
+            "type": "file",
+            "name": "acf-json/group_about_template.json",
+            "size": 12978,
+            "hash": "90efdadf5bb3a34b264a68bb93ba2c0b59ca42c5c348f182a269f9bd38d90edf"
+        },
+        {
+            "type": "folder",
+            "name": "assets/images"
+        },
+        {
+            "type": "folder",
+            "name": "assets/js"
+        },
+        {
+            "type": "file",
+            "name": "assets/style.css",
+            "size": 54365,
+            "hash": "05be45c2df94210376441ee95b397a722e3cb712641043791d8840eec65eb73c"
+        },
+        {
+            "type": "file",
+            "name": "inc/custom-menu.php",
+            "size": 312,
+            "hash": "5cddc0dff6a96aa44bd209e07e0019cdd7793e66c9d50b304d46d93444a48a6f"
+        },
+        {
+            "type": "file",
+            "name": "inc/footer.php",
+            "size": 6158,
+            "hash": "b879af2c7edeaeb0915bcbb876fc8c78db40441fc6ad148158544a8148674ad5"
+        },
+        {
+            "type": "file",
+            "name": "inc/header.php",
+            "size": 4273,
+            "hash": "42c0e4b7af172267a609a0e9736a99e1125ae7b60cf51f0672014d3a2cd8a5a6"
+        },
+        {
+            "type": "file",
+            "name": "template-parts/job-content.php",
+            "size": 4716,
+            "hash": "85d065c629af103a76ec4dd9a65c50ebafcfbc4d42d8ab964fdaeec085483d0b"
+        },
+        {
+            "type": "file",
+            "name": "templates/About.php",
+            "size": 7891,
+            "hash": "1b2097a5318d70437e94a81cccec5d1777b9db36bbd0478a804abd2e15c45527"
+        },
+        {
+            "type": "file",
+            "name": "templates/Blog.php",
+            "size": 4932,
+            "hash": "011908db066326aef2cfd042fa9958f7bdf9c1ce61cfe1de626f80b7b7b41936"
+        },
+        {
+            "type": "file",
+            "name": "templates/Services.php",
+            "size": 16743,
+            "hash": "9d647b31702d1e98b3d4b999cb126de30646c2e081a2a0e2959a62897d84319a"
+        },
+        {
+            "type": "file",
+            "name": "templates/Contact_us.php",
+            "size": 11003,
+            "hash": "e9636eee98c1a369aa3651d1821e70b389426ec05240064b5ac1d5df09377bcd"
+        },
+        {
+            "type": "file",
+            "name": "templates/Teams.php",
+            "size": 5361,
+            "hash": "ce7a98b5b3a1ba9d547bfa3059d00be3b7c63a5325c9f982779440bd9578b7ed"
+        },
+        {
+            "type": "file",
+            "name": "templates/homepage.php",
+            "size": 15301,
+            "hash": "43bfeb14c2485907839f7c717d0f7b5eb8960723243a878fc4a4a8d930d970fa"
+        },
+        {
+            "type": "file",
+            "name": "assets/images/back.png",
+            "size": 646,
+            "hash": "b331cf64542b88559ed6eda576aad2335aa53038738fc4e27d152ae74bd8e7a4"
+        },
+        {
+            "type": "file",
+            "name": "assets/images/download.png",
+            "size": 1060,
+            "hash": "b588f4495a0004d5968f4f0c37c8668e57df5b1b8d6aef83f95332073a257f60"
+        },
+        {
+            "type": "file",
+            "name": "assets/js/script.js",
+            "size": 6241,
+            "hash": "ca272fe9be472b3fe6ad14f97f15dcf3a9f55b71ab4b2e57d62450eb03e24a92"
+        }
+    ]
+}

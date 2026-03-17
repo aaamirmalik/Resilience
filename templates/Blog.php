@@ -13,7 +13,7 @@ get_header();
         <p>Explore our latest insights and professional resources.</p>
     </header>
 
-    <nav class="category-filter-am">
+    <nav class="category-filter-am" >
         <a href="<?php echo get_permalink(); ?>" class="category-btn-am active-am">All Articles</a>
         <?php
         $categories = get_categories();
@@ -46,10 +46,11 @@ get_header();
         $count = 0;
 
         while ($custom_query->have_posts()) : $custom_query->the_post();
+            $permalink = get_the_permalink();
 
             if ($paged == 1 && $count == 0) :
     ?>
-                <article class="featured-post-am">
+                <article class="featured-post-am" style="cursor: pointer;" onclick="window.location='<?php echo $permalink; ?>';">
                     <div class="featured-post-image-am">
                         <?php if (has_post_thumbnail()) : ?>
                             <?php the_post_thumbnail('large'); ?>
@@ -59,13 +60,13 @@ get_header();
                     </div>
 
                     <div class="featured-post-content-am">
-                        <div style="margin-bottom: 15px;">
+                        <div style="margin-bottom: 15px;" onclick="event.stopPropagation();">
                             <span class="badge-am"><?php the_category(', '); ?></span>
                             <small><?php echo get_the_date(); ?></small>
                         </div>
                         <h2><?php the_title(); ?></h2>
                         <p><?php echo wp_trim_words(get_the_excerpt(), 25); ?></p>
-                        <a href="<?php the_permalink(); ?>" class="read-more-link-am">Read Full Article →</a>
+                        <a href="<?php echo $permalink; ?>" class="read-more-link-am">Read Full Article →</a>
                     </div>
                 </article>
 
@@ -75,7 +76,7 @@ get_header();
             ?>
                 <div class="blog-grid-am">
 
-                <article class="blog-card-am">
+                <article class="blog-card-am" style="cursor: pointer;" onclick="window.location='<?php echo $permalink; ?>';">
                     <div class="blog-card-image-am">
                         <?php if (has_post_thumbnail()) : ?>
                             <?php the_post_thumbnail('medium_large'); ?>
@@ -85,12 +86,12 @@ get_header();
                         <small style="margin-bottom: 10px; display: block;"><?php echo get_the_date(); ?></small>
                         <h3 class="trimmed-title"><?php the_title(); ?></h3>
                         <p><?php echo wp_trim_words(get_the_excerpt(), 15); ?></p>
-                        <a href="<?php the_permalink(); ?>" class="read-more-link-am">Read Article →</a>
+                        <a href="<?php echo $permalink; ?>" class="read-more-link-am">Read Article →</a>
                     </div>
                 </article>
 
             <?php else : ?>
-                <article class="blog-card-am">
+                <article class="blog-card-am" style="cursor: pointer;" onclick="window.location='<?php echo $permalink; ?>';">
                     <div class="blog-card-image-am">
                         <?php if (has_post_thumbnail()) : ?>
                             <?php the_post_thumbnail('medium_large'); ?>
@@ -100,7 +101,7 @@ get_header();
                         <small style="margin-bottom: 10px; display: block;"><?php echo get_the_date(); ?></small>
                         <h3 class="trimmed-title"><?php the_title(); ?></h3>
                         <p><?php echo wp_trim_words(get_the_excerpt(), 15); ?></p>
-                        <a href="<?php the_permalink(); ?>" class="read-more-link-am">Read Article →</a>
+                        <a href="<?php echo $permalink; ?>" class="read-more-link-am">Read Article →</a>
                     </div>
                 </article>
             <?php

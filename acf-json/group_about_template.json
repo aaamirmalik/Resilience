@@ -98,7 +98,8 @@
                             "maxlength": "",
                             "rows": 4,
                             "placeholder": "",
-                            "new_lines": ""
+                            "new_lines": "",
+                            "parent_repeater": "field_about_intro_paragraphs"
                         }
                     ]
                 },
@@ -149,11 +150,11 @@
                 },
                 {
                     "key": "field_about_psychotherapy_video_url",
-                    "label": "Psychotherapy Video URL",
-                    "name": "psychotherapy_video_url",
+                    "label": "Psychotherapy Video",
+                    "name": "psychotherapy_video",
                     "aria-label": "",
-                    "type": "url",
-                    "instructions": "Use embeddable URL (YouTube/Vimeo).",
+                    "type": "file",
+                    "instructions": "",
                     "required": 0,
                     "conditional_logic": 0,
                     "wrapper": {
@@ -161,10 +162,12 @@
                         "class": "",
                         "id": ""
                     },
-                    "default_value": "",
-                    "placeholder": "",
-                    "prepend": "",
-                    "append": ""
+                    "return_format": "array",
+                    "library": "all",
+                    "min_size": "",
+                    "max_size": "",
+                    "mime_types": "",
+                    "allow_in_bindings": 0
                 },
                 {
                     "key": "field_about_trust_eyebrow",
@@ -266,7 +269,8 @@
                             "maxlength": "",
                             "placeholder": "lucide:globe",
                             "prepend": "",
-                            "append": ""
+                            "append": "",
+                            "parent_repeater": "field_about_trust_items"
                         },
                         {
                             "key": "field_about_trust_item_title",
@@ -286,7 +290,8 @@
                             "maxlength": "",
                             "placeholder": "",
                             "prepend": "",
-                            "append": ""
+                            "append": "",
+                            "parent_repeater": "field_about_trust_items"
                         },
                         {
                             "key": "field_about_trust_item_description",
@@ -306,7 +311,8 @@
                             "maxlength": "",
                             "rows": 3,
                             "placeholder": "",
-                            "new_lines": ""
+                            "new_lines": "",
+                            "parent_repeater": "field_about_trust_items"
                         }
                     ]
                 }
@@ -318,7 +324,7 @@
             {
                 "param": "page_template",
                 "operator": "==",
-                "value": "templates/About.php"
+                "value": "templates\/About.php"
             }
         ]
     ],
@@ -331,5 +337,6 @@
     "active": true,
     "description": "ACF fields for About page template.",
     "show_in_rest": 0,
-    "modified": 1773100800
+    "display_title": "",
+    "modified": 1773120063
 }

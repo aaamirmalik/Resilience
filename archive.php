@@ -34,8 +34,10 @@ $current_category = get_queried_object();
         </nav>
 
         <div class="blog-grid-am">
-            <?php if (have_posts()) : while (have_posts()) : the_post(); ?>
-                <article class="blog-card-am">
+            <?php if (have_posts()) : while (have_posts()) : the_post(); 
+                $permalink = get_the_permalink();
+            ?>
+                <article class="blog-card-am" style="cursor: pointer;" onclick="window.location='<?php echo $permalink; ?>';">
                     <div class="blog-card-image-am">
                         <?php if (has_post_thumbnail()) : ?>
                             <?php the_post_thumbnail('medium_large'); ?>
@@ -53,18 +55,18 @@ $current_category = get_queried_object();
                         <p style="font-size: 14px; color: var(--muted-foreground-am); margin-bottom: 20px;">
                             <?php echo wp_trim_words(get_the_excerpt(), 18); ?>
                         </p>
-                        <a href="<?php the_permalink(); ?>" class="read-more-link-am">Read Article →</a>
+                        <a href="<?php echo $permalink; ?>" class="read-more-link-am">Read Article →</a>
                     </div>
                 </article>
             <?php endwhile; ?>
         </div>
 
-        <div class="pagination-am">
+        <div class="pagination-am" style="margin: 50px 0px 80px 0px; text-align: center;">
             <?php
             echo paginate_links(array(
-                'prev_text' => '← Prev',
-                'next_text' => 'Next →',
-                'type'      => 'plain',
+                'prev_text' => '<iconify-icon icon="lucide:chevron-left" style="font-size:16px"></iconify-icon>',
+                'next_text' => '<iconify-icon icon="lucide:chevron-right" style="font-size:16px"></iconify-icon>',
+                'type'      => 'list',
             ));
             ?>
         </div>

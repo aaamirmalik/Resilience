@@ -146,7 +146,7 @@ if($about){
         <div class="container-am about-inner-am">
             <div class="about-copy-am">
                 <div class="eyebrow-am"><?php echo esc_html($about['eyebrow']); ?></div>
-                <h2><?php echo esc_html($about['heading']); ?></h2>
+                <h2 style="margin-bottom:10px;"><?php echo esc_html($about['heading']); ?></h2>
                 <?php echo $about['paragraph']; ?>
 
                 <div class="trust-grid-am">
@@ -240,9 +240,12 @@ if($train){
                     $experience = get_field('team_experience');
                     $clients = get_field('team_clients');
                     $location = get_field('team_location');
+		    		$permalink = get_the_permalink();
             ?>
-
-                <div class="team-card-am" data-media-type="banani-button">
+				
+				 
+				
+                <div class="team-card-am" data-media-type="banani-button" <?php echo esc_attr($term_classes); ?>" style="position: relative; cursor: pointer;" onclick="window.location='<?php echo $permalink; ?>';">
 
                     <?php if ($image) : ?>
                     <img src="<?php echo esc_url($image['url']); ?>" alt="<?php the_title(); ?>">
@@ -279,6 +282,9 @@ if($train){
                             </span>
                             <?php endif; ?>
 
+                        <a href="<?php echo $permalink; ?>" class="btn-am btn-outline-am" style="width:100%; margin-top:10px;">
+                            View Profile
+                        </a>
                         </div>
 
                     </div>

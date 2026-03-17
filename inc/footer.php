@@ -35,10 +35,19 @@
                         <?php echo get_field('footer_address', 'option') ?: "111 Waterloo St Unit 406\nLondon, ON N6B 2M4"; ?>
                     </p>
                     <p> 
-                        Email: <?php echo esc_html(get_field('topbar_email', 'option') ?: 'mail@resiliencec.com'); ?><br>
-                        Phone: <?php echo esc_html(get_field('topbar_phone', 'option') ?: '+1 (548) 866-0366'); ?><br>
-                        Cell No: <?php echo esc_html(get_field('footer_cell_no', 'option') ?: 'mail@resiliencec.com'); ?><br>
-                        Fax: <?php echo esc_html(get_field('footer_fax', 'option') ?: 'mail@resiliencec.com'); ?>
+                        Phone: <a href="tel:<?php echo esc_attr(get_field('topbar_phone', 'option') ?: '+15488660366'); ?>">
+    <?php echo esc_html(get_field('topbar_phone', 'option') ?: '+1 (548) 866-0366'); ?>
+</a><br>
+
+Cell No: <a href="tel:<?php echo esc_attr(get_field('footer_cell_no', 'option') ?: '+15488660366'); ?>">
+    <?php echo esc_html(get_field('footer_cell_no', 'option') ?: '+1 (548) 866-0366'); ?>
+</a><br>
+
+Fax: <?php echo esc_html(get_field('footer_fax', 'option') ?: '+1 (226) 916-0283'); ?><br>
+
+Email: <a href="mailto:<?php echo esc_attr(get_field('topbar_email', 'option') ?: 'mail@resiliencec.com'); ?>">
+    <?php echo esc_html(get_field('topbar_email', 'option') ?: 'mail@resiliencec.com'); ?>
+</a>
                     </p> 
                     <p>
                         <?php echo esc_html(get_field('topbar_hours', 'option') ?: 'Mon–Fri: 11:00 AM – 7:00 PM'); ?><br>

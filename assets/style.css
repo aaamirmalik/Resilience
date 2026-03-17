@@ -6,7 +6,7 @@
    ============================================================ */
 :root {
     --background-am:          #fbfef9;
-    --foreground-am:          #4c782b;
+    --foreground-am:          #123029;
     --border-am:              rgba(0,0,0,0.08);
     --input-am:               #ffffff;
     --primary-am:             #4c782b;
@@ -58,7 +58,7 @@ h3 { font-size: 22px !important; }
 h4 { font-size: 18px !important; }
 p  { font-size: 15px; color: var(--muted-foreground-am); }
 
-.section-am          { padding: 80px 0; }
+.section-am          { padding: 20px 0; }
 .section-muted-am    { background-color: var(--muted-am); border-top: 1px solid var(--border-am); border-bottom: 1px solid var(--border-am); }
 .section-header-am   { max-width: 640px; margin: 0 auto 40px; }
 .text-center-am      { text-align: center; }
@@ -223,6 +223,41 @@ p  { font-size: 15px; color: var(--muted-foreground-am); }
 .about-image-frame-am { position: relative; border-radius: 18px; overflow: hidden; background-color: #ffffff; border: 1px solid var(--border-am); box-shadow: 0 20px 40px rgba(0,0,0,0.06); }
 .about-image-frame-am img { width: 100%; display: block; height: 370px; object-fit: cover; } 
 .about-image-tag-am   { position: absolute; bottom: 16px; left: 16px; padding: 8px 12px; border-radius: var(--radius-xl-am); background-color: rgba(12,31,21,0.9); color: #f9fafb; font-size: 12px; }
+
+/* ============================================================
+   ABOUT PAGE TRUST CARDS HOVER
+   ============================================================ */
+
+/* Initial state and transition */
+.about-trust-card-am {
+    transition: transform 420ms cubic-bezier(0.22, 1, 0.36, 1),
+                box-shadow 420ms cubic-bezier(0.22, 1, 0.36, 1),
+                border-color 420ms ease;
+    will-change: transform, box-shadow;
+}
+
+/* Hover state: Lifts up and adds a shadow */
+.about-trust-card-am:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 18px 34px rgba(0, 0, 0, 0.10);
+    border-color: rgba(76, 120, 43, 0.22); /* Using your primary-am color with low opacity */
+}
+
+/* Ensure icons scale slightly on hover if desired */
+.about-trust-card-am:hover .about-trust-icon-am {
+    transform: scale(1.05);
+    transition: transform 300ms ease;
+}
+
+/* Respect user motion preferences */
+@media (prefers-reduced-motion: reduce) {
+    .about-trust-card-am {
+        transition: none;
+    }
+    .about-trust-card-am:hover {
+        transform: none;
+    }
+}
 
 /* ============================================================
    ABOUT PAGE TEMPLATE
@@ -423,7 +458,7 @@ p  { font-size: 15px; color: var(--muted-foreground-am); }
 .footer-main-am {
     position: relative;
     overflow: hidden;
-    background-color: #020617;
+    background-color: #102019;
     color: #d1d5db;
     padding: 48px 0 32px;
     background-image:
@@ -443,8 +478,8 @@ p  { font-size: 15px; color: var(--muted-foreground-am); }
 }
 .footer-main-am > .container-am { position: relative; z-index: 1; }
 
-.footer-grid-am { display: grid; grid-template-columns: 2fr 1.1fr 1.1fr 1.2fr; gap: 32px; }
-.footer-brand-am { display: flex; align-items: center; gap: 12px; margin-bottom: 16px; }
+.footer-grid-am { display: grid; grid-template-columns: 2fr 1.1fr 1.1fr 1.3fr; gap: 32px; }
+.footer-brand-am { display: flex; align-items: center; gap: 12px; margin-bottom: 16px; margin-top:4px;}
 .footer-logo-am  { width: 80px; height: 60px; border-radius: 8px; display: flex; align-items: center; justify-content: center; color: #bbf7d0; font-size: 16px; }
 .footer-brand-text-am strong { font-size: 16px; letter-spacing: 0.1em; color: #e5e7eb; }
 .footer-brand-text-am span   { font-size: 9px; letter-spacing: 0.16em; text-transform: uppercase; color: #9ca3af; display: block; }
@@ -815,7 +850,7 @@ p  { font-size: 15px; color: var(--muted-foreground-am); }
 .single-content-am p,
 .single-content-am ul,
 .single-content-am ol,
-.single-content-am blockquote { margin-bottom: 22px; }
+.single-content-am blockquote { margin-bottom: 22px; list-style: auto; }
 .single-content-am p { color: inherit; font-size: inherit; }
 .single-content-am ul,
 .single-content-am ol { padding-left: 24px; }
@@ -1743,3 +1778,391 @@ textarea.form-control-am {
     }
 }
 
+
+
+
+
+
+
+
+/* ============================================================
+   SINGLE TEAM PROFILE (DYNAMIC UPDATE)
+   ============================================================ */
+
+.profile-main-am {
+    padding: 40px 0 80px;
+}
+
+/* Breadcrumbs matched to your theme style */
+.breadcrumbs-am {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+    color: var(--muted-foreground-am);
+    margin-bottom: 32px;
+}
+
+.breadcrumbs-am a {
+    color: var(--muted-foreground-am);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.breadcrumbs-am a:hover {
+    color: var(--primary-am);
+}
+
+/* Profile Intro Card */
+.profile-intro-am {
+    display: flex;
+    gap: 40px;
+    background: var(--card-am);
+    padding: 40px;
+    border-radius: var(--radius-lg-am);
+    border: 1px solid var(--border-am);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.02);
+    margin-bottom: 40px;
+}
+
+.profile-image-am {
+    width: 200px;
+    height: 200px;
+    border-radius: var(--radius-md-am);
+    overflow: hidden;
+    flex-shrink: 0;
+    border: 1px solid var(--border-am);
+}
+
+.profile-image-am img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.profile-info-am {
+    flex: 1;
+}
+
+.profile-info-am h1 {
+    font-size: 32px !important;
+    margin-bottom: 4px;
+}
+
+.profile-role-badge-am {
+    font-size: 14px;
+    color: var(--primary-am);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 24px;
+    display: inline-block;
+}
+
+/* Meta Grid within the profile header */
+.profile-meta-grid-am {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+    margin-bottom: 24px;
+}
+
+.profile-meta-item-am {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+}
+
+.profile-meta-item-am iconify-icon {
+    font-size: 20px;
+    color: var(--muted-foreground-am);
+    margin-top: 2px;
+}
+
+.profile-meta-content-am h5 {
+    font-size: 13px !important;
+    color: var(--foreground-am);
+    margin-bottom: 2px;
+}
+
+.profile-meta-content-am p {
+    font-size: 13px;
+    color: var(--muted-foreground-am);
+    line-height: 1.4;
+    margin: 0;
+}
+
+/* Main Content Layout */
+.profile-content-grid-am {
+    display: grid;
+    grid-template-columns: 1fr 380px;
+    gap: 40px;
+}
+
+.profile-details-am section {
+    margin-bottom: 40px;
+}
+
+.profile-details-am h2 {
+    font-size: 24px !important;
+    margin-bottom: 16px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--border-am);
+}
+
+.profile-details-am .entry-content p {
+    margin-bottom: 16px;
+    font-size: 15px;
+    color: var(--foreground-am);
+    line-height: 1.7;
+}
+
+/* Tags/Badges */
+.tags-container-am {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 16px;
+}
+
+.badge-am {
+    display: inline-flex;
+    padding: 4px 12px;
+    background-color: var(--secondary-am);
+    color: var(--primary-am);
+    border-radius: var(--radius-xl-am);
+    font-size: 13px;
+    font-weight: 500;
+}
+
+/* Booking Sidebar Widget */
+.booking-widget-am {
+    background: var(--card-am);
+    border: 1px solid var(--border-am);
+    border-radius: var(--radius-lg-am);
+    padding: 24px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04);
+    position: sticky;
+    top: 100px; /* Adjusted for your sticky navbar */
+}
+
+.booking-header-am {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.booking-header-am h3 {
+    font-size: 20px !important;
+    margin-bottom: 6px;
+}
+
+.booking-header-am p {
+    font-size: 13px;
+    color: var(--muted-foreground-am);
+}
+
+/* Responsive Adjustments */
+@media (max-width: 1024px) {
+    .profile-content-grid-am {
+        grid-template-columns: 1fr;
+    }
+    
+    .booking-widget-am {
+        position: static;
+        margin-top: 20px;
+    }
+
+    .profile-intro-am {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        padding: 30px 20px;
+    }
+
+    .profile-meta-grid-am {
+        justify-items: center;
+    }
+    
+    .profile-meta-item-am {
+        text-align: left;
+    }
+}
+
+@media (max-width: 640px) {
+    .profile-meta-grid-am {
+        grid-template-columns: 1fr;
+    }
+    
+    .profile-info-am h1 {
+        font-size: 26px !important;
+    }
+}
+
+.btn-block-am {
+    width: 100%;
+    display: flex;
+}
+
+
+/* Ensure avatar is perfectly centered on mobile profile card */
+@media (max-width: 768px) {
+    .profile-intro-am {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+    .profile-meta-grid-am {
+        text-align: left; /* Keeps content readable inside cards */
+    }
+}
+
+
+
+/* Action Buttons Container */
+.action-buttons-am {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    width: 100%;
+    margin-top: 10px;
+}
+
+/* Desktop: Side by Side */
+.action-buttons-am .btn-am {
+    flex: 0 1 auto; /* Allow buttons to sit side-by-side */
+    width: auto;
+}
+
+/* Mobile: Stacked Full Width */
+@media (max-width: 1024px) {
+    .action-buttons-am {
+        flex-direction: column;
+    }
+    
+    .action-buttons-am .btn-am {
+        width: 100%;
+        display: flex;
+    }
+}
+/* Ensure the main page container has consistent padding on mobile */
+@media (max-width: 1024px) {
+    .container-am {
+        padding: 0 20px !important; /* Forces spacing from the screen edges */
+    }
+
+    /* Adds internal padding to the profile card so text doesn't touch the card border */
+    .profile-intro-am {
+        padding: 24px 16px !important; 
+        margin-left: 0;
+        margin-right: 0;
+        width: 100%; /* Ensures it stays within the container */
+    }
+    
+    /* Center aligns the mobile intro content for a cleaner look */
+    .profile-info-am {
+        padding: 0 10px;
+    }
+
+    /* Makes sure the meta-items don't bleed out */
+    .profile-meta-item-am {
+        width: 100%;
+        box-sizing: border-box;
+    }
+}
+
+/* Extra safety for very small devices */
+@media (max-width: 480px) {
+    .container-am {
+        padding: 0 15px !important;
+    }
+}
+/* Container padding fix for mobile */
+@media (max-width: 1024px) {
+    .container-am {
+        padding: 0 20px !important;
+    }
+    .profile-intro-am {
+        padding: 24px 20px !important;
+        margin-left: 0;
+        margin-right: 0;
+    }
+}
+
+/* Action Buttons Logic */
+.action-buttons-am {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 20px;
+}
+
+.action-buttons-am .btn-am {
+    flex: 0 1 auto;
+}
+
+@media (max-width: 1024px) {
+    .action-buttons-am {
+        flex-direction: column;
+    }
+    .action-buttons-am .btn-am {
+        width: 100%;
+        display: flex;
+    }
+}
+
+/* CTA Section Center Alignment */
+.cta-section-am.text-center-am {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+/* Repeater Education Styling */
+.education-cards-wrapper-am {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-top: 20px;
+}
+
+.edu-card-am {
+    background: #ffffff;
+    border: 1px solid var(--border-am);
+    border-radius: 12px;
+    padding: 24px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.02);
+    transition: all 0.3s ease;
+}
+
+.edu-card-am:hover {
+    border-color: var(--primary-am);
+    transform: translateY(-2px);
+}
+
+.edu-uni-am {
+    font-size: 18px !important;
+    font-weight: 700;
+    color: var(--foreground-am);
+    margin-bottom: 6px !important;
+}
+
+.edu-degree-am {
+    font-size: 15px;
+    color: var(--muted-foreground-am);
+    margin-bottom: 8px !important;
+    line-height: 1.5;
+}
+
+.edu-date-am {
+    font-size: 14px;
+    color: var(--muted-foreground-am);
+    opacity: 0.8;
+    font-weight: 500;
+}
+
+@media (max-width: 768px) {
+    .edu-card-am {
+        padding: 20px;
+    }
+}

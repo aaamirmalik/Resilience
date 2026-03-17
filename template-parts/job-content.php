@@ -2,7 +2,7 @@
 
 $args = array(
     'post_type' => 'job',
-    'posts_per_page' => 4, // Change as needed
+    'posts_per_page' => 4,
     'post_status' => 'publish'
 );
 $jobs_query = new WP_Query($args);
