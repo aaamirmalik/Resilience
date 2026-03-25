@@ -2174,4 +2174,7 @@ textarea.form-control-am {
     }
     .phone-text-am{ font-size: 18px; }
     .btn-lg-am { padding: 8px 20px; }
+    .faq-list-am { height: 620px; }
+    .faq-section-am { padding: 20px 20px !important; }
+    .booking-widget-am { margin-bottom: 20px; }
 }

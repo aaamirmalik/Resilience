@@ -80,7 +80,7 @@
                     <a href="<?php echo esc_url(get_field('clinician_login_url', 'option') ?: '#'); ?>" class="btn-am btn-outline-am">
                         <?php echo esc_html(get_field('clinician_login_label', 'option') ?: 'Clinician Login'); ?>
                     </a>
-                    <a href="<?php echo esc_url(get_field('appointment_url', 'option') ?: '#'); ?>" class="btn-am btn-primary-am">
+                    <a href="<?php echo esc_url(get_field('appointment_urll', 'option') ?: '#'); ?>" class="btn-am btn-primary-am">
                         <?php echo esc_html(get_field('appointment_label', 'option') ?: 'Make an Appointment'); ?>
                     </a>
                 </div>
