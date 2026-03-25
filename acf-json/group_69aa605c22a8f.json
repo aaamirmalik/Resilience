@@ -147,8 +147,8 @@
         },
         {
             "key": "field_69aa65cc3a27e",
-            "label": "Appointment Url2",
-            "name": "appointment_url2",
+            "label": "Appointment Urll",
+            "name": "appointment_urll",
             "aria-label": "",
             "type": "url",
             "instructions": "",
@@ -699,5 +699,5 @@
     "description": "",
     "show_in_rest": 0,
     "display_title": "",
-    "modified": 1774354526
+    "modified": 1774427329
 }
