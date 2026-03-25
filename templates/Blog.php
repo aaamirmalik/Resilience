@@ -24,14 +24,16 @@ get_header();
     </nav>
 
     <?php
-    $paged = get_query_var('paged') ? get_query_var('paged') : 1;
+    $paged = max(1, (int) get_query_var('paged'), (int) get_query_var('page'));
+    $blog_page_url = trailingslashit(get_permalink(get_queried_object_id()));
 
     if ($paged == 1) {
         $posts_per_page = 10;
         $offset = 0;
     } else {
         $posts_per_page = 9;
-        $offset = 1 + (($paged - 2) * 9);
+        // Page 1 shows 10 posts (1 featured + 9 cards). Page 2+ should start after those 10.
+        $offset = 10 + (($paged - 2) * 9);
     }
 
     $args = array(
@@ -112,10 +114,15 @@ get_header();
 
         echo '</div>'; // close .blog-grid-am
 
+        $total_posts = (int) wp_count_posts('post')->publish;
+        $total_pages = max(1, (int) ceil(max(0, $total_posts - 1) / 9));
+
         echo '<div class="pagination-am" style="margin: 50px 0px 80px 0px; text-align: center;">';
         echo paginate_links(array(
-            'total'     => ceil((wp_count_posts('post')->publish - 1) / 9),
-            'current'   => max(1, $paged),
+            'base'      => $blog_page_url . '%_%',
+            'format'    => 'page/%#%/',
+            'total'     => $total_pages,
+            'current'   => $paged,
             'prev_text' => '<iconify-icon icon="lucide:chevron-left" style="font-size:16px"></iconify-icon>',
             'next_text' => '<iconify-icon icon="lucide:chevron-right" style="font-size:16px"></iconify-icon>',
             'type'      => 'list'

@@ -147,8 +147,8 @@
         },
         {
             "key": "field_69aa65cc3a27e",
-            "label": "Appointment Url",
-            "name": "appointment_url",
+            "label": "Appointment Url2",
+            "name": "appointment_url2",
             "aria-label": "",
             "type": "url",
             "instructions": "",
@@ -287,8 +287,8 @@
             "append": ""
         },
         {
-            "key": "field_69aeb2f7752cf",
-            "label": "Footer Logo",
+            "key": "field_69c280444ae79",
+            "label": "footer_logo",
             "name": "footer_logo",
             "aria-label": "",
             "type": "image",
@@ -332,48 +332,6 @@
             "rows": "",
             "placeholder": "",
             "new_lines": ""
-        },
-        {
-            "key": "field_69b0f99ae4025",
-            "label": "Footer Cell No",
-            "name": "footer_cell_no",
-            "aria-label": "",
-            "type": "text",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "50",
-                "class": "",
-                "id": ""
-            },
-            "default_value": "",
-            "maxlength": "",
-            "allow_in_bindings": 0,
-            "placeholder": "",
-            "prepend": "",
-            "append": ""
-        },
-        {
-            "key": "field_69b0f9404223f",
-            "label": "Footer Fax",
-            "name": "footer_fax",
-            "aria-label": "",
-            "type": "text",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "50",
-                "class": "",
-                "id": ""
-            },
-            "default_value": "+1 (226) 916-0283",
-            "maxlength": "",
-            "allow_in_bindings": 0,
-            "placeholder": "",
-            "prepend": "",
-            "append": ""
         },
         {
             "key": "field_69aa6e48f69f8",
@@ -741,5 +699,5 @@
     "description": "",
     "show_in_rest": 0,
     "display_title": "",
-    "modified": 1773226468
+    "modified": 1774354526
 }

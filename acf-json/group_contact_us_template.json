@@ -136,7 +136,8 @@
                             "maxlength": "",
                             "placeholder": "lucide:map-pin",
                             "prepend": "",
-                            "append": ""
+                            "append": "",
+                            "parent_repeater": "field_contact_info_items"
                         },
                         {
                             "key": "field_contact_info_item_title",
@@ -156,7 +157,8 @@
                             "maxlength": "",
                             "placeholder": "",
                             "prepend": "",
-                            "append": ""
+                            "append": "",
+                            "parent_repeater": "field_contact_info_items"
                         },
                         {
                             "key": "field_contact_info_item_line_1",
@@ -176,7 +178,8 @@
                             "maxlength": "",
                             "placeholder": "",
                             "prepend": "",
-                            "append": ""
+                            "append": "",
+                            "parent_repeater": "field_contact_info_items"
                         },
                         {
                             "key": "field_contact_info_item_line_2",
@@ -196,7 +199,8 @@
                             "maxlength": "",
                             "placeholder": "",
                             "prepend": "",
-                            "append": ""
+                            "append": "",
+                            "parent_repeater": "field_contact_info_items"
                         }
                     ]
                 },
@@ -403,7 +407,8 @@
                             "maxlength": "",
                             "placeholder": "",
                             "prepend": "",
-                            "append": ""
+                            "append": "",
+                            "parent_repeater": "field_contact_form_service_options"
                         }
                     ]
                 }
@@ -454,7 +459,7 @@
             {
                 "param": "page_template",
                 "operator": "==",
-                "value": "templates/Contact_us.php"
+                "value": "templates\/Contact_us.php"
             }
         ]
     ],
@@ -467,5 +472,6 @@
     "active": true,
     "description": "ACF fields for Contact Us page template.",
     "show_in_rest": 0,
-    "modified": 1773033600
+    "display_title": "",
+    "modified": 1774358156
 }

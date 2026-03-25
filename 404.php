@@ -5,17 +5,22 @@
 get_header();
 ?>
 
-<div id="page-not-found-am" class="page-not-found-am not-found-am">
-    <div id="not-found-am" class="site-not-found-am max-width-container">
+    <header class="page-header-am">
+        <div class="container-am">
+            <div id="page-not-found-am" class="page-not-found-am not-found-am">
+                <div id="not-found-am" class="site-not-found-am max-width-container">
 
-            <h1 class="page-title"><?php _e('404'); ?></h1>
-            <p><?php _e('Not Found, Try to Search?'); ?>
-            </p>
-            <!-- serach form -->
-             <?php get_search_form(); ?>
+                    <h1 class="page-title"><?php _e('404'); ?></h1>
+                    <p><?php _e('Not Found, Try to Search?'); ?>
+                    </p>
+                    <!-- serach form -->
+                    <?php get_search_form(); ?>
 
-    </div><!-- #not-found-am -->
-</div><!-- #page-not-found-am -->
+                </div><!-- #not-found-am -->
+            </div><!-- #page-not-found-am -->
+        </div>
+    </header>
+
 
 <?php
 // Include footer

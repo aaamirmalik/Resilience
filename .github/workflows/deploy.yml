@@ -24,5 +24,6 @@ jobs:
             **/.git*
             **/.git*/**
             **/node_modules/**
+            **/acf-json/**
             README.md
             .github/**

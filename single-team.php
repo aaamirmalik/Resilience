@@ -26,7 +26,7 @@ if (have_posts()) : while (have_posts()) : the_post();
 <div class="export-wrapper-am">
     <div class="page-container-am">
         <main class="container-am profile-main-am">
-            
+
             <nav style="margin-top:30px;" class="breadcrumbs-am" aria-label="Breadcrumb">
                 <a href="<?php echo esc_url(home_url('/')); ?>">Home</a>
                 <iconify-icon icon="lucide:chevron-right"></iconify-icon>
@@ -38,20 +38,21 @@ if (have_posts()) : while (have_posts()) : the_post();
             <div class="profile-intro-am">
                 <div class="profile-image-am">
                     <?php if ($team_image) : ?>
-                        <img src="<?php echo esc_url($team_image['url']); ?>" alt="<?php echo esc_attr($team_image['alt'] ?: get_the_title()); ?>" />
+                    <img src="<?php echo esc_url($team_image['url']); ?>"
+                        alt="<?php echo esc_attr($team_image['alt'] ?: get_the_title()); ?>" />
                     <?php else: ?>
-                        <div class="about-page-image-placeholder-am">
-                            <iconify-icon icon="lucide:user"></iconify-icon>
-                        </div>
+                    <div class="about-page-image-placeholder-am">
+                        <iconify-icon icon="lucide:user"></iconify-icon>
+                    </div>
                     <?php endif; ?>
                 </div>
-                
+
                 <div class="profile-info-am">
                     <div class="eyebrow-am">Team Member</div>
                     <h1 class="single-team-title-am"><?php the_title(); ?></h1>
-                    
+
                     <?php if ($role) : ?>
-                        <div class="profile-role-badge-am"><?php echo esc_html($role); ?></div>
+                    <div class="profile-role-badge-am"><?php echo esc_html($role); ?></div>
                     <?php endif; ?>
 
                     <div class="profile-meta-grid-am">
@@ -106,14 +107,14 @@ if (have_posts()) : while (have_posts()) : the_post();
 
                     <div class="action-buttons-am">
                         <?php if ($email) : ?>
-                            <a href="mailto:<?php echo esc_attr($email); ?>" class="btn-am btn-outline-am">
-                                <iconify-icon icon="lucide:mail"></iconify-icon> Send Email
-                            </a>
+                        <a href="mailto:<?php echo esc_attr($email); ?>" class="btn-am btn-outline-am">
+                            <iconify-icon icon="lucide:mail"></iconify-icon> Send Email
+                        </a>
                         <?php endif; ?>
                         <?php if ($phone) : ?>
-                            <a href="tel:<?php echo esc_attr($phone); ?>" class="btn-am btn-outline-am">
-                                <iconify-icon icon="lucide:phone"></iconify-icon> Call Clinic
-                            </a>
+                        <a href="tel:<?php echo esc_attr($phone); ?>" class="btn-am btn-outline-am">
+                            <iconify-icon icon="lucide:phone"></iconify-icon> Call Clinic
+                        </a>
                         <?php endif; ?>
                     </div>
                 </div>
@@ -121,7 +122,7 @@ if (have_posts()) : while (have_posts()) : the_post();
 
             <div class="profile-content-grid-am">
                 <div class="profile-details-am">
-                    
+
                     <?php if ($biography) : ?>
                     <section class="biography-section-am">
                         <h2>Biography</h2>
@@ -139,8 +140,8 @@ if (have_posts()) : while (have_posts()) : the_post();
                         </div>
                     </section>
                     <?php endif; ?>
-					
-					<?php if ($turkish_biography) : ?>
+
+                    <?php if ($turkish_biography) : ?>
                     <section class="biography-section-am">
                         <h2>Türk Biyografisi</h2>
                         <div class="entry-content-am single-content-am">
@@ -149,14 +150,14 @@ if (have_posts()) : while (have_posts()) : the_post();
                     </section>
                     <?php endif; ?>
 
-<!--                     <section>
+                    <!--                     <section>
                         <h2>Professional Profile</h2>
                         <div class="entry-content-am single-content-am">
                             <?php the_content(); ?>
                         </div>
                     </section> -->
 
-                   
+
 
                     <?php if (have_rows('team_education_list')) : ?>
                     <section class="education-section-am">
@@ -167,19 +168,19 @@ if (have_posts()) : while (have_posts()) : the_post();
                                 $degree = get_sub_field('degree_title');
                                 $date = get_sub_field('duration');
                             ?>
-                                <div class="edu-card-am">
-                                    <h3 class="edu-uni-am"><?php echo esc_html($uni); ?></h3>
-                                    <p class="edu-degree-am"><?php echo esc_html($degree); ?></p>
-                                    <span class="edu-date-am"><?php echo esc_html($date); ?></span>
-                                </div>
+                            <div class="edu-card-am">
+                                <h3 class="edu-uni-am"><?php echo esc_html($uni); ?></h3>
+                                <p class="edu-degree-am"><?php echo esc_html($degree); ?></p>
+                                <span class="edu-date-am"><?php echo esc_html($date); ?></span>
+                            </div>
                             <?php endwhile; ?>
                         </div>
                     </section>
                     <?php endif; ?>
-					
-					
-					
-					<?php if (have_rows('additional_team_education_list')) : ?>
+
+
+
+                    <?php if (have_rows('additional_team_education_list')) : ?>
                     <section class="education-section-am">
                         <h2>Additional Education</h2>
                         <div class="education-cards-wrapper-am">
@@ -188,50 +189,50 @@ if (have_posts()) : while (have_posts()) : the_post();
                                 $degree = get_sub_field('additioonal_degree_title');
                                 $date = get_sub_field('additional_duration');
                             ?>
-                                <div class="edu-card-am">
-                                    <h3 class="edu-uni-am"><?php echo esc_html($uni); ?></h3>
-                                    <p class="edu-degree-am"><?php echo esc_html($degree); ?></p>
-                                    <span class="edu-date-am"><?php echo esc_html($date); ?></span>
-                                </div>
+                            <div class="edu-card-am">
+                                <h3 class="edu-uni-am"><?php echo esc_html($uni); ?></h3>
+                                <p class="edu-degree-am"><?php echo esc_html($degree); ?></p>
+                                <span class="edu-date-am"><?php echo esc_html($date); ?></span>
+                            </div>
                             <?php endwhile; ?>
                         </div>
                     </section>
                     <?php endif; ?>
-					
-					 <?php 
+
+                    <?php 
                     $areas = get_the_terms(get_the_ID(), 'areas-of-practice');
                     if ($areas && !is_wp_error($areas)) : ?>
                     <section>
                         <h2>Areas of Practice</h2>
                         <div class="tags-container-am">
                             <?php foreach ($areas as $area) : ?>
-                                <span class="badge-am"><?php echo esc_html($area->name); ?></span>
+                            <span class="badge-am"><?php echo esc_html($area->name); ?></span>
                             <?php endforeach; ?>
                         </div>
                     </section>
-					
-					
-					
-					
-					<?php 
+
+
+
+
+                    <?php 
 $team_tags = get_the_terms(get_the_ID(), 'team-tag'); 
 if ($team_tags && !is_wp_error($team_tags)) : ?>
-<section>
-    <h2>Therapeutic Approaches</h2>
-    <div class="tags-container-am">
-        <?php foreach ($team_tags as $tag) : ?>
-            <span class="badge-am"><?php echo esc_html($tag->name); ?></span>
-        <?php endforeach; ?>
-    </div>
-</section>
-<?php endif; ?>
-					
-					
-					
+                    <section>
+                        <h2>Therapeutic Approaches</h2>
+                        <div class="tags-container-am">
+                            <?php foreach ($team_tags as $tag) : ?>
+                            <span class="badge-am"><?php echo esc_html($tag->name); ?></span>
+                            <?php endforeach; ?>
+                        </div>
                     </section>
                     <?php endif; ?>
-					
-					
+
+
+
+                    </section>
+                    <?php endif; ?>
+
+
                 </div>
 
                 <aside>
@@ -240,7 +241,8 @@ if ($team_tags && !is_wp_error($team_tags)) : ?>
                             <h3>Book an Appointment</h3>
                             <p>Schedule a session with <?php the_title(); ?> quickly and easily.</p>
                         </div>
-                        <a href="<?php echo esc_url(get_field('appointment_url', 'option') ?: '#'); ?>" class="btn-am btn-primary-am btn-lg-am btn-block-am">
+                        <a href="<?php echo esc_url(get_field('appointment_url', 'option') ?: '#'); ?>"
+                            class="btn-am btn-primary-am btn-lg-am btn-block-am">
                             <?php echo esc_html(get_field('appointment_label', 'option') ?: 'Continue Booking'); ?>
                         </a>
                         <p class="text-center-am cta-note-am" style="margin-top:15px;">Secure & Confidential Booking</p>
@@ -249,7 +251,7 @@ if ($team_tags && !is_wp_error($team_tags)) : ?>
             </div>
         </main>
 
-        <section style="margin-top:30px;" class="cta-section-am section-am">
+        <!-- <section style="margin-top:30px;" class="cta-section-am section-am">
             <div class="container-am text-center-am">
                 <h2 style="margin-bottom: 12px;">Not sure who to see?</h2>
                 <p style="margin-bottom: 24px; max-width: 600px; color: #374151; margin-left: auto; margin-right: auto;">
@@ -261,7 +263,7 @@ if ($team_tags && !is_wp_error($team_tags)) : ?>
                     Request Consultation
                 </a>
             </div>
-        </section>
+        </section> -->
 
     </div>
 </div>

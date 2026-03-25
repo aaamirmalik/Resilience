@@ -58,7 +58,7 @@ h3 { font-size: 22px !important; }
 h4 { font-size: 18px !important; }
 p  { font-size: 15px; color: var(--muted-foreground-am); }
 
-.section-am          { padding: 20px 0; }
+.section-am          { padding: 60px 0; }
 .section-muted-am    { background-color: var(--muted-am); border-top: 1px solid var(--border-am); border-bottom: 1px solid var(--border-am); }
 .section-header-am   { max-width: 640px; margin: 0 auto 40px; }
 .text-center-am      { text-align: center; }
@@ -130,6 +130,7 @@ p  { font-size: 15px; color: var(--muted-foreground-am); }
 
 .brand-am           { display: flex; align-items: center; gap: 12px; text-decoration: none; }
 .brand-logo-am      { width: 76px; height: 76px; border-radius: var(--radius-md-am); display: flex; align-items: center; justify-content: center; color: #ffffff; font-size: 20px; }
+.brand-logo-am img      { width: 100%; height: 100%;}
 .brand-text-am      { display: flex; flex-direction: column; line-height: 1.1; }
 .brand-text-am strong { font-size: 18px; letter-spacing: 0.08em; color: var(--foreground-am); }
 .brand-text-am span   { font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--muted-foreground-am); font-weight: 600; }
