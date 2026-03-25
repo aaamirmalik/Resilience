@@ -162,7 +162,7 @@ $team_query = new WP_Query([
                     </div>
                     <div class="service-nav-actions-am">
                         <div class="phone-text-am"
-                            style="font-size: 24px; font-weight: 700; color: white; margin-right: 16px;">
+                            style="">
                             <?php echo esc_html($why_group['cta_phone_text'] ?? ('Call: ' . (get_field('topbar_phone', 'option') ?: '+1 (226) 721-0161'))); ?>
                         </div>
                         <a href="<?php echo esc_url($why_group['cta_button_url'] ?? get_field('appointment_url', 'option') ?? '#'); ?>"

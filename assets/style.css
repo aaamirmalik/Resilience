@@ -403,8 +403,9 @@ p  { font-size: 15px; color: var(--muted-foreground-am); }
     .about-video-shell-am,
     .about-video-shell-am iframe,
     .about-video-placeholder-am {
-        min-height: 300px;
+        min-height: 100%;
     }
+
 }
 
 /* ============================================================
@@ -981,6 +982,7 @@ p  { font-size: 15px; color: var(--muted-foreground-am); }
 }
 .phone-text-am{
     align-self: center;
+    font-size: 24px; font-weight: 700; color: white; margin-right: 16px;
 }
 
 .services-cards-grid-am {
@@ -2166,4 +2168,10 @@ textarea.form-control-am {
     .edu-card-am {
         padding: 20px;
     }
+        .service-nav-actions-am{
+        width: 100%;
+    justify-content: space-between;
+    }
+    .phone-text-am{ font-size: 18px; }
+    .btn-lg-am { padding: 8px 20px; }
 }
