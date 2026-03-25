@@ -7,6 +7,26 @@ get_header();
 
 // Get information about the current category being viewed
 $current_category = get_queried_object();
+
+// Resolve the "All Articles" URL safely across environments.
+$page_for_posts_id = (int) get_option('page_for_posts');
+$blog_page_url = $page_for_posts_id ? get_permalink($page_for_posts_id) : '';
+
+if (!$blog_page_url) {
+    $blog_pages = get_pages(array(
+        'meta_key'    => '_wp_page_template',
+        'meta_value'  => 'templates/Blog.php',
+        'number'      => 1,
+    ));
+
+    if (!empty($blog_pages)) {
+        $blog_page_url = get_permalink($blog_pages[0]->ID);
+    }
+}
+
+if (!$blog_page_url) {
+    $blog_page_url = home_url('/blog/');
+}
 ?>
 
 
@@ -22,7 +42,7 @@ $current_category = get_queried_object();
         </header>
 
         <nav class="category-filter-am">
-            <a href="<?php echo get_permalink( get_page_by_path('blog') ); ?>" class="category-btn-am">All Articles</a>
+            <a href="<?php echo esc_url($blog_page_url); ?>" class="category-btn-am">All Articles</a>
             <?php
             $categories = get_categories();
             foreach($categories as $category) {
