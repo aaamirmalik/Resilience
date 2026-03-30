@@ -1798,6 +1798,9 @@ textarea.form-control-am {
 }
 
 @media (max-width: 768px) {
+    .reveal-on-scroll-am{
+        opacity: 1;
+    }
     .single-team-main-am,
     .single-service-main-am {
         padding-top: 28px;
