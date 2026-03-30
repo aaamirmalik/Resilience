@@ -827,7 +827,8 @@
 .homepage2-template .hp2-online-copy p strong { color: var(--hp2-color-text); }
 .homepage2-template .hp2-online-copy .hp2-btn { margin-top: 137px; width: 234px; }
 
-.homepage2-template .hp2-online-media img { width: 100%; height: 517px; border-radius: 20px; object-fit: cover; display: block; }
+.homepage2-template .hp2-online-media { border-radius: 20px; overflow: hidden; }
+.homepage2-template .hp2-online-media img { width: 100%; height: 517px; border-radius: 20px; object-fit: cover; display: block; transition: transform .35s ease, filter .35s ease; }
 
 .homepage2-template .hp2-specialists { background: var(--hp2-primary1-200); }
 .homepage2-template .hp2-specialists-head { display: grid; grid-template-columns: 407px 630px; justify-content: space-between; gap: 40px; align-items: start; margin-bottom: 60px; }
@@ -915,7 +916,7 @@
 }
 .homepage2-template .hp2-testimonial-slider .hp2-next { right: -30px; }
 
-.homepage2-template .hp2-team-card { flex: 0 0 250px; }
+.homepage2-template .hp2-team-card { flex: 0 0 250px; display: block; text-decoration: none; color: inherit; }
 .homepage2-template .hp2-team-card img { width: 100%; height: 349px; object-fit: cover; border-radius: 20px; display: block; }
 .homepage2-template .hp2-team-card h3 { margin: 20px 0 6px; color: var(--hp2-color-text); font-size: var(--hp2-fs-24) !important; line-height: 32px; letter-spacing: 0; font-weight: 600; }
 .homepage2-template .hp2-team-card h3 {
@@ -1167,7 +1168,7 @@
     height: 40px;
     border-radius: 8px;
     box-shadow: 0 4px 20px #d8e1d4;
-    padding: 10px;
+    padding: 12px 10px 10px 10px;
     background: var(--hp2-color-white);
     color: var(--hp2-color-primary);
 }
@@ -1490,8 +1491,13 @@
         transform: translateY(-2px);
     }
 
+    .homepage2-template .hp2-online-media:hover img {
+        transform: scale(1.04);
+        filter: saturate(1.06);
+    }
+
     .homepage2-template .hp2-team-card {
-        transition: transform .25s ease;
+        transition: none;
     }
 
     .homepage2-template .hp2-team-card img {
@@ -1499,7 +1505,7 @@
     }
 
     .homepage2-template .hp2-team-card:hover {
-        transform: translateY(-5px);
+        transform: none;
     }
 
     .homepage2-template .hp2-team-card:hover img {

@@ -454,11 +454,11 @@ $footer_copyright_suffix = $hp2_get('footer_copyright_suffix', 'All rights reser
                 <div class="hp2-slider-viewport">
                     <div class="hp2-slider-track">
                         <?php foreach ($team_cards as $team_card) : ?>
-                            <article class="hp2-team-card">
+                            <a class="hp2-team-card" href="<?php echo esc_url($team_card['url']); ?>">
                                 <img src="<?php echo esc_url($team_card['image']); ?>" alt="<?php echo esc_attr($team_card['name']); ?>">
                                 <h3><?php echo esc_html($team_card['name']); ?></h3>
                                 <p><?php echo esc_html($team_card['role']); ?></p>
-                            </article>
+                            </a>
                         <?php endforeach; ?>
                     </div>
                 </div>
