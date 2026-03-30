@@ -34,6 +34,27 @@ $footer_copyright_suffix = $hp2_get_option('footer_copyright_suffix', 'All right
 $footer_services_links = function_exists('get_field') ? get_field('footer_services_menu', 'option') : [];
 $footer_clinic_links = function_exists('get_field') ? get_field('footer_clinic_menu', 'option') : [];
 $footer_legal_links = function_exists('get_field') ? get_field('footer_legal_menu', 'option') : [];
+$footer_social_links = function_exists('get_field') ? get_field('footer_social_links', 'option') : [];
+
+if (empty($footer_social_links) || !is_array($footer_social_links)) {
+    $footer_social_links = [
+        [
+            'label' => 'Facebook',
+            'url'   => $hp2_get_option('facebook_url', '#'),
+            'icon'  => $asset_base . '/3e294be2-74fc-48e9-9e4b-6c7c572ec188.svg',
+        ],
+        [
+            'label' => 'Instagram',
+            'url'   => $hp2_get_option('instagram_url', '#'),
+            'icon'  => $asset_base . '/8bac3fb1-2f36-4f99-adb8-c5b9c7bf34ad.svg',
+        ],
+        [
+            'label' => 'LinkedIn',
+            'url'   => $hp2_get_option('linkedin_url', '#'),
+            'icon'  => $asset_base . '/ca9e7d9f-2528-4a5c-83a5-e53d1b55f5ce.svg',
+        ],
+    ];
+}
 ?>
 
 <footer class="hp2-footer">
@@ -49,9 +70,23 @@ $footer_legal_links = function_exists('get_field') ? get_field('footer_legal_men
                 <p><?php echo esc_html($topbar_hours); ?></p>
 
                 <div class="hp2-footer-social">
-                    <a href="<?php echo esc_url($hp2_get_option('facebook_url', '#')); ?>" aria-label="Facebook"><img src="<?php echo esc_url($asset_base . '/3e294be2-74fc-48e9-9e4b-6c7c572ec188.svg'); ?>" alt=""></a>
-                    <a href="<?php echo esc_url($hp2_get_option('instagram_url', '#')); ?>" aria-label="Instagram"><img src="<?php echo esc_url($asset_base . '/8bac3fb1-2f36-4f99-adb8-c5b9c7bf34ad.svg'); ?>" alt=""></a>
-                    <a href="<?php echo esc_url($hp2_get_option('linkedin_url', '#')); ?>" aria-label="LinkedIn"><img src="<?php echo esc_url($asset_base . '/ca9e7d9f-2528-4a5c-83a5-e53d1b55f5ce.svg'); ?>" alt=""></a>
+                    <?php foreach ($footer_social_links as $social_item) : ?>
+                        <?php
+                        $social_label = $social_item['label'] ?? $social_item['icon_label'] ?? 'Social';
+                        $social_url = $social_item['url'] ?? $social_item['link'] ?? '#';
+                        $social_icon = $social_item['icon'] ?? '';
+                        if (is_array($social_icon) && !empty($social_icon['url'])) {
+                            $social_icon = $social_icon['url'];
+                        } elseif (is_numeric($social_icon)) {
+                            $social_icon = wp_get_attachment_image_url((int) $social_icon, 'full') ?: '';
+                        }
+                        ?>
+                        <a href="<?php echo esc_url($social_url); ?>" aria-label="<?php echo esc_attr($social_label); ?>">
+                            <?php if (!empty($social_icon)) : ?>
+                                <img src="<?php echo esc_url($social_icon); ?>" alt="<?php echo esc_attr($social_label); ?>">
+                            <?php endif; ?>
+                        </a>
+                    <?php endforeach; ?>
                 </div>
             </div>
 
