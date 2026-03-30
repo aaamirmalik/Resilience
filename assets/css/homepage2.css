@@ -101,7 +101,7 @@
     background: var(--hp2-color-bg-soft);
     text-transform: uppercase;
     letter-spacing: .02em;
-    white-space: nowrap;
+    /* white-space: nowrap; */
 }
 
 .homepage2-template .hp2-btn {
