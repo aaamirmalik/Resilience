@@ -15,7 +15,7 @@ get_header();
                 <?php echo esc_html(get_field('team_hero_section_description')); ?>
             </p>
 
-            <div class="team-filters-am">
+            <div class="team-filters-legacy-am">
                 <button class="filter-btn-am active-am" data-filter="all">
                     All Members
                 </button>

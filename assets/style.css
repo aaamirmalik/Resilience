@@ -529,6 +529,32 @@ p  { font-size: 15px; color: var(--muted-foreground-am); }
 
 .team-filters-am {
     display: flex;
+    justify-content: flex-start;
+    flex-wrap: nowrap;
+    gap: 12px;
+    margin-top: 36px;
+    overflow-x: auto;
+    padding-bottom: 10px;
+    scrollbar-width: thin;
+    scrollbar-color: var(--primary-am) transparent;
+    cursor: grab;
+}
+.team-filters-am::-webkit-scrollbar {
+    height: 8px;
+}
+.team-filters-am::-webkit-scrollbar-track {
+    background: transparent;
+}
+.team-filters-am::-webkit-scrollbar-thumb {
+    background: var(--primary-am);
+    border-radius: 999px;
+}
+.team-filters-am.is-dragging-am {
+    cursor: grabbing;
+    user-select: none;
+}
+.team-filters-legacy-am {
+    display: flex;
     justify-content: center;
     flex-wrap: wrap;
     gap: 12px;
@@ -543,6 +569,8 @@ p  { font-size: 15px; color: var(--muted-foreground-am); }
     font-size: 14px;
     font-weight: 500;
     cursor: pointer;
+    flex: 0 0 auto;
+    white-space: nowrap;
 }
 .filter-btn-am.active-am {
     background: var(--primary-am);
@@ -639,6 +667,8 @@ p  { font-size: 15px; color: var(--muted-foreground-am); }
     flex-shrink: 0;
 }
 
+
+
 /* ============================================================
    RESPONSIVE
    ============================================================ */
@@ -687,7 +717,7 @@ p  { font-size: 15px; color: var(--muted-foreground-am); }
     .topbar-am            {display: none;}
     .team-card-am img { height: 320px; object-fit: cover;}
     .filter-btn-am      { font-size: 12px; padding: 10px;}
-    .team-filters-am,.category-filter-am {
+    .team-filters-am,.team-filters-legacy-am,.category-filter-am {
         flex-wrap: nowrap !important;       /* Prevent buttons from wrapping to the next line */
         justify-content: flex-start !important; /* Align items to the start for scrolling */
         overflow-x: auto;        /* Enable horizontal scroll */
@@ -696,7 +726,7 @@ p  { font-size: 15px; color: var(--muted-foreground-am); }
         scrollbar-width: none;   /* Hide scrollbar for Firefox */
     }
 
-    .category-filter-am::-webkit-scrollbar,.team-filters-am::-webkit-scrollbar {
+    .category-filter-am::-webkit-scrollbar,.team-filters-am::-webkit-scrollbar,.team-filters-legacy-am::-webkit-scrollbar {
         display: none;           /* Hide scrollbar for Chrome/Safari */
     }
 

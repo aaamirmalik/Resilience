@@ -1,4 +1,6 @@
 document.addEventListener("DOMContentLoaded", function () {
+  initDesktopDragScroll();
+
   // Team directory filter
   const filterBtns = document.querySelectorAll(".filter-btn-am");
   const teamCards = document.querySelectorAll(".team-card-am");
@@ -75,6 +77,72 @@ document.addEventListener("DOMContentLoaded", function () {
 
   initContactFormAjax();
 });
+
+function initDesktopDragScroll() {
+  const scrollRows = document.querySelectorAll(".team-filters-am");
+  if (!scrollRows.length) return;
+
+  scrollRows.forEach((row) => {
+    let isDragging = false;
+    let startX = 0;
+    let startScrollLeft = 0;
+    let moved = false;
+    let blockNextClick = false;
+
+    const isDesktop = () => window.matchMedia("(min-width: 769px)").matches;
+
+    row.addEventListener("dragstart", (event) => {
+      event.preventDefault();
+    });
+
+    row.addEventListener("mousedown", (event) => {
+      if (!isDesktop() || event.button !== 0) return;
+
+      isDragging = true;
+      moved = false;
+      startX = event.pageX;
+      startScrollLeft = row.scrollLeft;
+      row.classList.add("is-dragging-am");
+    });
+
+    row.addEventListener("mousemove", (event) => {
+      if (!isDragging) return;
+      event.preventDefault();
+
+      const distance = event.pageX - startX;
+      if (Math.abs(distance) > 4) {
+        moved = true;
+      }
+      row.scrollLeft = startScrollLeft - distance;
+    });
+
+    const stopDragging = () => {
+      if (!isDragging) return;
+      isDragging = false;
+      row.classList.remove("is-dragging-am");
+
+      if (moved) {
+        blockNextClick = true;
+        setTimeout(() => {
+          blockNextClick = false;
+        }, 0);
+      }
+    };
+
+    row.addEventListener("mouseleave", stopDragging);
+    window.addEventListener("mouseup", stopDragging);
+
+    row.addEventListener(
+      "click",
+      (event) => {
+        if (!blockNextClick) return;
+        event.preventDefault();
+        event.stopPropagation();
+      },
+      true
+    );
+  });
+}
 
 function animateCounter(el) {
   if (!el || el.dataset.counterDone === "1") return;
