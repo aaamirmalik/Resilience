@@ -1168,7 +1168,7 @@
     height: 40px;
     border-radius: 8px;
     box-shadow: 0 4px 20px #d8e1d4;
-    padding: 12px 10px 10px 10px;
+    padding: 12px 10px 10px 10px; 
     background: var(--hp2-color-white);
     color: var(--hp2-color-primary);
 }
@@ -1916,7 +1916,14 @@
 
     .homepage2-template .hp2-hero-copy h1 { margin: 16px 0 16px; }
     .homepage2-template .hp2-hero-actions { display: grid; grid-template-columns: 1fr; gap: 10px; }
-    .homepage2-template .hp2-hero-actions .hp2-btn { width: 100%; }
+    .homepage2-template .hp2-hero-actions .hp2-btn {
+        width: 100%;
+        white-space: normal;
+        text-align: center;
+        line-height: 1.3;
+        min-height: 48px;
+        padding: 12px 16px;
+    }
     .homepage2-template .hp2-btn { width: 100%; }
 
     .homepage2-template .hp2-service-grid,
@@ -1931,13 +1938,54 @@
         width: 100%;
     }
 
+    .homepage2-template .hp2-consult-card {
+        min-height: 0;
+        height: auto;
+        width: 100%;
+        max-width: 100%;
+    }
+    .homepage2-template .hp2-consult-card::after {
+        width: 176px;
+        height: 124px;
+        top: -54px;
+        right: -86px;
+    }
+    .homepage2-template .hp2-consult-head { min-height: 0; padding: 22px 20px 0; }
     .homepage2-template .hp2-consult-head h2 { font-size: var(--hp2-fs-30) !important; line-height: 1.2; max-width: 100%; padding-right: 0; }
     .homepage2-template .hp2-consult-badge { position: static; display: inline-flex; margin-top: 12px; }
 
-    .homepage2-template .hp2-consult-row { align-items: flex-start; flex-direction: column; padding: 12px 20px; }
+    .homepage2-template .hp2-consult-row {
+        height: auto;
+        min-height: 44px;
+        margin: 10px 20px 0;
+        padding: 10px 0;
+        align-items: flex-start;
+        justify-content: space-between;
+        flex-direction: row;
+        gap: 12px;
+    }
+    .homepage2-template .hp2-consult-row span {
+        flex: 1 1 auto;
+        min-width: 0;
+    }
+    .homepage2-template .hp2-consult-row strong {
+        white-space: normal;
+        text-align: right;
+    }
     .homepage2-template .hp2-consult-note,
     .homepage2-template .hp2-consult-card .hp2-btn-block { margin-inline: 20px; }
+    .homepage2-template .hp2-consult-note {
+        margin-top: 16px;
+        margin-bottom: 16px;
+        min-height: 0;
+        line-height: 20px;
+    }
     .homepage2-template .hp2-consult-card .hp2-btn-block { width: calc(100% - 40px); }
+    .homepage2-template .hp2-consult-links {
+        min-height: 0;
+        padding: 12px 20px 14px;
+        row-gap: 6px;
+    }
     .homepage2-template .hp2-consult-links-row { flex-wrap: wrap; gap: 10px; }
     .homepage2-template .hp2-consult-links .hp2-divider { display: none; }
 
@@ -2047,6 +2095,17 @@
     .homepage2-template .hp2-hero-copy h1 {
         font-size: var(--hp2-fs-40) !important;
         line-height: 1.12;
+    }
+
+    .homepage2-template .hp2-consult-head h2 {
+        font-size: var(--hp2-fs-28) !important;
+    }
+
+    .homepage2-template .hp2-consult-row span,
+    .homepage2-template .hp2-consult-row strong,
+    .homepage2-template .hp2-consult-note {
+        font-size: var(--hp2-fs-12) !important;
+        line-height: 18px;
     }
 
     .homepage2-template .hp2-section-head h2,
