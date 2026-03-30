@@ -1800,6 +1800,8 @@ textarea.form-control-am {
 @media (max-width: 768px) {
     .reveal-on-scroll-am{
         opacity: 1;
+        transform: none;
+        transition: none;
     }
     .single-team-main-am,
     .single-service-main-am {
