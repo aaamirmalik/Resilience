@@ -38,6 +38,32 @@ function my_theme_enqueue_scripts()
 
 add_action('wp_enqueue_scripts', 'my_theme_enqueue_scripts');
 
+function resilience_enqueue_homepage2_assets()
+{
+    wp_enqueue_style(
+        'homepage2-style',
+        get_template_directory_uri() . '/assets/css/homepage2.css',
+        array('stylesheet'),
+        filemtime(get_template_directory() . '/assets/css/homepage2.css')
+    );
+
+    wp_enqueue_script(
+        'homepage2-script',
+        get_template_directory_uri() . '/assets/js/homepage2.js',
+        array(),
+        filemtime(get_template_directory() . '/assets/js/homepage2.js'),
+        true
+    );
+}
+add_action('wp_enqueue_scripts', 'resilience_enqueue_homepage2_assets', 20);
+
+function resilience_add_hp2_body_class($classes)
+{
+    $classes[] = 'homepage2-template';
+    return $classes;
+}
+add_filter('body_class', 'resilience_add_hp2_body_class');
+
 // Enable featured images for posts
 add_theme_support('post-thumbnails');
 
@@ -124,5 +150,3 @@ function resilience_contact_form_submit()
 }
 add_action('wp_ajax_resilience_contact_form_submit', 'resilience_contact_form_submit');
 add_action('wp_ajax_nopriv_resilience_contact_form_submit', 'resilience_contact_form_submit');
-
-

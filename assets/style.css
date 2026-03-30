@@ -5,16 +5,19 @@
    CSS CUSTOM PROPERTIES
    ============================================================ */
 :root {
-    --background-am:          #fbfef9;
-    --foreground-am:          #123029;
-    --border-am:              rgba(0,0,0,0.08);
+    --background-am:          #fcfdfc;
+    --bacground-new-am:      #f7faf7;
+    --background-biege-am:    #fdf9f5;
+    --foreground-am:          #0d0d0d;
+    --border-am:              rgba(76,120,43,0.16);
     --input-am:               #ffffff;
-    --primary-am:             #4c782b;
+    --primary-am:             #3e5640;
+    --primary-dark-am:        #2f4631;
     --primary-foreground-am:  #ffffff;
-    --secondary-am:           #eaf7ea;
-    --secondary-foreground-am:#4c782b;
-    --muted-am:               #f4f6f5;
-    --muted-foreground-am:    #6b7280;
+    --secondary-am:           #eaf4ea;
+    --secondary-foreground-am:#3e5640;
+    --muted-am:               #f7faf7;
+    --muted-foreground-am:    #4a5565;
     --success-am:             #B7C6A5;
     --accent-am:              #9bd34a;
     --accent-foreground-am:   #4c782b;
@@ -42,7 +45,7 @@
     font-family: 'Inter', system-ui, -apple-system, sans-serif;
 }
 
-.page-container-am { display: flex; flex-direction: column; min-height: 100vh; }
+.page-container-am { display: flex; flex-direction: column; min-height: 100vh; background-color: var(--bacground-new-am); }
 
 .container-am {
     width: 100%;
@@ -58,11 +61,11 @@ h3 { font-size: 22px !important; }
 h4 { font-size: 18px !important; }
 p  { font-size: 15px; color: var(--muted-foreground-am); }
 
-.section-am          { padding: 60px 0; }
-.section-muted-am    { background-color: var(--muted-am); border-top: 1px solid var(--border-am); border-bottom: 1px solid var(--border-am); }
+.section-am          { padding: 60px 0; background-color: var(--background-biege-am); }
+.section-muted-am    { background-color: var(--bacground-new-am);  }
 .section-header-am   { max-width: 640px; margin: 0 auto 40px; }
 .text-center-am      { text-align: center; }
-.eyebrow-am          { font-size: 13px; text-transform: uppercase; letter-spacing: 0.12em; font-weight: 600; color: var(--primary-am); margin-bottom: 12px; }
+.eyebrow-am          { display: inline-flex; align-items: center; padding: 4px 12px; border-radius: 999px; background: var(--secondary-am); font-size: 12px; text-transform: uppercase; letter-spacing: 0.08em; font-weight: 500; color: var(--primary-am); margin-bottom: 12px; }
 
 /* ============================================================
    BUTTONS
@@ -71,10 +74,10 @@ p  { font-size: 15px; color: var(--muted-foreground-am); }
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    padding: 10px 20px;
-    border-radius: var(--radius-xl-am);
+    padding: 12px 24px;
+    border-radius: var(--radius-lg-am);
     font-weight: 600;
-    font-size: 14px;
+    font-size: 16px;
     border: 1px solid transparent;
     cursor: pointer;
     text-decoration: none;
@@ -84,8 +87,14 @@ p  { font-size: 15px; color: var(--muted-foreground-am); }
 }
 .btn-am:hover { opacity: 0.9; }
 .btn-primary-am  { background-color: var(--primary-am); color: var(--primary-foreground-am); border-color: var(--primary-am); }
-.btn-outline-am  { background-color: transparent; color: var(--foreground-am); border-color: var(--border-am); }
-.btn-ghost-am    { background-color: transparent; color: var(--foreground-am); border-color: transparent; }
+.btn-primary-am:hover,
+.btn-primary-am:focus { background-color: var(--primary-dark-am); border-color: var(--primary-dark-am); color: var(--primary-foreground-am); }
+.btn-outline-am  { background-color: transparent; color: var(--primary-am); border-color: var(--primary-am); }
+.btn-outline-am:hover,
+.btn-outline-am:focus { background-color: var(--primary-am); color: var(--primary-foreground-am); border-color: var(--primary-am); }
+.btn-ghost-am    { background-color: #ffffff; color: var(--primary-am); border-color: var(--primary-am); }
+.btn-ghost-am:hover,
+.btn-ghost-am:focus { background-color: var(--primary-am); color: var(--primary-foreground-am); border-color: var(--primary-am); }
 .btn-lg-am       { padding: 12px 28px; font-size: 15px; text-align: center; }
 
 /* ============================================================
@@ -505,7 +514,7 @@ p  { font-size: 15px; color: var(--muted-foreground-am); }
    TEAM DIRECTORY SPECIFIC (Merged from Teams.php)
    ============================================================ */
 .page-header-am {
-    background: var(--muted-am);
+    background: var(--bacground-new-am);
     padding: 72px 0 60px;
     text-align: center;
     border-bottom: 1px solid var(--border-am);
@@ -528,9 +537,9 @@ p  { font-size: 15px; color: var(--muted-foreground-am); }
 .filter-btn-am {
     padding: 10px 24px;
     border-radius: var(--radius-xl-am);
-    border: 1px solid var(--border-am);
+    border: 1px solid var(--primary-am);
     background: #ffffff;
-    color: var(--muted-foreground-am);
+    color: var(--primary-am);
     font-size: 14px;
     font-weight: 500;
     cursor: pointer;
@@ -543,7 +552,7 @@ p  { font-size: 15px; color: var(--muted-foreground-am); }
 
 .team-directory-section-am {
     padding: 80px 0;
-    background: var(--background-am);
+    background: var(--background-biege-am);
 }
 .team-directory-grid-am {
     display: grid;
@@ -717,8 +726,9 @@ p  { font-size: 15px; color: var(--muted-foreground-am); }
     
     .category-filter-am { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; margin-bottom: 48px; }
     .category-btn-am { 
-        background: var(--card-am); border: 1px solid var(--border-am); 
+        background: var(--card-am); border: 1px solid var(--primary-am); 
         padding: 8px 16px; border-radius: var(--radius-xl-am); cursor: pointer; 
+        color: var(--primary-am);
     }
     .category-btn-am.active-am { background: var(--primary-am); color: var(--primary-foreground-am); }
 
@@ -931,7 +941,7 @@ p  { font-size: 15px; color: var(--muted-foreground-am); }
 .services-page-am .section-header-am { max-width: 760px; }
 
 .services-hero-am {
-    background-color: var(--secondary-am);
+    background-color: var(--bacground-new-am);
     border-bottom: 1px solid var(--border-am);
 }
 .services-hero-grid-am {
@@ -1357,7 +1367,7 @@ iconify-icon {
 
 .contact-hero-am {
     padding: 80px 0 64px;
-    background-color: var(--secondary-am);
+    background-color: var(--bacground-new-am);
     text-align: center;
     border-bottom: 1px solid var(--border-am);
 }
@@ -1376,6 +1386,7 @@ iconify-icon {
 
 .contact-wrapper-am {
     padding: 80px 0;
+    background-color: var(--background-biege-am);
 }
 
 .contact-grid-am {
