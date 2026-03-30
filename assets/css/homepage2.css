@@ -1892,14 +1892,22 @@
 }
 
 @media (max-width: 767px) {
+    .homepage2-template {
+        --hp2-mobile-section-space: 56px;
+        --hp2-mobile-body-size: 14px;
+        --hp2-mobile-body-line: 22px;
+    }
+
     .homepage2-template .hp2-container { width: min(1280px, calc(100% - 30px)); }
+    .homepage2-template .hp2-hero { padding: var(--hp2-mobile-section-space) 0; }
     .homepage2-template .hp2-services,
     .homepage2-template .hp2-about2,
     .homepage2-template .hp2-therapy-showcase,
     .homepage2-template .hp2-online-session,
     .homepage2-template .hp2-specialists,
     .homepage2-template .hp2-news,
-    .homepage2-template .hp2-contact-map { padding: 56px 0; }
+    .homepage2-template .hp2-contact-map,
+    .homepage2-template .hp2-testimonials { padding: var(--hp2-mobile-section-space) 0; }
 
     .homepage2-template .hp2-footer { padding-top: 56px; }
     .homepage2-template .hp2-footer-bottom { margin-top: 36px; }
@@ -1915,6 +1923,25 @@
     }
 
     .homepage2-template .hp2-hero-copy h1 { margin: 16px 0 16px; }
+    .homepage2-template .hp2-section-head { margin-bottom: 24px; }
+    .homepage2-template .hp2-pill {
+        font-size: 11px !important;
+        line-height: 16px;
+        padding: 4px 10px;
+    }
+    .homepage2-template .hp2-hero-copy > p,
+    .homepage2-template .hp2-hero-note,
+    .homepage2-template .hp2-section-head p,
+    .homepage2-template .hp2-about2-copy p,
+    .homepage2-template .hp2-online-copy p,
+    .homepage2-template .hp2-specialists-head p,
+    .homepage2-template .hp2-team-card p,
+    .homepage2-template .hp2-news-card a,
+    .homepage2-template .hp2-stat-item p {
+        font-size: var(--hp2-mobile-body-size) !important;
+        line-height: var(--hp2-mobile-body-line) !important;
+    }
+
     .homepage2-template .hp2-hero-actions { display: grid; grid-template-columns: 1fr; gap: 10px; }
     .homepage2-template .hp2-hero-actions .hp2-btn {
         width: 100%;
@@ -1952,7 +1979,7 @@
     }
     .homepage2-template .hp2-consult-head { min-height: 0; padding: 22px 20px 0; }
     .homepage2-template .hp2-consult-head h2 { font-size: var(--hp2-fs-30) !important; line-height: 1.2; max-width: 100%; padding-right: 0; }
-    .homepage2-template .hp2-consult-badge { position: static; display: inline-flex; margin-top: 12px; }
+    .homepage2-template .hp2-consult-badge { position: static; display: inline-flex; margin: 12px 0px; }
 
     .homepage2-template .hp2-consult-row {
         height: auto;
@@ -2014,7 +2041,10 @@
     }
 
     .homepage2-template .hp2-showcase-card {
-        min-height: 460px;
+        min-height: 370px;
+    }
+    .homepage2-template .hp2-online-media img {
+        height: 400px;
     }
 
     .homepage2-template .hp2-showcase-caption {
@@ -2088,6 +2118,16 @@
 }
 
 @media (max-width: 575px) {
+    .homepage2-template {
+        --hp2-mobile-section-space: 48px;
+        --hp2-mobile-body-size: 13px;
+        --hp2-mobile-body-line: 20px;
+    }
+
+    .homepage2-template .hp2-about2-chip{
+        left: 0;
+        margin: 0px 10px;
+    }
     .homepage2-template .hp2-container {
         width: min(1280px, calc(100% - 24px));
     }
@@ -2113,7 +2153,7 @@
     .homepage2-template .hp2-about2-copy h2,
     .homepage2-template .hp2-online-copy h2,
     .homepage2-template .hp2-specialists-head h2 {
-        font-size: var(--hp2-fs-32) !important;
+        font-size: var(--hp2-fs-30) !important;
     }
 
     .homepage2-template .hp2-stats-grid {
