@@ -64,10 +64,10 @@ if (empty($footer_social_links) || !is_array($footer_social_links)) {
                 <div class="hp2-footer-logo">
                     <img src="<?php echo esc_url($footer_logo); ?>" alt="<?php bloginfo('name'); ?>">
                 </div>
-                <h4>Address</h4>
-                <p><?php echo nl2br(esc_html($footer_address)); ?></p>
-                <h4>Business Hours</h4>
+                <h4>Office Hours:</h4>
                 <p><?php echo esc_html($topbar_hours); ?></p>
+                <h4>Address:</h4>
+                <p><?php echo nl2br(esc_html($footer_address)); ?></p>
 
                 <div class="hp2-footer-social">
                     <?php foreach ($footer_social_links as $social_item) : ?>
