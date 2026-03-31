@@ -93,10 +93,10 @@ if (empty($footer_social_links) || !is_array($footer_social_links)) {
             <div class="hp2-footer-col">
                 <h5><?php echo esc_html($footer_info_heading); ?></h5>
                 <ul class="hp2-footer-contact-list">
+                    <li><strong>Email</strong><span><a href="<?php echo esc_url('mailto:' . $topbar_email_href); ?>"><?php echo esc_html($topbar_email); ?></a></span></li>
                     <li><strong>Phone</strong><span><a href="<?php echo esc_url('tel:' . $topbar_phone_href); ?>"><?php echo esc_html($topbar_phone); ?></a></span></li>
                     <li><strong>Cell No</strong><span><a href="<?php echo esc_url('tel:' . $footer_cell_no_href); ?>"><?php echo esc_html($footer_cell_no); ?></a></span></li>
                     <li><strong>Fax</strong><span><?php echo esc_html($footer_fax); ?></span></li>
-                    <li><strong>Email</strong><span><a href="<?php echo esc_url('mailto:' . $topbar_email_href); ?>"><?php echo esc_html($topbar_email); ?></a></span></li>
                 </ul>
             </div>
 
