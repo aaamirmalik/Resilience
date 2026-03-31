@@ -198,7 +198,7 @@ $news_posts = get_posts([
     'posts_per_page' => 3,
     'post_status' => 'publish',
 ]);
-$team_page = get_page_by_path('our-team-psychotherapists');
+$team_page = get_page_by_path('therapist');
 $team_page_url = $team_page ? get_permalink($team_page) : '#';
 $posts_page_id = (int) get_option('page_for_posts');
 $posts_page_url = $posts_page_id ? get_permalink($posts_page_id) : '#';
