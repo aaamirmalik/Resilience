@@ -52,7 +52,7 @@
     --hp2-fs-14: 14px;
     --hp2-fs-16: 16px;
     --hp2-fs-20: 20px;
-    --hp2-fs-24: 24px;
+    --hp2-fs-24: 22px;
     --hp2-fs-28: 28px;
     --hp2-fs-30: 30px;
     --hp2-fs-32: 32px;
@@ -927,7 +927,7 @@
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: normal;
-    min-height: 64px;
+    min-height: 50px;
 }
 .homepage2-template .hp2-team-card p { margin: 0; color: var(--hp2-color-text-80); font-size: var(--hp2-fs-16) !important; line-height: 24px; }
 
