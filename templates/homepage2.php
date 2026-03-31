@@ -410,35 +410,51 @@ $footer_copyright_suffix = $hp2_get('footer_copyright_suffix', 'All rights reser
     </section>
 
     <?php
-    $team_cards = [];
-    $team_query = new WP_Query([
-        'post_type' => 'team',
-        'posts_per_page' => 8,
-        'post_status' => 'publish',
-        'order' => 'ASC',
-    ]);
-    if ($team_query->have_posts()) {
-        while ($team_query->have_posts()) {
-            $team_query->the_post();
-            $team_image = get_field('team_image');
-            $team_cards[] = [
-                'name' => get_the_title(),
-                'role' => (string) get_field('team_role'),
-                'image' => $hp2_image_url($team_image, $asset_base . '/637a1352-8ca9-4499-b686-94f7caf650d2.png'),
-                'url' => get_the_permalink(),
+        $team_cards = [];
+        
+        // 1. Updated query to use the 'crm_therapist' Custom Post Type
+        $team_query = new WP_Query([
+            'post_type' => 'crm_therapist',
+            'posts_per_page' => 8, // Kept at 8 for the slider limit
+            'post_status' => 'publish',
+            'orderby' => 'title',  // Added ordering by title to match your directory
+            'order' => 'ASC',
+        ]);
+
+        if ($team_query->have_posts()) {
+            while ($team_query->have_posts()) {
+                $team_query->the_post();
+                $post_id = get_the_ID();
+
+                // 2. Extracted the image logic from your directory template
+                $image_url = (string) get_post_meta($post_id, '_crm_avatar_url', true);
+                if ($image_url === '' && has_post_thumbnail($post_id)) {
+                    $image_url = (string) get_the_post_thumbnail_url($post_id, 'large');
+                }
+
+                // 3. Mapped the crm_therapist meta data into the slider's array structure
+                $team_cards[] = [
+                    'name' => get_the_title(),
+                    'role' => (string) get_post_meta($post_id, '_crm_role', true),
+                    // Still passing it through your existing $hp2_image_url function for fallback
+                    'image' => isset($hp2_image_url) ? $hp2_image_url($image_url, $asset_base . '/637a1352-8ca9-4499-b686-94f7caf650d2.png') : $image_url,
+                    'url' => get_permalink(),
+                ];
+            }
+            wp_reset_postdata();
+        }
+
+        // Fallback static cards if no therapists exist yet
+        if (!$team_cards) {
+            $team_cards = [
+                ['name' => 'Clinical Therapist', 'role' => 'Registered Psychotherapist', 'image' => $asset_base . '/637a1352-8ca9-4499-b686-94f7caf650d2.png', 'url' => '#'],
+                ['name' => 'Child Counsellor', 'role' => 'Child & Youth Specialist', 'image' => $asset_base . '/a58675df-c5d2-4ebd-89eb-56dd7b817051.png', 'url' => '#'],
+                ['name' => 'Family Therapist', 'role' => 'Family Counselling', 'image' => $asset_base . '/3ec05e04-a119-4ede-b7eb-268ddd848496.png', 'url' => '#'],
+                ['name' => 'Trauma Specialist', 'role' => 'Trauma-informed Care', 'image' => $asset_base . '/f600fd28-fd3e-41df-a372-60209ea15e45.png', 'url' => '#'],
             ];
         }
-        wp_reset_postdata();
-    }
-    if (!$team_cards) {
-        $team_cards = [
-            ['name' => 'Clinical Therapist', 'role' => 'Registered Psychotherapist', 'image' => $asset_base . '/637a1352-8ca9-4499-b686-94f7caf650d2.png', 'url' => '#'],
-            ['name' => 'Child Counsellor', 'role' => 'Child & Youth Specialist', 'image' => $asset_base . '/a58675df-c5d2-4ebd-89eb-56dd7b817051.png', 'url' => '#'],
-            ['name' => 'Family Therapist', 'role' => 'Family Counselling', 'image' => $asset_base . '/3ec05e04-a119-4ede-b7eb-268ddd848496.png', 'url' => '#'],
-            ['name' => 'Trauma Specialist', 'role' => 'Trauma-informed Care', 'image' => $asset_base . '/f600fd28-fd3e-41df-a372-60209ea15e45.png', 'url' => '#'],
-        ];
-    }
     ?>
+    
     <section class="hp2-specialists" id="specialists">
         <div class="hp2-container">
             <div class="hp2-specialists-head">
@@ -455,7 +471,9 @@ $footer_copyright_suffix = $hp2_get('footer_copyright_suffix', 'All rights reser
                     <div class="hp2-slider-track">
                         <?php foreach ($team_cards as $team_card) : ?>
                             <a class="hp2-team-card" href="<?php echo esc_url($team_card['url']); ?>">
-                                <img src="<?php echo esc_url($team_card['image']); ?>" alt="<?php echo esc_attr($team_card['name']); ?>">
+                                <?php if (!empty($team_card['image'])) : ?>
+                                    <img src="<?php echo esc_url($team_card['image']); ?>" alt="<?php echo esc_attr($team_card['name']); ?>">
+                                <?php endif; ?>
                                 <h3><?php echo esc_html($team_card['name']); ?></h3>
                                 <p><?php echo esc_html($team_card['role']); ?></p>
                             </a>

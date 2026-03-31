@@ -33,21 +33,24 @@ if ($query->have_posts()) {
         $query->the_post();
 
         $post_id = get_the_ID();
-        $specializations = get_post_meta($post_id, '_crm_specializations', true);
-        if (!is_array($specializations)) $specializations = [];
-
-        $spec_classes = '';
-        $spec_labels = [];
-        foreach ($specializations as $spec) {
-            $label = sanitize_text_field((string) $spec);
-            if ($label === '') continue;
-
-            $slug = sanitize_title($label);
-            if ($slug === '') continue;
-
-            $spec_classes .= ' ' . $slug;
-            $spec_labels[] = $label;
-            $specialization_filters[$slug] = $label;
+$role_classes = '';
+        
+        // 1. Get the raw title/role string (e.g., "Psychotherapist, Art Therapist")
+        $role_text = (string) get_post_meta($post_id, '_crm_role', true); 
+        
+        if ($role_text !== '') {
+            // 2. Split by comma to handle multiple roles per person
+            $roles = array_map('trim', explode(',', $role_text));
+            
+            foreach ($roles as $role) {
+                $slug = sanitize_title($role);
+                if ($slug) {
+                    // Add to the card's CSS classes for JS filtering
+                    $role_classes .= ' ' . $slug;
+                    // Add to the unique list of filter buttons at the top
+                    $role_filters[$slug] = $role; 
+                }
+            }
         }
 
         $image_url = (string) get_post_meta($post_id, '_crm_avatar_url', true);
@@ -59,20 +62,20 @@ if ($query->have_posts()) {
             'title' => get_the_title(),
             'permalink' => get_permalink(),
             'image_url' => $image_url,
-            'role' => (string) get_post_meta($post_id, '_crm_role', true),
+            'role_display' => $role_text,
             'experience' => (string) get_post_meta($post_id, '_crm_years_of_experience', true),
             'client_focus' => (string) get_post_meta($post_id, '_crm_client_focus', true),
             'email' => (string) get_post_meta($post_id, '_crm_email', true),
             'phone' => (string) get_post_meta($post_id, '_crm_phone', true),
-            'spec_classes' => $spec_classes,
-            'specializations' => $spec_labels,
+            'spec_classes' => $role_classes,
+            'specializations' => $role_text,
         ];
     }
     wp_reset_postdata();
 }
 
-if (!empty($specialization_filters)) {
-    asort($specialization_filters, SORT_NATURAL | SORT_FLAG_CASE);
+if (!empty($role_filters)) {
+    asort($role_filters, SORT_NATURAL | SORT_FLAG_CASE);
 }
 ?>
 
@@ -84,8 +87,8 @@ if (!empty($specialization_filters)) {
 
             <div class="team-filters-am">
                 <button class="filter-btn-am active-am" data-filter="all">All Therapists</button>
-                <?php if (!empty($specialization_filters)) : ?>
-                    <?php foreach ($specialization_filters as $slug => $label) : ?>
+                <?php if (!empty($role_filters)) : ?>
+                    <?php foreach ($role_filters as $slug => $label) : ?>
                         <button class="filter-btn-am" data-filter="<?php echo esc_attr($slug); ?>">
                             <?php echo esc_html($label); ?>
                         </button>
@@ -110,8 +113,8 @@ if (!empty($specialization_filters)) {
                             <div class="team-card-content-am">
                                 <h3><a href="<?php echo esc_url($card['permalink']); ?>" style="text-decoration:none; color:inherit;"><?php echo esc_html($card['title']); ?></a></h3>
 
-                                <?php if ($card['role'] !== '') : ?>
-                                    <div class="team-card-role-am"><?php echo esc_html($card['role']); ?></div>
+                                <?php if ($card['role_display'] !== '') : ?>
+                                    <div class="team-card-role-am"><?php echo esc_html($card['role_display']); ?></div>
                                 <?php endif; ?>
 
                                 <div class="team-card-divider-am"></div>
