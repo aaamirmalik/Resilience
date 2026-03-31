@@ -68,17 +68,43 @@ function initSlider(name, options = {}) {
   const dotsWrap = document.querySelector(`[data-slider-dots="${name}"]`);
 
   if (!viewport || !track) return;
-  const slides = Array.from(track.children);
-  if (slides.length < 2) return;
 
-  let index = 0;
+  // --- 1. SETUP CLONES FOR INFINITE LOOP ---
+  const originalSlides = Array.from(track.children);
+  const originalCount = originalSlides.length;
+  if (originalCount < 2) return;
+
+  // Create copies of the slides to append to the end and prepend to the start
+  const clonesBefore = originalSlides.map(el => {
+    const clone = el.cloneNode(true);
+    clone.setAttribute('aria-hidden', 'true'); // Keeps screen readers from reading duplicates
+    return clone;
+  });
+  const clonesAfter = originalSlides.map(el => {
+    const clone = el.cloneNode(true);
+    clone.setAttribute('aria-hidden', 'true');
+    return clone;
+  });
+
+  // Insert clones into the DOM
+  for (let i = clonesBefore.length - 1; i >= 0; i--) {
+    track.insertBefore(clonesBefore[i], track.firstChild);
+  }
+  clonesAfter.forEach(clone => track.appendChild(clone));
+
+  const allSlides = Array.from(track.children);
+
+  // --- 2. STATE ---
+  // We start at the first REAL slide, which is located after the prepended clones
+  let currentIndex = originalCount;
+  let isTransitioning = false;
   let timer = null;
   let resizeRaf = 0;
   const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  const baseOffsetRaw = parseFloat(root.getAttribute('data-slider-offset') || '0') || 0;
+
   const getBaseOffset = () => {
     if (name !== 'team') return 0;
-    return window.innerWidth >= 1440 ? baseOffsetRaw : 0;
+    return window.innerWidth >= 1440 ? parseFloat(root.getAttribute('data-slider-offset') || '0') || 0 : 0;
   };
 
   const getGap = () => {
@@ -86,65 +112,87 @@ function initSlider(name, options = {}) {
     return parseFloat(styles.columnGap || styles.gap || '0') || 0;
   };
 
-  const getVisibleCount = () => {
-    if (name === 'testimonial') return 1;
-    if (name === 'team') {
-      if (window.innerWidth < 768) return 1;
-      if (window.innerWidth < 1025) return 2;
-      return 3;
-    }
-    if (window.innerWidth < 768) return 1;
-    if (window.innerWidth < 1025) return 2;
-    return 4;
-  };
-
-  const pageCount = () => Math.max(1, slides.length - getVisibleCount() + 1);
-
+  // --- 3. DOTS ---
   const updateDots = () => {
     if (!dotsWrap) return;
     dotsWrap.innerHTML = '';
-    const total = pageCount();
-    for (let i = 0; i < total; i += 1) {
+    
+    // For an infinite loop, we generate one dot per original slide
+    for (let i = 0; i < originalCount; i++) {
       const dot = document.createElement('button');
       dot.type = 'button';
-      if (i === index) dot.classList.add('is-active');
+      if (i === 0) dot.classList.add('is-active');
       dot.addEventListener('click', () => {
-        index = i;
-        render();
+        if (isTransitioning) return; // Prevent clicking while animating
+        currentIndex = originalCount + i;
+        render(true);
+        startAuto();
       });
       dotsWrap.appendChild(dot);
     }
   };
 
-  const render = () => {
+  // --- 4. RENDER & MOVEMENT ---
+  const render = (animate = true) => {
     const gap = getGap();
-    const slideWidth = slides[0].getBoundingClientRect().width;
-    const max = pageCount() - 1;
-    if (index > max) index = max;
-    if (index < 0) index = 0;
+    const slideWidth = allSlides[0].getBoundingClientRect().width;
+    if (!slideWidth) return;
 
-    const x = (slideWidth + gap) * index + getBaseOffset();
+    const step = slideWidth + gap;
+    const x = (step * currentIndex) - getBaseOffset() -70;
+
+    if (animate) {
+      // Allow CSS transitions to handle the animation
+      track.style.transition = '';
+      isTransitioning = true;
+    } else {
+      // Instantly move without animation (used for the invisible teleporting)
+      track.style.transition = 'none';
+    }
+
     track.style.transform = `translateX(-${x}px)`;
 
+    // Update the active dot state
     if (dotsWrap) {
+      let activeDotIndex = (currentIndex - originalCount) % originalCount;
+      if (activeDotIndex < 0) activeDotIndex += originalCount; // Handle negative math when sliding left
+
       dotsWrap.querySelectorAll('button').forEach((dot, i) => {
-        dot.classList.toggle('is-active', i === index);
+        dot.classList.toggle('is-active', i === activeDotIndex);
       });
     }
   };
 
+  // --- 5. THE INFINITE SNAP MAGIC ---
+  // When the CSS animation finishes sliding into a clone, we silently teleport back
+  track.addEventListener('transitionend', () => {
+    isTransitioning = false;
+
+    // If we moved too far right (into the end clones)
+    if (currentIndex >= originalCount * 2) {
+      currentIndex = currentIndex - originalCount;
+      render(false); // Teleport instantly
+    }
+    // If we moved too far left (into the beginning clones)
+    else if (currentIndex < originalCount) {
+      currentIndex = currentIndex + originalCount;
+      render(false); // Teleport instantly
+    }
+  });
+
   const nextSlide = () => {
-    const max = pageCount() - 1;
-    index = index >= max ? 0 : index + 1;
-    render();
+    if (isTransitioning) return;
+    currentIndex++;
+    render(true);
   };
 
   const prevSlide = () => {
-    const max = pageCount() - 1;
-    index = index <= 0 ? max : index - 1;
-    render();
+    if (isTransitioning) return;
+    currentIndex--;
+    render(true);
   };
 
+  // --- 6. AUTOPLAY & EVENTS ---
   const startAuto = () => {
     if (!options.autoPlay || prefersReducedMotion || document.hidden) return;
     stopAuto();
@@ -160,68 +208,47 @@ function initSlider(name, options = {}) {
   if (next) next.addEventListener('click', () => { nextSlide(); startAuto(); });
   if (prev) prev.addEventListener('click', () => { prevSlide(); startAuto(); });
 
-  let touchStartX = 0;
-  let touchStartY = 0;
-  let touchDeltaX = 0;
-  let touchDeltaY = 0;
-  let isTouching = false;
-
-  const onTouchStart = (event) => {
-    if (!event.touches || !event.touches.length) return;
+  // Touch/Swipe logic
+  let touchStartX = 0, touchDeltaX = 0, isTouching = false;
+  
+  viewport.addEventListener('touchstart', (e) => {
+    if (!e.touches.length) return;
     isTouching = true;
-    touchStartX = event.touches[0].clientX;
-    touchStartY = event.touches[0].clientY;
+    touchStartX = e.touches[0].clientX;
     touchDeltaX = 0;
-    touchDeltaY = 0;
     stopAuto();
-  };
+  }, { passive: true });
 
-  const onTouchMove = (event) => {
-    if (!isTouching || !event.touches || !event.touches.length) return;
-    touchDeltaX = event.touches[0].clientX - touchStartX;
-    touchDeltaY = event.touches[0].clientY - touchStartY;
-  };
+  viewport.addEventListener('touchmove', (e) => {
+    if (!isTouching || !e.touches.length) return;
+    touchDeltaX = e.touches[0].clientX - touchStartX;
+  }, { passive: true });
 
-  const onTouchEnd = () => {
+  viewport.addEventListener('touchend', () => {
     if (!isTouching) return;
     isTouching = false;
-    const threshold = 45;
-    const isHorizontalIntent = Math.abs(touchDeltaX) > Math.abs(touchDeltaY);
-    if (isHorizontalIntent && touchDeltaX <= -threshold) {
-      nextSlide();
-    } else if (isHorizontalIntent && touchDeltaX >= threshold) {
-      prevSlide();
+    if (Math.abs(touchDeltaX) > 45) { // 45px swipe threshold
+      if (touchDeltaX < 0) nextSlide();
+      else prevSlide();
     }
-    touchDeltaX = 0;
-    touchDeltaY = 0;
     startAuto();
-  };
-
-  viewport.addEventListener('touchstart', onTouchStart, { passive: true });
-  viewport.addEventListener('touchmove', onTouchMove, { passive: true });
-  viewport.addEventListener('touchend', onTouchEnd, { passive: true });
-  viewport.addEventListener('touchcancel', onTouchEnd, { passive: true });
+  }, { passive: true });
 
   root.addEventListener('mouseenter', stopAuto);
   root.addEventListener('mouseleave', startAuto);
 
   window.addEventListener('resize', () => {
     if (resizeRaf) cancelAnimationFrame(resizeRaf);
-    resizeRaf = requestAnimationFrame(() => {
-      updateDots();
-      render();
-    });
+    resizeRaf = requestAnimationFrame(() => render(false));
   });
 
   document.addEventListener('visibilitychange', () => {
-    if (document.hidden) {
-      stopAuto();
-      return;
-    }
-    startAuto();
+    if (document.hidden) stopAuto();
+    else startAuto();
   });
 
+  // Initialization
   updateDots();
-  render();
-  startAuto();
+  render(false); // Instantly align the track to the first real slide on load
+  setTimeout(startAuto, 100);
 }
