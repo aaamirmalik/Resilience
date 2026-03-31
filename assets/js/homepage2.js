@@ -139,7 +139,11 @@ function initSlider(name, options = {}) {
     if (!slideWidth) return;
 
     const step = slideWidth + gap;
-    const x = (step * currentIndex) - getBaseOffset() -70;
+    let n = 0;
+    if (name === 'team') {
+      n = 70;
+    }
+    const x = (step * currentIndex) - getBaseOffset() - n;
 
     if (animate) {
       // Allow CSS transitions to handle the animation
