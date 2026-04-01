@@ -226,7 +226,7 @@ $footer_copyright_suffix = $hp2_get('footer_copyright_suffix', 'All rights reser
                     <a href="<?php echo esc_url($appointment_url); ?>" class="hp2-btn hp2-btn-primary"><?php echo esc_html(!empty($hero['primary_button_label']) ? $hero['primary_button_label'] : $appointment_label); ?></a>
                     <a href="<?php echo esc_url($hp2_get('consultation_url', '#', 'option')); ?>" class="hp2-btn hp2-btn-ghost"><?php echo esc_html(!empty($hero['secondary_button_label']) ? $hero['secondary_button_label'] : 'Request a Free Consultation'); ?></a>
                 </div>
-                <p class="hp2-hero-note"><?php echo esc_html(!empty($hero['note']) ? $hero['note'] : 'We respond within 48 hours during office hours. All conversations are confidential.'); ?></p>
+                <p class="hp2-hero-note"><?php echo !empty($hero['note']) ? $hero['note'] : 'We respond within 48 hours during office hours. All conversations are confidential.'; ?></p>
             </div>
 
             <aside class="hp2-consult-card">
