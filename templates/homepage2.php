@@ -282,7 +282,7 @@ $footer_copyright_suffix = $hp2_get('footer_copyright_suffix', 'All rights reser
                     ?>
                     <article class="hp2-service-card">
                         <span class="hp2-service-icon" aria-hidden="true">
-                            <iconify-icon icon="<?php echo esc_attr(!empty($service_card['icon']) ? $service_card['icon'] : 'lucide:heart-handshake'); ?>"></iconify-icon>
+                            <img src="<?php echo esc_attr(!empty($service_card['icon']) ? $service_card['icon'] : 'lucide:heart-handshake'); ?>" alt="icon">
                         </span>
                         <h3><?php echo esc_html($service_title); ?></h3>
                         <?php if ($service_desc !== '') : ?>
@@ -332,7 +332,7 @@ $footer_copyright_suffix = $hp2_get('footer_copyright_suffix', 'All rights reser
                     ?>
                     <article>
                         <span class="hp2-feature-icon">
-                            <img src="<?php echo esc_url($trust_icon); ?>" alt="">
+                            <img src="<?php echo esc_url($trust_icon); ?>" alt="<?php echo esc_attr($trust_title); ?> icon">
                         </span>
                         <h3><?php echo esc_html($trust_title); ?></h3>
                         <p><?php echo esc_html($trust_description); ?></p>
@@ -415,7 +415,7 @@ $footer_copyright_suffix = $hp2_get('footer_copyright_suffix', 'All rights reser
         // 1. Updated query to use the 'crm_therapist' Custom Post Type
         $team_query = new WP_Query([
             'post_type' => 'crm_therapist',
-            'posts_per_page' => 8, // Kept at 8 for the slider limit
+            'posts_per_page' => 4, // Kept at 8 for the slider limit
             'post_status' => 'publish',
             'orderby' => 'title',  // Added ordering by title to match your directory
             'order' => 'ASC',
@@ -475,7 +475,7 @@ $footer_copyright_suffix = $hp2_get('footer_copyright_suffix', 'All rights reser
                                     <img src="<?php echo esc_url($team_card['image']); ?>" alt="<?php echo esc_attr($team_card['name']); ?>">
                                 <?php endif; ?>
                                 <h3><?php echo esc_html($team_card['name']); ?></h3>
-                                <p><?php echo esc_html($team_card['role']); ?></p>
+                                <p><?php echo esc_html(str_replace(',', ' |', $team_card['role'])); ?></p>
                             </a>
                         <?php endforeach; ?>
                     </div>
@@ -490,7 +490,7 @@ $footer_copyright_suffix = $hp2_get('footer_copyright_suffix', 'All rights reser
         </div>
     </section>
 
-    <section class="hp2-testimonials">
+    <!-- <section class="hp2-testimonials">
         <div class="hp2-container">
             <div class="hp2-section-head hp2-section-head-sm">
                 <span class="hp2-pill"><?php echo esc_html($stories['eyebrow'] ? $stories['eyebrow'] : 'Testimonials'); ?></span>
@@ -527,7 +527,7 @@ $footer_copyright_suffix = $hp2_get('footer_copyright_suffix', 'All rights reser
             </div>
             <div class="hp2-dots" data-slider-dots="testimonial"></div>
         </div>
-    </section>
+    </section> -->
 
     <section class="hp2-news" id="news">
         <div class="hp2-container">
@@ -547,9 +547,23 @@ $footer_copyright_suffix = $hp2_get('footer_copyright_suffix', 'All rights reser
                         ?>
                         <article class="hp2-news-card">
                             <img src="<?php echo esc_url($news_image); ?>" alt="<?php echo esc_attr(get_the_title($news_post)); ?>">
+
                             <div class="hp2-news-tags">
-                                <span><?php echo esc_html(get_the_date('M d, Y', $news_post)); ?></span>
+                                    <?php 
+                                    // Fetch all categories for the current post
+                                    $categories = get_the_category($news_post->ID);
+
+                                    if (!empty($categories)) : 
+                                        // Loop through each category and wrap it in a div
+                                        foreach ($categories as $category) : 
+                                    ?>
+                                    <span><?php echo esc_html($category->name); ?></span>
+                                    <?php 
+                                        endforeach; 
+                                    endif; 
+                                    ?>
                             </div>
+                        
                             <h3><?php echo esc_html(get_the_title($news_post)); ?></h3>
                             <a href="<?php echo esc_url(get_permalink($news_post)); ?>">
                                 Read More

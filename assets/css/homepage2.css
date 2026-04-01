@@ -134,7 +134,7 @@
     color: var(--hp2-color-white) !important;
 }
 .homepage2-template .hp2-btn-light { background: transparent; color: var(--hp2-color-primary); }
-.homepage2-template .hp2-btn-ghost { background: var(--hp2-color-white); color: var(--hp2-color-primary); border-color: var(--hp2-color-primary); }
+.homepage2-template .hp2-btn-ghost { background: transparent; color: var(--hp2-color-primary); border-color: var(--hp2-color-primary); }
 .homepage2-template .hp2-btn-block { width: 100%; }
 
 .homepage2-template .hp2-topbar {
@@ -164,7 +164,7 @@
 .homepage2-template .hp2-topbar-group iconify-icon { color: var(--hp2-color-text); font-size: var(--hp2-fs-16) !important; }
 .homepage2-template .hp2-divider { width: 1px; height: 15px; background: var(--hp2-color-divider); }
 
-.homepage2-template .hp2-header { padding: 26px 0 22px; background-color: var(--hp2-color-bg-main);}
+.homepage2-template .hp2-header { padding: 26px 0 22px; background: linear-gradient(67.68deg, rgba(248, 235, 221, 0.6) -8.94%, #F2F7F2 72.8%);}
 
 .homepage2-template .hp2-nav-shell {
     background: var(--hp2-color-white);
@@ -252,7 +252,8 @@
 }
 
 .homepage2-template .hp2-hero {
-    background: var(--hp2-color-bg-main);
+    /* background: var(--hp2-color-bg-main); */
+     background: linear-gradient(67.68deg, rgba(248, 235, 221, 0.6) -8.94%, #F2F7F2 72.8%);
     padding: 50px 0 52px;
 }
 
@@ -558,7 +559,7 @@
 .homepage2-template .hp2-service-icon {
     width: 60px;
     height: 60px;
-    border-radius: 12px;
+    border-radius: 300px;
     background: rgba(62,86,64,.05);
     display: inline-flex;
     align-items: center;
@@ -577,7 +578,7 @@
     margin: 20px 0;
     font-size: var(--hp2-fs-24) !important;
     line-height: 30px;
-    color: var(--hp2-color-text);
+    color: var(--hp2-primary2-900);
 }
 
 .homepage2-template .hp2-service-card ul {
@@ -603,7 +604,7 @@
 
 .homepage2-template .hp2-services-action { text-align: center; margin-top: 30px; }
 
-.homepage2-template .hp2-about2 { background: var(--hp2-color-border-soft); }
+.homepage2-template .hp2-about2 { background: var(--hp2-primary1-200); }
 
 .homepage2-template .hp2-about2-grid {
     display: grid;
@@ -656,20 +657,22 @@
 }
 
 .homepage2-template .hp2-feature-icon {
-    width: 24px;
-    height: 24px;
-    border-radius: 4.8px;
-    background: rgba(62,86,64,.05);
-    padding: 4.8px;
+    width: 32px;
+    height: 32px;
+    border-radius: 400px;
+    background: var(--hp2-primary2-100);
+    border: 1px solid var(--hp2-primary2-400);
+    padding: 4.8px 4.8px 2.8px 4.8px;
     margin-bottom: 6px;
     display: inline-flex;
     align-items: center;
     justify-content: center;
+    box-shadow: 0px 3px 7px 0px #F6E8DA;
 }
 
 .homepage2-template .hp2-feature-icon img {
-    width: 12.8px;
-    height: 12.8px;
+    width: 14.8px;
+    height: 14.8px;
     display: block;
 }
 
@@ -799,6 +802,26 @@
     background: var(--hp2-color-bg-soft-2);
     padding-top: 80px;
     padding-bottom: 110px;
+    position: relative;
+}
+
+.homepage2-template .hp2-online-session::before {
+    content: "";
+    position: absolute;
+    width: 950px;
+    height: 569px;
+    top: 100px;
+    left: -20px;
+    background: #c4f9c4;
+    -webkit-mask-image: url(../images/homepage2/Mask_group.svg);
+    mask-image: url(../images/homepage2/Mask_group.svg);
+    -webkit-mask-size: 950px 569px;
+    mask-size: 950px 569px;
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
+    transform: rotate(8.39deg);
+    opacity: .3;
+    pointer-events: none;
 }
 
 .homepage2-template .hp2-online-session .hp2-pill {
@@ -812,6 +835,7 @@
     justify-content: space-between;
     gap: 79px;
     align-items: start;
+    position: relative;
 }
 
 .homepage2-template .hp2-online-copy h2 {
@@ -823,7 +847,7 @@
 }
 
 .homepage2-template .hp2-online-copy h2 span { color: var(--hp2-color-primary); }
-.homepage2-template .hp2-online-copy p { margin: 0; font-size: var(--hp2-fs-16) !important; line-height: 24px; color: var(--hp2-color-text-80); max-width: 575px; }
+.homepage2-template .hp2-online-copy p { margin: 0; font-size: var(--hp2-fs-16) !important; line-height: 24px; color: var(--hp2-color-text-80); max-width: 540px; }
 .homepage2-template .hp2-online-copy p strong { color: var(--hp2-color-text); }
 .homepage2-template .hp2-online-copy .hp2-btn { margin-top: 137px; width: 234px; }
 
@@ -834,7 +858,7 @@
 .homepage2-template .hp2-specialists-head { display: grid; grid-template-columns: 407px 630px; justify-content: space-between; gap: 40px; align-items: start; margin-bottom: 60px; }
 .homepage2-template .hp2-specialists-head h2 { margin: 12px 0 0; font-size: var(--hp2-fs-40) !important; line-height: 50px; }
 .homepage2-template .hp2-specialists-head h2 span { color: var(--hp2-color-primary); }
-.homepage2-template .hp2-specialists-head p { margin: 0; color: var(--hp2-color-text-80); font-size: var(--hp2-fs-16) !important; line-height: 24px; max-width: 630px; }
+.homepage2-template .hp2-specialists-head p { margin: 0; color: var(--hp2-color-text-80); font-size: var(--hp2-fs-16) !important; line-height: 24px; max-width: 580px; }
 
 .homepage2-template .hp2-slider { position: relative; }
 .homepage2-template .hp2-slider[data-slider="team"] {
@@ -857,12 +881,12 @@
 
 .homepage2-template .hp2-slider[data-slider="team"] .hp2-slider-viewport::before {
     left: -29px;
-    background: linear-gradient(90deg, var(--hp2-primary1-200) 0%, rgba(255,255,255,0) 100%);
+    background: linear-gradient(90deg, var(--hp2-primary1-200) 25%, rgba(255,255,255,0) 100%);
 }
 
 .homepage2-template .hp2-slider[data-slider="team"] .hp2-slider-viewport::after {
     right: -29px;
-    background: linear-gradient(90deg, rgba(255,255,255,0) 0%, var(--hp2-primary1-200) 100%);
+    background: linear-gradient(90deg, rgba(255,255,255,0) 0%, var(--hp2-primary1-200) 75%);
 }
 
 .homepage2-template .hp2-slider-btn {
@@ -916,8 +940,8 @@
 }
 .homepage2-template .hp2-testimonial-slider .hp2-next { right: -30px; }
 
-.homepage2-template .hp2-team-card { flex: 0 0 260px; display: block; text-decoration: none; color: inherit; }
-.homepage2-template .hp2-team-card img { width: 100%; height: 349px; object-fit: cover; border-radius: 20px; display: block; }
+.homepage2-template .hp2-team-card { flex: 0 0 290px; display: block; text-decoration: none; color: inherit; }
+.homepage2-template .hp2-team-card img { width: 100%; height: 290px; object-fit: cover; border-radius: 300px; display: block; }
 .homepage2-template .hp2-team-card h3 { margin: 20px 0 6px; color: var(--hp2-color-text); font-size: var(--hp2-fs-24) !important; line-height: 32px; letter-spacing: 0; font-weight: 600; }
 .homepage2-template .hp2-team-card h3 {
     display: -webkit-box;
@@ -936,7 +960,7 @@
 .homepage2-template .hp2-dots button.is-active { background: var(--hp2-color-primary); }
 
 .homepage2-template .hp2-specialists-actions { text-align: right; margin-top: -16px; }
-.homepage2-template .hp2-specialists-actions .hp2-btn { width: 234px; border-color: var(--hp2-color-primary); color: var(--hp2-color-primary); background: var(--hp2-color-white); }
+.homepage2-template .hp2-specialists-actions .hp2-btn { width: 234px; border-color: var(--hp2-color-primary); color: var(--hp2-color-primary); background: transparent; box-shadow: 0px 4px 4px 0px #00000040; }
 
 .homepage2-template .hp2-testimonials {
     background: var(--hp2-color-border-soft);
@@ -1041,7 +1065,7 @@
 }
 
 .homepage2-template .hp2-news {
-    background: var(--hp2-color-bg-main);
+    background: var(--hp2-primary1-200);
 }
 
 .homepage2-template .hp2-news .hp2-section-head {
@@ -1069,7 +1093,7 @@
 .homepage2-template .hp2-news-card img { width: 100%; height: 247px; border-radius: 20px; object-fit: cover; }
 
 .homepage2-template .hp2-news-tags { margin-top: 16px; display: flex; gap: 8px; }
-.homepage2-template .hp2-news-tags span { background: var(--hp2-color-bg-main); color: var(--hp2-color-primary); border-radius: 4px; padding: 4px 12px; font-size: var(--hp2-fs-12) !important; line-height: 16px; }
+.homepage2-template .hp2-news-tags span { background: var(--hp2-primary2-200); color: var(--hp2-color-primary); border-radius: 4px; padding: 4px 12px; font-size: var(--hp2-fs-12) !important; line-height: 16px; }
 
 .homepage2-template .hp2-news-card h3 {
     margin: 16px 0;
@@ -1102,7 +1126,7 @@
 
 .homepage2-template .hp2-contact-map {
     position: relative;
-    background: var(--hp2-primary2-100);
+    background: var(--hp2-primary1-200);
     overflow: hidden;
 }
 
@@ -1592,6 +1616,7 @@
 }
 
 @media (min-width: 1025px) and (max-width: 1439px) {
+    
     .homepage2-template .hp2-hero-grid,
     .homepage2-template .hp2-about2-grid,
     .homepage2-template .hp2-online-grid,
@@ -1657,7 +1682,8 @@
         background-size: 52px 52px;
     }
 
-    /* .homepage2-template .hp2-team-card { flex: 0 0 calc((100% - 32px) / 3); } */
+    .homepage2-template .hp2-team-card { flex: 0 0 270px; }
+    .homepage2-template .hp2-team-card img { height: 270px; }
     .homepage2-template .hp2-specialists .hp2-dots[data-slider-dots="team"] { justify-content: center; }
     .homepage2-template .hp2-specialists-actions { margin-top: 16px; }
 
@@ -1824,7 +1850,8 @@
     .homepage2-template .hp2-stat-c,
     .homepage2-template .hp2-stat-d { border-bottom: 0; }
 
-    /* .homepage2-template .hp2-team-card { flex: 0 0 calc((100% - 20px) / 2); } */
+    .homepage2-template .hp2-team-card { flex: 0 0 220px; }
+    .homepage2-template .hp2-team-card img { height: 220px; }
     .homepage2-template .hp2-specialists-actions { text-align: left; }
     .homepage2-template .hp2-specialists .hp2-dots[data-slider-dots="team"] {
         justify-content: center;
@@ -2016,7 +2043,8 @@
     .homepage2-template .hp2-consult-links-row { flex-wrap: wrap; gap: 10px; }
     .homepage2-template .hp2-consult-links .hp2-divider { display: none; }
 
-    /* .homepage2-template .hp2-team-card { flex: 0 0 100%; } */
+    .homepage2-template .hp2-team-card { flex: 0 0 200px; }
+    .homepage2-template .hp2-team-card img { height: 200px; width: 200px; }
     .homepage2-template .hp2-team-card h3 { font-size: var(--hp2-fs-28) !important; }
     .homepage2-template .hp2-slider[data-slider="team"] .hp2-slider-track { gap: 14px; }
     .homepage2-template .hp2-specialists .hp2-dots { margin-top: 24px; justify-content: center; }
@@ -2118,6 +2146,8 @@
 }
 
 @media (max-width: 575px) {
+      .homepage2-template .hp2-team-card { flex: 0 0 180px; }
+    .homepage2-template .hp2-team-card img { height: 180px; width: 180px; }
     .homepage2-template {
         --hp2-mobile-section-space: 48px;
         --hp2-mobile-body-size: 13px;

@@ -45,7 +45,7 @@
     font-family: 'Inter', system-ui, -apple-system, sans-serif;
 }
 
-.page-container-am { display: flex; flex-direction: column; min-height: 100vh; background-color: var(--bacground-new-am); }
+.page-container-am { display: flex; flex-direction: column; min-height: 100vh; background: linear-gradient(67.68deg, rgba(248, 235, 221, 0.6) 15.06%, #F2F7F2 100%); }
 
 .container-am {
     width: 100%;
@@ -61,7 +61,7 @@ h3 { font-size: 22px !important; }
 h4 { font-size: 18px !important; }
 p  { font-size: 15px; color: var(--muted-foreground-am); }
 
-.section-am          { padding: 60px 0; background-color: var(--background-biege-am); }
+.section-am          { padding: 60px 0; background: linear-gradient(67.68deg, rgba(248, 235, 221, 0.6) 15%, #F2F7F2 100%); }
 .section-muted-am    { background-color: var(--bacground-new-am);  }
 .section-header-am   { max-width: 640px; margin: 0 auto 40px; }
 .text-center-am      { text-align: center; }
@@ -514,7 +514,7 @@ p  { font-size: 15px; color: var(--muted-foreground-am); }
    TEAM DIRECTORY SPECIFIC (Merged from Teams.php)
    ============================================================ */
 .page-header-am {
-    background: var(--bacground-new-am);
+    background: linear-gradient(67.68deg, rgba(248, 235, 221, 0.6) -8.94%, #F2F7F2 72.8%);
     padding: 72px 0 60px;
     text-align: center;
     border-bottom: 1px solid var(--border-am);
@@ -1197,6 +1197,7 @@ p  { font-size: 15px; color: var(--muted-foreground-am); }
           padding: 96px 0; 
           max-width: 800px;
           margin: 0 auto;
+          
         }
         .faq-item-am {
           border: 1px solid var(--border-am);
@@ -1397,7 +1398,7 @@ iconify-icon {
 
 .contact-hero-am {
     padding: 80px 0 64px;
-    background-color: var(--bacground-new-am);
+    background: linear-gradient(67.68deg, rgba(248, 235, 221, 0.6) -8.94%, #F2F7F2 72.8%);
     text-align: center;
     border-bottom: 1px solid var(--border-am);
 }

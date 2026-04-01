@@ -461,20 +461,26 @@
                             "label": "Icon",
                             "name": "icon",
                             "aria-label": "",
-                            "type": "text",
+                            "type": "image",
                             "instructions": "",
-                            "required": false,
-                            "conditional_logic": false,
+                            "required": 0,
+                            "conditional_logic": 0,
                             "wrapper": {
                                 "width": "",
                                 "class": "",
                                 "id": ""
                             },
-                            "default_value": "lucide:heart-handshake",
-                            "maxlength": "",
-                            "placeholder": "",
-                            "prepend": "",
-                            "append": "",
+                            "return_format": "url",
+                            "library": "all",
+                            "min_width": "",
+                            "min_height": "",
+                            "min_size": "",
+                            "max_width": "",
+                            "max_height": "",
+                            "max_size": "",
+                            "mime_types": "",
+                            "allow_in_bindings": 0,
+                            "preview_size": "medium",
                             "parent_repeater": "field_hp2_services_list"
                         },
                         {
@@ -1474,5 +1480,5 @@
     "description": "Homepage2-only full field map with groups and repeaters.",
     "show_in_rest": 0,
     "display_title": "",
-    "modified": 1774867698
+    "modified": 1775018370
 }

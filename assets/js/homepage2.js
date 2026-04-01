@@ -141,7 +141,7 @@ function initSlider(name, options = {}) {
     const step = slideWidth + gap;
     let n = 0;
     if (name === 'team') {
-      n = 70;
+      n = 30;
     }
     const x = (step * currentIndex) - getBaseOffset() - n;
 
