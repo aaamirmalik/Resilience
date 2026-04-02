@@ -237,7 +237,7 @@ $team_query = new WP_Query([
             </div>
         </section>
 
-        <section class="team-teaser-section section-am section-muted-am">
+        <!-- <section class="team-teaser-section section-am section-muted-am">
             <div class="container-am">
                 <div class="section-title-wrapper section-header-am text-center-am">
                     <?php if (!empty($team_group['eyebrow'])) : ?>
@@ -295,7 +295,7 @@ $team_query = new WP_Query([
                     </a>
                 </div>
             </div>
-        </section>
+        </section> -->
 
 
 
