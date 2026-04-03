@@ -217,7 +217,7 @@ p  { font-size: 15px; color: var(--muted-foreground-am); }
 .service-list-am    { list-style: none; display: flex; flex-direction: column; gap: 6px; margin-top: 4px; }
 .service-list-am li { display: flex; align-items: center; gap: 10px; font-size: 13px; color: var(--foreground-am); font-weight: 500; }
 .service-list-am li::before { content: ""; width: 6px; height: 6px; border-radius: 999px; background-color: var(--primary-am); flex-shrink: 0; }
-
+.single-service-meta-am span.eyebrow-am.profile-badge{ font-size: 18px;}
 /* ============================================================
    ABOUT
    ============================================================ */

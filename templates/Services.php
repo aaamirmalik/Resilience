@@ -3,6 +3,9 @@
  * Template Name: Services Page
  */
 
+
+if (!defined('ABSPATH')) exit; 
+
 get_header();
 
 $hero_group = get_field('services_hero_group');
@@ -30,7 +33,7 @@ if ($team_limit <= 0) {
 }
 
 $service_query = new WP_Query([
-    'post_type'      => 'service',
+    'post_type'      => 'crm_services',
     'post_status'    => 'publish',
     'posts_per_page' => $service_limit,
     'order'          => 'ASC',
@@ -46,7 +49,8 @@ $team_query = new WP_Query([
 
 <div class="page-container-am page-container services-page-am">
     <main>
-        <section class="services-hero section-am services-hero-am" style="cursor: pointer;" onclick="window.location='<?php echo $permalink; ?>';">
+        <section class="services-hero section-am services-hero-am" style="cursor: pointer;"
+            onclick="window.location='<?php echo $permalink; ?>';">
             <div class="container-am services-hero-grid services-hero-grid-am">
                 <div class="services-hero-content services-hero-copy-am">
                     <?php if (!empty($hero_group['eyebrow'])) : ?>
@@ -97,45 +101,60 @@ $team_query = new WP_Query([
                 </div>
 
                 <?php if ($service_query->have_posts()) : ?>
-                <div class="service-cards services-cards-grid-am" >
-                    <?php while ($service_query->have_posts()) : $service_query->the_post(); ?>
-                    <?php
-          $service_image = get_field('service_image');
-          $service_desc = get_field('service_description');
-          $service_button = get_field('service_button_label');
+                <div class="service-cards services-cards-grid-am">
+                    <?php while ($service_query->have_posts()) : $service_query->the_post(); 
+            // 1. CRITICAL: Define the ID for the current post in the loop
+            $current_id = get_the_ID();
 
-          $card_title = get_the_title();
-          $card_desc = !empty($service_desc) ? $service_desc : wp_trim_words(get_the_excerpt(), 22);
-          $card_btn = !empty($service_button) ? $service_button : ($cards_group['button_label'] ?? 'Read More');
+            // 2. Fetch Meta using the specific ID
+            $service_image = (string) get_post_meta($current_id, '_crm_service_image_url', true);
+            $service_desc = (string) get_post_meta($current_id, '_crm_short_description', true);
+    
+            // If CRM meta is empty, use the post excerpt
+            $raw_description = !empty($service_desc) ? $service_desc : get_the_excerpt();
 
-          $card_url = '';
-          $card_alt = '';
-          if (is_array($service_image) && !empty($service_image['url'])) {
-              $card_url = $service_image['url'];
-              $card_alt = $service_image['alt'] ?? $card_title;
-          } elseif (has_post_thumbnail()) {
-              $thumb_id = get_post_thumbnail_id();
-              $thumb_src = wp_get_attachment_image_src($thumb_id, 'medium_large');
-              if (!empty($thumb_src[0])) {
-                  $card_url = $thumb_src[0];
-              }
-              $card_alt = get_post_meta($thumb_id, '_wp_attachment_image_alt', true);
-              if (empty($card_alt)) {
-                  $card_alt = $card_title;
-              }
-          }
-          ?>
-                    <div class="service-card services-card-am" style="cursor: pointer;" onclick="window.location='<?php echo the_permalink(); ?>';">
-                        <?php if (!empty($card_url)) : ?>
+            // 2. LIMIT THE DESCRIPTION: Use wp_trim_words
+            // Change '20' to whatever number of words you prefer
+            $card_desc = wp_trim_words($raw_description, 20, '...');
+            
+            // 3. Safety check for ACF get_field
+            $service_button = function_exists('get_field') ? get_field('service_button_label', $current_id) : '';
+
+            $card_title = get_the_title();
+            $card_btn   = !empty($service_button) ? $service_button : ($cards_group['button_label'] ?? 'Read More');
+
+            // 4. Reset image variables for every iteration to prevent "ghost" images from previous posts
+            $image_url = '';
+            $image_alt = $card_title;
+
+            if ($service_image !== '') {
+                $image_url = $service_image;
+            } elseif (has_post_thumbnail($current_id)) {
+                $thumb_id = get_post_thumbnail_id($current_id);
+                $thumb_src = wp_get_attachment_image_src($thumb_id, 'large');
+                if (!empty($thumb_src[0])) {
+                    $image_url = $thumb_src[0];
+                }
+                $thumb_alt = get_post_meta($thumb_id, '_wp_attachment_image_alt', true);
+                if (!empty($thumb_alt)) {
+                    $image_alt = $thumb_alt;
+                }
+            }
+            ?>
+
+                    <div class="service-card services-card-am" style="cursor: pointer;"
+                        onclick="window.location='<?php echo esc_url(get_permalink()); ?>';">
+                        <?php if (!empty($image_url)) : ?>
                         <div class="service-card-img services-card-image-am">
-                            <img src="<?php echo esc_url($card_url); ?>" alt="<?php echo esc_attr($card_alt); ?>">
+                            <img src="<?php echo esc_url($image_url); ?>" alt="<?php echo esc_attr($image_alt); ?>">
                         </div>
                         <?php endif; ?>
+
                         <div class="service-card-content services-card-content-am">
                             <h3><?php echo esc_html($card_title); ?></h3>
                             <p><?php echo esc_html($card_desc); ?></p>
-                            <a href="<?php the_permalink(); ?>" class="service-link read-more-link-am"
-                                data-media-type="banani-button">
+
+                            <a href="<?php the_permalink(); ?>" class="service-link read-more-link-am">
                                 <?php echo esc_html($card_btn); ?>
                                 <div
                                     style="width: 16px; height: 16px; display: flex; align-items: center; justify-content: center;">
@@ -161,8 +180,7 @@ $team_query = new WP_Query([
                         </p>
                     </div>
                     <div class="service-nav-actions-am">
-                        <div class="phone-text-am"
-                            style="">
+                        <div class="phone-text-am" style="">
                             <?php echo esc_html($why_group['cta_phone_text'] ?? ('Call: ' . (get_field('topbar_phone', 'option') ?: '+1 (226) 721-0161'))); ?>
                         </div>
                         <a href="<?php echo esc_url($why_group['cta_button_url'] ?? get_field('appointment_url', 'option') ?? '#'); ?>"
@@ -302,7 +320,9 @@ $team_query = new WP_Query([
         <section class="faq-section-am container-am">
             <div class="section-title-wrapper-am">
                 <h2><?php echo esc_html($faq_group['heading'] ?? 'Frequently Asked Questions'); ?></h2>
-                <p  style="max-width: 600px; margin: 16px auto 0;"><?php echo $faq_group['description'] ?? 'Common questions about how therapy works and insurance coverage.'; ?></p>
+                <p style="max-width: 600px; margin: 16px auto 0;">
+                    <?php echo $faq_group['description'] ?? 'Common questions about how therapy works and insurance coverage.'; ?>
+                </p>
             </div>
 
 
