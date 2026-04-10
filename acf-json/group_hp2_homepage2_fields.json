@@ -159,6 +159,33 @@
                     "collapsed": "",
                     "sub_fields": [
                         {
+                            "key": "field_69d73d8e56677",
+                            "label": "Hero Icon",
+                            "name": "hero_icon",
+                            "aria-label": "",
+                            "type": "image",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "return_format": "url",
+                            "library": "all",
+                            "min_width": "",
+                            "min_height": "",
+                            "min_size": "",
+                            "max_width": "",
+                            "max_height": "",
+                            "max_size": "",
+                            "mime_types": "",
+                            "allow_in_bindings": 0,
+                            "preview_size": "medium",
+                            "parent_repeater": "field_hp2_hero_stats"
+                        },
+                        {
                             "key": "field_hp2_hero_stat_label",
                             "label": "Label",
                             "name": "label",
@@ -319,6 +346,45 @@
                     "maxlength": "",
                     "placeholder": "",
                     "rows": ""
+                },
+                {
+                    "key": "field_69d76f18fdadc",
+                    "label": "Hero Card Consultaion Button",
+                    "name": "hero_card_consultaion_button",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "Request a free consultation",
+                    "maxlength": "",
+                    "allow_in_bindings": 0,
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": ""
+                },
+                {
+                    "key": "field_69d76f5cfdadd",
+                    "label": "Hero Card Consultaion Button Url",
+                    "name": "hero_card_consultaion_button_url",
+                    "aria-label": "",
+                    "type": "url",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "allow_in_bindings": 0,
+                    "placeholder": ""
                 }
             ],
             "layout": "block"
@@ -1480,5 +1546,5 @@
     "description": "Homepage2-only full field map with groups and repeaters.",
     "show_in_rest": 0,
     "display_title": "",
-    "modified": 1775018370
+    "modified": 1775726461
 }

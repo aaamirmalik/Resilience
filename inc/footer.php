@@ -101,7 +101,7 @@ if (empty($footer_social_links) || !is_array($footer_social_links)) {
             </div>
 
             <div class="hp2-footer-col hp2-footer-links">
-                <h5><?php echo esc_html($footer_services_heading); ?></h5>
+                <!-- <h5><?php echo esc_html($footer_services_heading); ?></h5> -->
 
                 <div class="hp2-footer-links-col hp2-footer-links-col-main">
                     <?php if (!empty($footer_services_links) && is_array($footer_services_links)) : ?>

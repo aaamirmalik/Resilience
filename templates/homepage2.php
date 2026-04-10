@@ -45,18 +45,36 @@ $online = $hp2_get('hp2_online_group', []);
 $contact_group = $hp2_get('hp2_contact_group', []);
 
 $hero_meta_items = [];
+
 if (!empty($hero['stats_repeater']) && is_array($hero['stats_repeater'])) {
     foreach ($hero['stats_repeater'] as $row) {
         if (!empty($row['label']) || !empty($row['value'])) {
-            $hero_meta_items[] = ['label' => $row['label'] ?? '', 'value' => $row['value'] ?? ''];
+            $hero_meta_items[] = [
+                'label'     => $row['label'] ?? '',
+                'value'     => $row['value'] ?? '',
+                'hero_icon' => $row['hero_icon'] ?? '',
+            ];
         }
     }
 }
+
 if (!$hero_meta_items) {
     $hero_meta_items = [
-        ['label' => 'Experience', 'value' => '17 Years+ Years Clinical Experience'],
-        ['label' => 'Clients', 'value' => 'Adults, children & families'],
-        ['label' => 'Languages', 'value' => 'Support in 5 languages'],
+        [
+            'label' => 'Experience',
+            'value' => '17 Years+ Years Clinical Experience',
+            'hero_icon' => '',
+        ],
+        [
+            'label' => 'Clients',
+            'value' => 'Adults, children & families',
+            'hero_icon' => '',
+        ],
+        [
+            'label' => 'Languages',
+            'value' => 'Support in 5 languages',
+            'hero_icon' => '',
+        ],
     ];
 }
 
@@ -133,7 +151,7 @@ $hp2_showcase_cards = [];
 $service_showcase_query = new WP_Query([
     'post_type' => 'service',
     'post_status' => 'publish',
-    'posts_per_page' => 3,
+    'posts_per_page' => -1,
     'order' => 'ASC',
 ]);
 if ($service_showcase_query->have_posts()) {
@@ -200,8 +218,18 @@ $news_posts = get_posts([
 ]);
 $team_page = get_page_by_path('therapist');
 $team_page_url = $team_page ? get_permalink($team_page) : '#';
+$service_page = get_page_by_path('our-services');
+$service_page_url = $service_page ? get_permalink($service_page) : '#';
 $posts_page_id = (int) get_option('page_for_posts');
 $posts_page_url = $posts_page_id ? get_permalink($posts_page_id) : '#';
+$newsletter_heading = $hp2_get('hp2_newsletter_heading', 'Stay Connected');
+$newsletter_description = $hp2_get('hp2_newsletter_description', "If you'd like, you can receive occasional reflections, resources, and updates from us.");
+$newsletter_email_placeholder = $hp2_get('hp2_newsletter_email_placeholder', 'Email Address');
+$newsletter_name_placeholder = $hp2_get('hp2_newsletter_name_placeholder', 'First Name (Option)');
+$newsletter_button_label = $hp2_get('hp2_newsletter_button_label', 'Subscribe');
+$newsletter_note = $hp2_get('hp2_newsletter_note', 'You can unsubscribe anytime. Your information is kept private and respected.');
+$newsletter_facebook_url = $hp2_get('social_facebook', '#', 'option');
+$newsletter_instagram_url = $hp2_get('social_instagram', '#', 'option');
 
 $contact_eyebrow = !empty($contact_group['eyebrow']) ? $contact_group['eyebrow'] : 'Find us on map';
 $contact_heading = !empty($contact_group['heading']) ? $contact_group['heading'] : 'Visit our London clinic or connect online.';
@@ -222,11 +250,19 @@ $footer_copyright_suffix = $hp2_get('footer_copyright_suffix', 'All rights reser
                 <div class="hp2-pill"><?php echo esc_html($hero_eyebrow); ?></div>
                 <h1><?php echo wp_kses_post(!empty($hero['heading']) ? $hero['heading'] : 'Therapy that respects your journey, heritage, and rhythm.'); ?></h1>
                 <p><?php echo esc_html(!empty($hero['lead']) ? $hero['lead'] : 'Resilience Counselling offers evidence-based, trauma-informed psychotherapy for adults, children, families, refugees, and newcomers-available in-person in London and online across Ontario.'); ?></p>
+                <div class="hp2-hero-highlights">
+                    <?php foreach ($hero_meta_items as $meta_item) : ?>
+                        <div class="hp2-hero-highlight">
+                            <img src="<?php echo esc_attr(!empty($meta_item['hero_icon']) ? $meta_item['hero_icon'] : 'lucide:heart-handshake'); ?>" alt="icon">
+                            <p><?php echo esc_html($meta_item['value']); ?></p>
+                        </div>
+                    <?php endforeach; ?>
+                </div>
                 <div class="hp2-hero-actions">
                     <a href="<?php echo esc_url($appointment_url); ?>" class="hp2-btn hp2-btn-primary"><?php echo esc_html(!empty($hero['primary_button_label']) ? $hero['primary_button_label'] : $appointment_label); ?></a>
                     <a href="<?php echo esc_url($hp2_get('consultation_url', '#', 'option')); ?>" class="hp2-btn hp2-btn-ghost"><?php echo esc_html(!empty($hero['secondary_button_label']) ? $hero['secondary_button_label'] : 'Request a Free Consultation'); ?></a>
                 </div>
-                <p class="hp2-hero-note"><?php echo !empty($hero['note']) ? $hero['note'] : 'We respond within 48 hours during office hours. All conversations are confidential.'; ?></p>
+                <!-- <p class="hp2-hero-note"></p> -->
             </div>
 
             <aside class="hp2-consult-card">
@@ -237,23 +273,33 @@ $footer_copyright_suffix = $hp2_get('footer_copyright_suffix', 'All rights reser
                 <div class="hp2-consult-row"><span><iconify-icon icon="lucide:clock-3"></iconify-icon> Session length</span><strong><?php echo esc_html(!empty($sidebar['session_length']) ? $sidebar['session_length'] : '50-60 minutes'); ?></strong></div>
                 <div class="hp2-consult-row"><span><iconify-icon icon="lucide:monitor"></iconify-icon> Format</span><strong><?php echo esc_html(!empty($sidebar['format']) ? $sidebar['format'] : 'In-person & secure online'); ?></strong></div>
                 <div class="hp2-consult-row"><span><iconify-icon icon="lucide:map-pin"></iconify-icon> Location</span><strong><?php echo esc_html($topbar_address); ?></strong></div>
-                <div class="hp2-consult-note"><iconify-icon icon="lucide:globe"></iconify-icon> <?php echo esc_html(!empty($sidebar['languages_note']) ? $sidebar['languages_note'] : 'We provide services in multiple languages to better support diverse communities.'); ?></div>
-                <a href="<?php echo esc_url($appointment_url); ?>" class="hp2-btn hp2-btn-primary hp2-btn-block"><?php echo esc_html($appointment_label); ?></a>
+                <div class="hp2-consult-note"><iconify-icon icon="lucide:globe"></iconify-icon> <p><?php echo esc_html(!empty($sidebar['languages_note']) ? $sidebar['languages_note'] : 'We provide services in multiple languages to better support diverse communities.'); ?></p></div>
+                <div class="hp2-consult-languages">
+                    <select id="language-select">
+                        <option value="english">English</option>
+                        <option value="turkish">Turkish</option>
+                        <option value="arabic">Arabic</option>
+                        <option value="spanish">Spanish</option>
+                        <option value="kurmanji">Kurmanji</option>
+                        <option value="urdu">Urdu</option>
+                    </select>
+                </div>
+                <a href="<?php echo esc_url($sidebar['hero_card_consultaion_button_url']); ?>" class="hp2-btn hp2-btn-primary hp2-btn-block"><?php echo esc_html($sidebar['hero_card_consultaion_button']); ?></a>
                 <div class="hp2-consult-links">
                     <div class="hp2-consult-links-row">
-                        <span><a href="<?php echo esc_url('tel:' . $topbar_phone_href); ?>"><iconify-icon icon="lucide:phone"></iconify-icon> <?php echo esc_html($topbar_phone); ?></a></span>
-                        <span class="hp2-divider"></span>
-                        <span><a href="<?php echo esc_url('mailto:' . $topbar_email_href); ?>"><iconify-icon icon="lucide:mail"></iconify-icon> Email: <?php echo esc_html($topbar_email); ?></a></span>
+                        <span><?php echo !empty($hero['note']) ? $hero['note'] : 'We respond within 48 hours during office hours. All conversations are confidential.'; ?></span>
+                        <!-- <span class="hp2-divider"></span>
+                        <span><a href="<?php echo esc_url('mailto:' . $topbar_email_href); ?>"><iconify-icon icon="lucide:mail"></iconify-icon> Email: <?php echo esc_html($topbar_email); ?></a></span> -->
                     </div>
-                    <div class="hp2-consult-links-row hp2-consult-links-row-single">
+                    <!-- <div class="hp2-consult-links-row hp2-consult-links-row-single">
                         <span><iconify-icon icon="lucide:printer"></iconify-icon> <?php echo esc_html($footer_fax); ?></span>
-                    </div>
+                    </div> -->
                 </div>
             </aside>
         </div>
     </section>
 
-    <section class="hp2-hero-meta" aria-label="Clinic quick facts">
+    <!-- <section class="hp2-hero-meta" aria-label="Clinic quick facts">
         <div class="hp2-container hp2-hero-meta-inner">
             <?php foreach ($hero_meta_items as $idx => $meta_item) : ?>
                 <div class="hp2-hero-meta-item">
@@ -263,7 +309,7 @@ $footer_copyright_suffix = $hp2_get('footer_copyright_suffix', 'All rights reser
                 <?php if ($idx < count($hero_meta_items) - 1) : ?><span class="hp2-hero-meta-divider" aria-hidden="true"></span><?php endif; ?>
             <?php endforeach; ?>
         </div>
-    </section>
+    </section> -->
 
     <section class="hp2-services" id="services">
         <div class="hp2-container">
@@ -319,7 +365,7 @@ $footer_copyright_suffix = $hp2_get('footer_copyright_suffix', 'All rights reser
 
                 <div class="hp2-about2-media">
                     <img src="<?php echo esc_url($about_image); ?>" alt="<?php echo esc_attr(wp_strip_all_tags($about_heading)); ?>">
-                    <span class="hp2-about2-chip"><span></span><?php echo esc_html($about_caption); ?></span>
+                    <!-- <span class="hp2-about2-chip"><span></span><?php echo esc_html($about_caption); ?></span> -->
                 </div>
             </div>
 
@@ -349,32 +395,55 @@ $footer_copyright_suffix = $hp2_get('footer_copyright_suffix', 'All rights reser
                 <h2><?php echo $therapies_heading; ?></h2>
             </div>
 
-            <div class="hp2-showcase-grid">
-                <?php foreach (array_slice($hp2_showcase_cards, 0, 3) as $showcase_card) : ?>
-                    <?php
-                    $show_title = !empty($showcase_card['title']) ? $showcase_card['title'] : 'Counselling service';
-                    $show_desc = !empty($showcase_card['description']) ? $showcase_card['description'] : 'Evidence-based support tailored to your needs.';
-                    $show_url = !empty($showcase_card['url']) ? $showcase_card['url'] : '#';
-                    $show_image = $hp2_image_url($showcase_card['image'] ?? '', $asset_base . '/f600fd28-fd3e-41df-a372-60209ea15e45.png');
-                    ?>
-                    <article class="hp2-showcase-card">
-                        <img src="<?php echo esc_url($show_image); ?>" alt="<?php echo esc_attr($show_title); ?>">
-                        <div class="hp2-showcase-caption">
-                            <div>
-                                <h3><?php echo esc_html($show_title); ?></h3>
+            <?php
+            $showcase_cards = array_values($hp2_showcase_cards);
+            $showcase_is_slider = count($showcase_cards) > 1;
+            ?>
+            <div class="hp2-slider hp2-showcase-slider" data-slider="showcase">
+                <?php if ($showcase_is_slider) : ?>
+                    <button class="hp2-slider-btn hp2-prev" type="button" aria-label="Previous therapy card"><iconify-icon icon="lucide:chevron-right"></iconify-icon></button>
+                <?php endif; ?>
+                <div class="hp2-slider-viewport">
+                    <div class="hp2-slider-track hp2-showcase-grid">
+                        <?php foreach ($showcase_cards as $showcase_card) : ?>
+                            <?php
+                            $show_title = !empty($showcase_card['title']) ? $showcase_card['title'] : 'Counselling service';
+                            $show_desc = !empty($showcase_card['description']) ? $showcase_card['description'] : 'Evidence-based support tailored to your needs.';
+                            $show_url = !empty($showcase_card['url']) ? $showcase_card['url'] : '#';
+                            $show_image = $hp2_image_url($showcase_card['image'] ?? '', $asset_base . '/f600fd28-fd3e-41df-a372-60209ea15e45.png');
+                            ?>
+                            <article class="hp2-showcase-card">
+                                <div class="hp2-showcase-head">
+                                    <div class="hp2-showcase-caption">
+                                        <span class="hp2-showcase-icon">
+                                            <img src="<?php echo esc_url($show_image); ?>" alt="<?php echo esc_attr($show_title . ' icon'); ?>">
+                                        </span>
+                                        <h3><?php echo esc_html($show_title); ?></h3>
+                                    </div>
+                                    <a class="hp2-showcase-link" href="<?php echo esc_url($show_url); ?>" aria-label="<?php echo esc_attr('Open ' . $show_title); ?>">
+                                        <iconify-icon icon="lucide:arrow-up-right"></iconify-icon>
+                                    </a>
+                                </div>
                                 <p><?php echo esc_html($show_desc); ?></p>
-                            </div>
-                            <a href="<?php echo esc_url($show_url); ?>" aria-label="<?php echo esc_attr('Open ' . $show_title); ?>">
-                                <iconify-icon icon="lucide:arrow-up-right"></iconify-icon>
-                            </a>
-                        </div>
-                    </article>
-                <?php endforeach; ?>
+                            </article>
+                        <?php endforeach; ?>
+                    </div>
+                </div>
+                <?php if ($showcase_is_slider) : ?>
+                    <button class="hp2-slider-btn hp2-next" type="button" aria-label="Next therapy card"><iconify-icon icon="lucide:chevron-right"></iconify-icon></button>
+                <?php endif; ?>
+            </div>
+            <?php if ($showcase_is_slider) : ?>
+                <div class="hp2-dots" data-slider-dots="showcase"></div>
+            <?php endif; ?>
+
+             <div class="hp2-showcasee-actions">
+                <a href="<?php echo esc_url($service_page_url); ?>" class="hp2-btn hp2-btn-ghost"><?php echo esc_html($hp2_get('service_button_text', 'View All Services')); ?></a>
             </div>
         </div>
     </section>
 
-    <section class="hp2-stats" aria-label="Clinic statistics">
+    <!-- <section class="hp2-stats" aria-label="Clinic statistics">
         <div class="hp2-container">
             <div class="hp2-stats-grid">
                 <?php foreach (array_values($hp2_stats_items) as $stat_index => $stat_item) : ?>
@@ -393,9 +462,9 @@ $footer_copyright_suffix = $hp2_get('footer_copyright_suffix', 'All rights reser
                 <?php endforeach; ?>
             </div>
         </div>
-    </section>
+    </section> -->
 
-    <section class="hp2-online-session">
+    <!-- <section class="hp2-online-session">
         <div class="hp2-container hp2-online-grid">
             <div class="hp2-online-copy">
                 <span class="hp2-pill"><?php echo esc_html($online_eyebrow); ?></span>
@@ -407,7 +476,7 @@ $footer_copyright_suffix = $hp2_get('footer_copyright_suffix', 'All rights reser
                 <img src="<?php echo esc_url($online_image); ?>" alt="<?php echo esc_attr(wp_strip_all_tags($online_heading)); ?>">
             </div>
         </div>
-    </section>
+    </section> -->
 
     <?php
         $team_cards = [];
@@ -485,7 +554,7 @@ $footer_copyright_suffix = $hp2_get('footer_copyright_suffix', 'All rights reser
             <div class="hp2-dots" data-slider-dots="team"></div>
 
             <div class="hp2-specialists-actions">
-                <a href="<?php echo esc_url($team_page_url); ?>" class="hp2-btn hp2-btn-ghost"><?php echo esc_html($hp2_get('team_button_text', 'View full team')); ?></a>
+                <a href="<?php echo esc_url($team_page_url); ?>" class="hp2-btn hp2-btn-ghost"><?php echo esc_html($hp2_get('team_button_text', 'View All Team Member')); ?></a>
             </div>
         </div>
     </section>
@@ -589,7 +658,42 @@ $footer_copyright_suffix = $hp2_get('footer_copyright_suffix', 'All rights reser
         </div>
     </section>
 
-    <section class="hp2-contact-map" id="contact">
+    <section class="hp2-newsletter" id="newsletter">
+        <div class="hp2-container-newsletter">
+            <div class="hp2-newsletter-card">
+                <div class="hp2-newsletter-grid">
+                    <div class="hp2-newsletter-copy">
+                        <h2><?php echo esc_html($newsletter_heading); ?></h2>
+                        <p><?php echo esc_html($newsletter_description); ?></p>
+                    </div>
+
+                    <form class="hp2-newsletter-form" action="" method="post" novalidate>
+                        <label class="screen-reader-text" for="hp2-newsletter-email">Email Address</label>
+                        <input id="hp2-newsletter-email" type="email" name="hp2_newsletter_email" placeholder="<?php echo esc_attr($newsletter_email_placeholder); ?>">
+
+                        <label class="screen-reader-text" for="hp2-newsletter-name">First Name</label>
+                        <input id="hp2-newsletter-name" type="text" name="hp2_newsletter_name" placeholder="<?php echo esc_attr($newsletter_name_placeholder); ?>">
+
+                        <button type="submit" class="hp2-btn hp2-btn-primary"><?php echo esc_html($newsletter_button_label); ?></button>
+                    </form>
+                </div>
+
+                <div class="hp2-newsletter-foot">
+                    <p><?php echo esc_html($newsletter_note); ?></p>
+                    <div class="hp2-newsletter-social">
+                        <a href="<?php echo esc_url($newsletter_facebook_url); ?>" aria-label="Facebook">
+                            <iconify-icon icon="lucide:facebook"></iconify-icon>
+                        </a>
+                        <a href="<?php echo esc_url($newsletter_instagram_url); ?>" aria-label="Instagram">
+                            <iconify-icon icon="lucide:instagram"></iconify-icon>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- <section class="hp2-contact-map" id="contact">
         <div class="hp2-container hp2-contact-grid">
             <div class="hp2-contact-copy">
                 <span class="hp2-pill"><?php echo esc_html($contact_eyebrow); ?></span>
@@ -636,7 +740,7 @@ $footer_copyright_suffix = $hp2_get('footer_copyright_suffix', 'All rights reser
                 </span>
             </div>
         </div>
-    </section>
+    </section> -->
 
 </div>
 

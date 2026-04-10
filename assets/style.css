@@ -8,13 +8,14 @@
     --background-am:          #fcfdfc;
     --bacground-new-am:      #f7faf7;
     --background-biege-am:    #fdf9f5;
-    --foreground-am:          #123029;
+    --foreground-bg-am:       #DBDCCE;
+    --foreground-am:          #314C43;
     --border-am:              rgba(76,120,43,0.16);
     --input-am:               #ffffff;
-    --primary-am:             #3e5640;
+    --primary-am:             #314C43;
     --primary-dark-am:        #2f4631;
     --primary-foreground-am:  #ffffff;
-    --secondary-am:           #eaf4ea;
+    --secondary-am:           #DBDCCE;
     --secondary-foreground-am:#3e5640;
     --muted-am:               #f7faf7;
     --muted-foreground-am:    #4a5565;
@@ -45,7 +46,7 @@
     font-family: 'Inter', system-ui, -apple-system, sans-serif;
 }
 
-.page-container-am { display: flex; flex-direction: column; min-height: 100vh; background: linear-gradient(67.68deg, rgba(248, 235, 221, 0.6) 15.06%, #F2F7F2 100%); }
+.page-container-am { display: flex; flex-direction: column; min-height: 100vh; background: linear-gradient(67.68deg, var(--hp2-color-bg-soft) 15.06%, var(--hp2-color-bg-main) 100%); padding-bottom: 50px; }
 
 .container-am {
     width: 100%;
@@ -61,7 +62,7 @@ h3 { font-size: 22px !important; }
 h4 { font-size: 18px !important; }
 p  { font-size: 15px; color: var(--muted-foreground-am); }
 
-.section-am          { padding: 60px 0; background: linear-gradient(67.68deg, rgba(248, 235, 221, 0.6) 15%, #F2F7F2 100%); }
+.section-am          { padding: 60px 0; background: linear-gradient(67.68deg, var(--hp2-color-bg-soft) -8.94%, var(--hp2-color-bg-main) 72.8%); }
 .section-muted-am    { background-color: var(--bacground-new-am);  }
 .section-header-am   { max-width: 640px; margin: 0 auto 40px; }
 .text-center-am      { text-align: center; }
@@ -514,7 +515,7 @@ p  { font-size: 15px; color: var(--muted-foreground-am); }
    TEAM DIRECTORY SPECIFIC (Merged from Teams.php)
    ============================================================ */
 .page-header-am {
-    background: linear-gradient(67.68deg, rgba(248, 235, 221, 0.6) -8.94%, #F2F7F2 72.8%);
+    background: linear-gradient(67.68deg, var(--hp2-color-bg-soft) -8.94%, var(--hp2-color-bg-main) 72.8%);
     padding: 72px 0 60px;
     text-align: center;
     border-bottom: 1px solid var(--border-am);
@@ -580,7 +581,7 @@ p  { font-size: 15px; color: var(--muted-foreground-am); }
 
 .team-directory-section-am {
     padding: 80px 0;
-    background: var(--background-biege-am);
+    background: var(--hp2-primary2-200);
 }
 .team-directory-grid-am {
     display: grid;
@@ -1398,7 +1399,7 @@ iconify-icon {
 
 .contact-hero-am {
     padding: 80px 0 64px;
-    background: linear-gradient(67.68deg, rgba(248, 235, 221, 0.6) -8.94%, #F2F7F2 72.8%);
+    background: linear-gradient(67.68deg, var(--hp2-color-bg-soft) -8.94%, var(--hp2-color-bg-main) 72.8%);
     text-align: center;
     border-bottom: 1px solid var(--border-am);
 }
@@ -1417,7 +1418,7 @@ iconify-icon {
 
 .contact-wrapper-am {
     padding: 80px 0;
-    background-color: var(--background-biege-am);
+    background-color: var(--hp2-primary2-200);
 }
 
 .contact-grid-am {
@@ -2224,4 +2225,21 @@ textarea.form-control-am {
     .faq-list-am { height: 620px; }
     .faq-section-am { padding: 20px 20px !important; }
     .booking-widget-am { margin-bottom: 20px; }
+}
+
+
+.crm-profile-export-wrapper,.crm-flow-booking{
+    padding-bottom: 50px;
+    background: linear-gradient(67.68deg, var(--hp2-color-bg-soft) 15.06%, var(--hp2-color-bg-main) 100%) !important;
+}
+.crm-flow-booking{
+    padding-bottom: 100px !important;
+}
+.crm-badge{
+    background-color: var(--secondary-am) !important;
+    color: var(--primary-am) !important;
+}
+.crm-service-item.active,.crm-day.available{
+    background-color: var(--secondary-am) !important;
+    color: var(--primary-am) !important;
 }

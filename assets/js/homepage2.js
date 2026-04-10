@@ -1,6 +1,8 @@
 document.addEventListener('DOMContentLoaded', () => {
   initMenuToggle();
+  initTopbarMarquee();
   initCounters();
+  initSlider('showcase', { autoPlay: false });
   initSlider('team', { autoPlay: false });
   initSlider('testimonial', { autoPlay: true, interval: 6000 });
 });
@@ -55,6 +57,70 @@ function initCounters() {
   }, { threshold: 0.4 });
 
   counters.forEach((el) => observer.observe(el));
+}
+
+function initTopbarMarquee() {
+  const topbar = document.querySelector('.hp2-topbar');
+  const track = document.querySelector('.hp2-topbar-inner');
+  if (!topbar || !track) return;
+
+  const mobileMq = window.matchMedia('(max-width: 1024px)');
+  let resizeRaf = 0;
+
+  const getOriginalGroups = () => Array.from(track.children).filter((el) => !el.classList.contains('hp2-topbar-clone'));
+
+  const setDuration = () => {
+    if (!mobileMq.matches) return;
+    const originals = getOriginalGroups();
+    if (!originals.length) return;
+
+    const gap = parseFloat(window.getComputedStyle(track).gap || '0') || 0;
+    const originalWidth = originals.reduce((sum, item) => sum + item.getBoundingClientRect().width, 0) + (Math.max(0, originals.length - 1) * gap);
+    const pxPerSecond = 42;
+    const duration = Math.max(14, originalWidth / pxPerSecond);
+    track.style.setProperty('--hp2-marquee-duration', `${duration}s`);
+  };
+
+  const enable = () => {
+    if (track.dataset.marqueeReady === '1') {
+      setDuration();
+      return;
+    }
+
+    const originals = getOriginalGroups();
+    if (!originals.length) return;
+
+    originals.forEach((node) => {
+      const clone = node.cloneNode(true);
+      clone.classList.add('hp2-topbar-clone');
+      clone.setAttribute('aria-hidden', 'true');
+      track.appendChild(clone);
+    });
+
+    track.dataset.marqueeReady = '1';
+    requestAnimationFrame(setDuration);
+  };
+
+  const disable = () => {
+    if (track.dataset.marqueeReady !== '1') return;
+    track.querySelectorAll('.hp2-topbar-clone').forEach((node) => node.remove());
+    track.dataset.marqueeReady = '0';
+    track.style.removeProperty('--hp2-marquee-duration');
+  };
+
+  const applyMode = () => {
+    if (mobileMq.matches) enable();
+    else disable();
+  };
+
+  applyMode();
+
+  mobileMq.addEventListener('change', applyMode);
+  window.addEventListener('resize', () => {
+    if (!mobileMq.matches) return;
+    if (resizeRaf) cancelAnimationFrame(resizeRaf);
+    resizeRaf = requestAnimationFrame(setDuration);
+  });
 }
 
 function initSlider(name, options = {}) {
@@ -141,7 +207,7 @@ function initSlider(name, options = {}) {
     const step = slideWidth + gap;
     let n = 0;
     if (name === 'team') {
-      n = 30;
+      window.innerWidth >= 768 ? n = 30 : n = 110;
     }
     const x = (step * currentIndex) - getBaseOffset() - n;
 
