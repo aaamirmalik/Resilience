@@ -149,7 +149,7 @@ $therapies_heading = !empty($therapies['heading']) ? $therapies['heading'] : 'Th
 
 $hp2_showcase_cards = [];
 $service_showcase_query = new WP_Query([
-    'post_type' => 'service',
+    'post_type' => 'crm_services',
     'post_status' => 'publish',
     'posts_per_page' => -1,
     'order' => 'ASC',
