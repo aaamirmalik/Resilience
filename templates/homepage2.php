@@ -311,7 +311,7 @@ $footer_copyright_suffix = $hp2_get('footer_copyright_suffix', 'All rights reser
         </div>
     </section> -->
 
-    <section class="hp2-services" id="services">
+    <!-- <section class="hp2-services" id="services">
         <div class="hp2-container">
             <div class="hp2-section-head">
                 <span class="hp2-pill"><?php echo esc_html($services_eyebrow); ?></span>
@@ -351,44 +351,9 @@ $footer_copyright_suffix = $hp2_get('footer_copyright_suffix', 'All rights reser
                 <a href="<?php echo esc_url($services_button_url); ?>" class="hp2-btn hp2-btn-primary"><?php echo esc_html($services_button_label); ?></a>
             </div>
         </div>
-    </section>
+    </section> -->
 
-    <section class="hp2-about2" id="about">
-        <div class="hp2-container">
-            <div class="hp2-about2-grid">
-                <div class="hp2-about2-copy">
-                    <span class="hp2-pill"><?php echo esc_html($about_eyebrow); ?></span>
-                    <h2><?php echo wp_kses_post($about_heading); ?></h2>
-                    <p><?php echo wp_kses_post($about_paragraph); ?></p>
-                    <a href="<?php echo esc_url($about_button_url); ?>" class="hp2-btn hp2-btn-primary"><?php echo esc_html($about_button_label); ?></a>
-                </div>
-
-                <div class="hp2-about2-media">
-                    <img src="<?php echo esc_url($about_image); ?>" alt="<?php echo esc_attr(wp_strip_all_tags($about_heading)); ?>">
-                    <!-- <span class="hp2-about2-chip"><span></span><?php echo esc_html($about_caption); ?></span> -->
-                </div>
-            </div>
-
-            <div class="hp2-feature-row">
-                <?php foreach ($about_trust_items as $trust_item) : ?>
-                    <?php
-                    $trust_icon = $hp2_image_url($trust_item['icon'] ?? '', $asset_base . '/aeabdde2-7c19-4cb0-9c67-339e0e6a01d2.svg');
-                    $trust_title = !empty($trust_item['title']) ? $trust_item['title'] : 'Trusted care';
-                    $trust_description = !empty($trust_item['description']) ? $trust_item['description'] : 'Client-centered support.';
-                    ?>
-                    <article>
-                        <span class="hp2-feature-icon">
-                            <img src="<?php echo esc_url($trust_icon); ?>" alt="<?php echo esc_attr($trust_title); ?> icon">
-                        </span>
-                        <h3><?php echo esc_html($trust_title); ?></h3>
-                        <p><?php echo esc_html($trust_description); ?></p>
-                    </article>
-                <?php endforeach; ?>
-            </div>
-        </div>
-    </section>
-
-    <section class="hp2-therapy-showcase">
+      <section class="hp2-therapy-showcase">
         <div class="hp2-container">
             <div class="hp2-section-head hp2-section-head-sm">
                 <span class="hp2-pill"><?php echo esc_html($therapies_eyebrow); ?></span>
@@ -437,11 +402,48 @@ $footer_copyright_suffix = $hp2_get('footer_copyright_suffix', 'All rights reser
                 <div class="hp2-dots" data-slider-dots="showcase"></div>
             <?php endif; ?>
 
-             <div class="hp2-showcasee-actions">
+             <!-- <div class="hp2-showcasee-actions">
                 <a href="<?php echo esc_url($service_page_url); ?>" class="hp2-btn hp2-btn-ghost"><?php echo esc_html($hp2_get('service_button_text', 'View All Services')); ?></a>
+            </div> -->
+        </div>
+    </section>
+
+    <section class="hp2-about2" id="about">
+        <div class="hp2-container">
+            <div class="hp2-about2-grid">
+                <div class="hp2-about2-copy">
+                    <span class="hp2-pill"><?php echo esc_html($about_eyebrow); ?></span>
+                    <h2><?php echo wp_kses_post($about_heading); ?></h2>
+                    <p><?php echo wp_kses_post($about_paragraph); ?></p>
+                    <a href="<?php echo esc_url($about_button_url); ?>" class="hp2-btn hp2-btn-primary"><?php echo esc_html($about_button_label); ?></a>
+                </div>
+
+                <div class="hp2-about2-media">
+                    <img src="<?php echo esc_url($about_image); ?>" alt="<?php echo esc_attr(wp_strip_all_tags($about_heading)); ?>">
+                    <!-- <span class="hp2-about2-chip"><span></span><?php echo esc_html($about_caption); ?></span> -->
+                </div>
+            </div>
+
+            <div class="hp2-feature-row">
+                <?php foreach ($about_trust_items as $trust_item) : ?>
+                    <?php
+                    $trust_icon = $hp2_image_url($trust_item['icon'] ?? '', $asset_base . '/aeabdde2-7c19-4cb0-9c67-339e0e6a01d2.svg');
+                    $trust_title = !empty($trust_item['title']) ? $trust_item['title'] : 'Trusted care';
+                    $trust_description = !empty($trust_item['description']) ? $trust_item['description'] : 'Client-centered support.';
+                    ?>
+                    <article>
+                        <span class="hp2-feature-icon">
+                            <img src="<?php echo esc_url($trust_icon); ?>" alt="<?php echo esc_attr($trust_title); ?> icon">
+                        </span>
+                        <h3><?php echo esc_html($trust_title); ?></h3>
+                        <p><?php echo esc_html($trust_description); ?></p>
+                    </article>
+                <?php endforeach; ?>
             </div>
         </div>
     </section>
+
+  
 
     <!-- <section class="hp2-stats" aria-label="Clinic statistics">
         <div class="hp2-container">
@@ -484,7 +486,7 @@ $footer_copyright_suffix = $hp2_get('footer_copyright_suffix', 'All rights reser
         // 1. Updated query to use the 'crm_therapist' Custom Post Type
         $team_query = new WP_Query([
             'post_type' => 'crm_therapist',
-            'posts_per_page' => 4, // Kept at 8 for the slider limit
+            'posts_per_page' => 6, // Kept at 8 for the slider limit
             'post_status' => 'publish',
             'orderby' => 'title',  // Added ordering by title to match your directory
             'order' => 'ASC',

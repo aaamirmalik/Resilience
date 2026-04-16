@@ -2225,6 +2225,10 @@ textarea.form-control-am {
     .faq-list-am { height: 620px; }
     .faq-section-am { padding: 20px 20px !important; }
     .booking-widget-am { margin-bottom: 20px; }
+
+    .crm-profile-export-wrapper{
+        padding-bottom: 80px !important;
+    }
 }
 
 
@@ -2242,4 +2246,9 @@ textarea.form-control-am {
 .crm-service-item.active,.crm-day.available{
     background-color: var(--secondary-am) !important;
     color: var(--primary-am) !important;
+}
+.not-found-header-am{
+    text-align: center;
+    padding: 80px 20px 160px;
+
 }

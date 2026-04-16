@@ -734,10 +734,11 @@
     content: ""; 
     position: absolute; 
     width: 230px;
-    height: 420px;
-    left: 0px;
-    top: -240px;
-    background-image: url(../images/homepage2/Group-1597881387.svg); 
+    height: 460px;
+    left: 0px; 
+    top: -380px;
+    /* background-image: url(../images/homepage2/Group-1597881387.svg);  */
+    background-image: url(../images/homepage2/Frame-1948757454.svg); 
     background-size: cover; 
     background-repeat: no-repeat; 
     pointer-events: none; 
@@ -835,16 +836,32 @@
 .homepage2-template .hp2-therapy-showcase::before { 
     content: ""; 
     position: absolute; 
-    width: 130px;
-    height: 190px;
+    width: 150px;
+    height: 245px;
     right: 0px;
-    top: -15px;
-    background-image: url(../images/homepage2/Mask-group-1.svg); 
+    top: -100px;
+    /* background-image: url(../images/homepage2/Mask-group-1.svg);  */
+    background-image: url(../images/homepage2/Group-1597881382-2.svg); 
     background-size: cover; 
     background-repeat: no-repeat; 
     pointer-events: none; 
 }
-.homepage2-template .hp2-therapy-showcase::after { 
+
+.homepage2-template .hp2-news::before{
+        content: ""; 
+        position: absolute; 
+        width: 150px;
+        height: 212px;
+        left: -20px;
+        top: 0px;
+        background-image: url(../images/homepage2/Mask-group-1.svg); 
+        background-size: cover; 
+        background-repeat: no-repeat; 
+        pointer-events: none;
+        transform: scaleY(-1);
+        transform: rotate(168deg);
+}
+/* .homepage2-template .hp2-therapy-showcase::after { 
     content: ""; 
     position: absolute; 
     width: 100%;
@@ -854,7 +871,7 @@
     background-size: cover; 
     background-repeat: no-repeat; 
     pointer-events: none; 
-}
+} */
 
 
 
@@ -916,7 +933,7 @@
 }
 
 .homepage2-template .hp2-dots[data-slider-dots="showcase"] {
-    justify-content: flex-start;
+    justify-content: center;
     margin-top: 60px;
 }
 
@@ -1211,7 +1228,7 @@
 .homepage2-template .hp2-team-card p { margin: 0; color: var(--hp2-color-text-80); font-size: var(--hp2-fs-16) !important; line-height: 24px; text-align: center; }
 
 .homepage2-template .hp2-dots { margin-top: 50px; display: flex; justify-content: flex-start; gap: 4px; }
-.homepage2-template .hp2-dots button { width: 31px; height: 4px; border-radius: 2px; border: 0; background: var(--hp2-dark-40); cursor: pointer; padding: 0; }
+.homepage2-template .hp2-dots button { width: 31px; height: 6px; border-radius: 5px; border: 0; background: var(--hp2-dark-40); cursor: pointer; padding: 0; }
 .homepage2-template .hp2-dots button.is-active { background: var(--hp2-color-primary); }
 
 .homepage2-template .hp2-specialists-actions, .homepage2-template .hp2-showcasee-actions { text-align: right; margin-top: -16px; }
@@ -1680,6 +1697,9 @@
     position: relative;
     overflow: hidden;
 }
+.hp2-footer-col.hp2-footer-location{
+    padding-left: 100px;
+}
 
 .homepage2-template .hp2-footer::after {
     content: "";
@@ -1696,15 +1716,16 @@
 
 .homepage2-template .hp2-footer-grid {
     display: grid;
-    grid-template-columns: 336px 197.5px 516px;
-    column-gap: 106px;
+    grid-template-columns: minmax(220px, 240px) minmax(280px, 1fr) minmax(360px, 1fr);
+    column-gap: clamp(28px, 4.6vw, 72px);
+    align-items: start;
 }
 
 .homepage2-template .hp2-footer-card {
     background: var(--hp2-white-5);
     border-radius: 20px;
-    min-height: 354px;
-    padding: 16px 32px 32px;
+    min-height: 0;
+    padding: 18px 22px;
 }
 
 .homepage2-template .hp2-footer-logo {
@@ -1718,34 +1739,15 @@
     object-fit: cover;
 }
 
-.homepage2-template .hp2-footer-card h4 {
-    margin: 0 0 4px;
-    color: var(--hp2-color-white);
-    font-size: var(--hp2-fs-14) !important;
-    line-height: 20px;
-    font-weight: 700;
-}
-
-.homepage2-template .hp2-footer-card p {
-    margin: 0;
-    color: var(--hp2-white-80);
-    font-size: var(--hp2-fs-14) !important;
-    line-height: 20px;
-}
-
-.homepage2-template .hp2-footer-card h4 + p {
-    margin-bottom: 16px;
-}
-
 .homepage2-template .hp2-footer-social {
-    margin-top: 28px;
+    margin-top: 14px;
     display: flex;
-    gap: 15px;
+    gap: 10px;
 }
 
 .homepage2-template .hp2-footer-social a {
-    width: 30px;
-    height: 30px;
+    width: 28px;
+    height: 28px;
     text-decoration: none;
     display: inline-flex;
     align-items: center;
@@ -1772,73 +1774,59 @@
 
 .homepage2-template .hp2-footer-col h5::before {
     content: "";
-    width: 2px;
+    width: 4px;
     height: 18px;
-    background: var(--hp2-primary2-800);
+    background: #9AB99C;
     border-radius: 2px;
+}
+
+.homepage2-template .hp2-footer-location-list {
+    list-style: none;
+    margin: 26px 0 0;
+    padding: 0;
+    display: grid;
+    gap: 22px;
+}
+
+.homepage2-template .hp2-footer-location-list li {
+    display: grid;
+    gap: 4px;
+}
+
+.homepage2-template .hp2-footer-location-list li strong,
+.homepage2-template .hp2-footer-contact-list li strong {
+    color: var(--hp2-color-white);
+    font-weight: 700;
+    font-size: var(--hp2-fs-14) !important;
+    line-height: 20px;
+}
+
+.homepage2-template .hp2-footer-location-list li span,
+.homepage2-template .hp2-footer-contact-list li span {
+    color: var(--hp2-white-80);
+    font-size: var(--hp2-fs-14) !important;
+    line-height: 20px;
+}
+
+.homepage2-template .hp2-footer-location-list li span a,
+.homepage2-template .hp2-footer-contact-list li span a {
+    color: inherit;
+    text-decoration: none;
 }
 
 .homepage2-template .hp2-footer-contact-list {
     list-style: none;
-    margin: 40px 0 0;
+    margin: 26px 0 0;
     padding: 0;
     display: grid;
-    gap: 20px;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    column-gap: clamp(24px, 4vw, 54px);
+    row-gap: 28px;
 }
 
 .homepage2-template .hp2-footer-contact-list li {
     display: grid;
-    gap: 4px;
-    font-size: var(--hp2-fs-14) !important;
-    line-height: 20px;
-}
-
-.homepage2-template .hp2-footer-contact-list li strong {
-    color: var(--hp2-color-white);
-    font-weight: 700;
-}
-
-.homepage2-template .hp2-footer-contact-list li span {
-    color: var(--hp2-white-80);
-}
-.homepage2-template .hp2-footer-contact-list li span a { color: inherit; text-decoration: none; }
-
-.homepage2-template .hp2-footer-links {
-    display: grid;
-    grid-template-columns: 147.166px 285.909px;
-    column-gap: 82.925px;
-    width: 100%;
-    max-width: 516px;
-    align-content: start;
-}
-
-.homepage2-template .hp2-footer-links > h5 {
-    grid-column: 1 / -1;
-}
-
-.homepage2-template .hp2-footer-links .hp2-footer-links-col {
-    display: grid;
-    align-content: start;
-}
-
-.homepage2-template .hp2-footer-links .hp2-footer-links-col a {
-    color: var(--hp2-white-80);
-    text-decoration: none;
-    font-size: var(--hp2-fs-14) !important;
-    line-height: 20px;
-    font-weight: 400;
-}
-
-.homepage2-template .hp2-footer-links-col-main {
-    grid-column: 1;
-    /* margin-top: 40px; */
-    row-gap: 40px;
-}
-
-.homepage2-template .hp2-footer-links-col-side {
-    grid-column: 2;
-    /* margin-top: 63px; */
-    row-gap: 40px;
+    gap: 6px;
 }
 
 .homepage2-template .hp2-footer-bottom {
@@ -1917,13 +1905,15 @@
     }
 
     .homepage2-template .hp2-showcase-card:hover {
-        transform: translateY(-4px);
+        /* transform: translateY(-4px); */
         box-shadow: 0 14px 24px rgba(59, 83, 61, 0.1);
+        background: linear-gradient(180deg, #fffcf7 0%, #DFD6C8 100%);;
     }
 
     .homepage2-template .hp2-showcase-card:hover .hp2-showcase-link {
-        background: rgba(49, 76, 67, 0.08);
+        background: var(--hp2-color-primary);
         border-color: var(--hp2-color-primary);
+        color: var(--hp2-color-white);
         transform: translateY(-2px);
     }
 
@@ -1993,7 +1983,8 @@
         box-shadow: 0 8px 20px rgba(62,86,64,.28);
     }
 
-    .homepage2-template .hp2-footer-links .hp2-footer-links-col a,
+    .homepage2-template .hp2-footer-location-list li span a,
+    .homepage2-template .hp2-footer-contact-list li span a,
     .homepage2-template .hp2-footer-bottom-links a {
         transition: color .2s ease, transform .2s ease;
     }
@@ -2017,9 +2008,10 @@
         filter: brightness(1.08);
     }
 
-    .homepage2-template .hp2-footer-links .hp2-footer-links-col a:hover {
+    .homepage2-template .hp2-footer-location-list li span a:hover,
+    .homepage2-template .hp2-footer-contact-list li span a:hover {
         color: var(--hp2-color-white);
-        transform: translateX(3px);
+        transform: translateX(2px);
     }
 
     .homepage2-template .hp2-footer-bottom-links a:hover {
@@ -2122,31 +2114,15 @@
     }
 
     .homepage2-template .hp2-footer-grid {
-        grid-template-columns: minmax(260px, 300px) minmax(170px, 190px) minmax(0, 1fr);
-        gap: 80px;
-        align-items: start;
-    }
-
-    .homepage2-template .hp2-footer-links {
-        grid-column: auto;
-        width: 100%;
-        max-width: none;
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-        column-gap: 24px;
-    }
-
-    .homepage2-template .hp2-footer-links-col-main,
-    .homepage2-template .hp2-footer-links-col-side {
-        margin-top: 24px;
-        row-gap: 18px;
-    }
-
-    .homepage2-template .hp2-footer-links-col-side {
-        margin-top: 47px;
+        grid-template-columns: minmax(220px, 260px) minmax(220px, 1fr) minmax(320px, 1fr);
+        gap: 42px;
     }
 }
 
 @media (max-width: 1200px) {
+    .hp2-footer-col.hp2-footer-location{
+        padding-left: 0;
+    }
     .homepage2-template .hp2-hero-grid,
     .homepage2-template .hp2-about2-grid,
     .homepage2-template .hp2-online-grid,
@@ -2201,12 +2177,8 @@
         gap: 48px;
     }
 
-    .homepage2-template .hp2-footer-links {
+    .homepage2-template .hp2-footer-contact {
         grid-column: 1 / -1;
-        width: 100%;
-        max-width: 100%;
-        grid-template-columns: minmax(220px, 1fr) minmax(260px, 1fr);
-        column-gap: 48px;
     }
 
     .homepage2-template .hp2-prev { left: 8px; }
@@ -2276,15 +2248,13 @@
     }
 
     .homepage2-template .hp2-footer-grid {
-        grid-template-columns: minmax(260px, 336px) minmax(0, 1fr);
+        grid-template-columns: minmax(220px, 300px) minmax(0, 1fr);
         gap: 32px;
         align-items: start;
     }
 
-    .homepage2-template .hp2-footer-links {
+    .homepage2-template .hp2-footer-contact {
         grid-column: 1 / -1;
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-        gap: 32px;
     }
 
     .homepage2-template .hp2-section-head,
@@ -2347,22 +2317,6 @@
         padding: 14px 0;
     }
 
-    .homepage2-template .hp2-footer-links {
-        width: 100%;
-        max-width: 100%;
-    }
-
-    .homepage2-template .hp2-footer-links-col-main,
-    .homepage2-template .hp2-footer-links-col-side {
-        margin-top: 16px;
-        row-gap: 14px;
-    }
-
-    .homepage2-template .hp2-footer-links-col-main,
-    .homepage2-template .hp2-footer-links-col-side {
-        grid-column: auto;
-    }
-
     .homepage2-template .hp2-footer-card { min-height: auto; }
 
     .homepage2-template .hp2-hero-meta-inner {
@@ -2410,6 +2364,11 @@
     background-size: cover;
     background-repeat: no-repeat;
     pointer-events: none;
+    }
+    .homepage2-template .hp2-therapy-showcase::before{
+        width: 70px;
+        height: 110px;
+        top: -48px;
     }
     .homepage2-template .hp2-hero::after{
          width: 421px;
@@ -2727,29 +2686,46 @@
 
     .homepage2-template .hp2-footer-grid {
         grid-template-columns: 1fr;
-        gap: 32px;
+        gap: 20px;
     }
-    .homepage2-template .hp2-footer-card { padding: 16px 20px 24px; }
+    .homepage2-template .hp2-footer-card {
+        min-height: 190px;
+        padding: 20px;
+    }
     .homepage2-template .hp2-footer-col h5 { margin-bottom: 0; }
+    .homepage2-template .hp2-footer-location-list,
     .homepage2-template .hp2-footer-contact-list {
         margin-top: 20px;
-        gap: 14px;
+        gap: 20px;
     }
-    .homepage2-template .hp2-footer-links {
-        grid-template-columns: 1fr;
-        gap: 0;
-        max-width: 100%;
+    .homepage2-template .hp2-footer-location-list,
+    .homepage2-template .hp2-footer-contact-list {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        column-gap: 20px;
+        row-gap: 20px;
     }
-    .homepage2-template .hp2-footer-links-col-main {
-        margin-top: 20px;
-        row-gap: 12px;
+    .homepage2-template .hp2-footer-location-list li span,
+    .homepage2-template .hp2-footer-contact-list li span,
+    .homepage2-template .hp2-footer-contact-list li span a {
+        line-height: 22px;
     }
-    .homepage2-template .hp2-footer-links-col-side {
-        margin-top: 12px;
-        row-gap: 12px;
+    .homepage2-template .hp2-footer-bottom {
+        margin-top: 24px;
     }
-    .homepage2-template .hp2-footer-bottom-inner { align-items: center; text-align: center; }
-    .homepage2-template .hp2-footer-bottom-links { gap: 14px; flex-wrap: wrap; justify-content: center; }
+    .homepage2-template .hp2-footer-bottom-inner {
+        align-items: center;
+        text-align: center;
+        gap: 10px;
+    }
+    .homepage2-template .hp2-footer-bottom-links {
+        gap: 20px;
+        flex-wrap: wrap;
+        justify-content: center;
+        order: 1;
+    }
+    .homepage2-template .hp2-footer-bottom-inner > span {
+        order: 2;
+    }
 }
 
 @media (max-width: 575px) {
@@ -2856,12 +2832,12 @@
     }
 
     .homepage2-template .hp2-footer-card {
-        padding: 14px 16px 20px;
+        padding: 20px;
     }
 
     .homepage2-template .hp2-footer-logo {
-        width: 78px;
-        height: 78px;
+        width: 98px;
+        height: 98px;
         margin-bottom: 14px;
     }
 
@@ -2872,12 +2848,12 @@
 
     .homepage2-template .hp2-footer-social {
         margin-top: 18px;
-        gap: 12px;
+        gap: 15px;
     }
 
     .homepage2-template .hp2-footer-social a {
-        width: 28px;
-        height: 28px;
+        width: 30px;
+        height: 30px;
     }
 
     .homepage2-template .hp2-footer-bottom-inner {
@@ -2888,7 +2864,7 @@
 
     .homepage2-template .hp2-footer-bottom-inner > span,
     .homepage2-template .hp2-footer-bottom-links a {
-        font-size: var(--hp2-fs-12) !important;
-        line-height: 18px;
+        font-size: var(--hp2-fs-14) !important;
+        line-height: 20px;
     }
 }

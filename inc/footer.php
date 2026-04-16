@@ -26,13 +26,10 @@ $topbar_phone_href = preg_replace('/[^0-9\+]/', '', (string) $topbar_phone);
 $footer_cell_no_href = preg_replace('/[^0-9\+]/', '', (string) $footer_cell_no);
 $topbar_email_href = sanitize_email((string) $topbar_email);
 
-$footer_services_heading = $hp2_get_option('footer_services_heading', 'Quick Links');
-$footer_clinic_heading = $hp2_get_option('footer_clinic_heading', 'Clinic');
-$footer_info_heading = $hp2_get_option('footer_info_heading', 'Practical Information');
+$footer_location_heading = $hp2_get_option('footer_location_heading', 'Location & Timing');
+$footer_contact_heading = $hp2_get_option('footer_contact_heading', 'Contact');
 $footer_copyright_suffix = $hp2_get_option('footer_copyright_suffix', 'All rights reserved.');
 
-$footer_services_links = function_exists('get_field') ? get_field('footer_services_menu', 'option') : [];
-$footer_clinic_links = function_exists('get_field') ? get_field('footer_clinic_menu', 'option') : [];
 $footer_legal_links = function_exists('get_field') ? get_field('footer_legal_menu', 'option') : [];
 $footer_social_links = function_exists('get_field') ? get_field('footer_social_links', 'option') : [];
 
@@ -62,17 +59,13 @@ if (empty($footer_social_links) || !is_array($footer_social_links)) {
         <div class="hp2-footer-grid">
             <div class="hp2-footer-card">
                 <div class="hp2-footer-logo">
-                    <img src="<?php echo esc_url($footer_logo); ?>" alt="<?php bloginfo('name'); ?>">
+                    <img src="<?php echo esc_url($footer_logo); ?>" alt="<?php echo esc_attr(get_bloginfo('name')); ?>">
                 </div>
-                <h4>Office Hours:</h4>
-                <p><?php echo esc_html($topbar_hours); ?></p>
-                <h4>Address:</h4>
-                <p><?php echo nl2br(esc_html($footer_address)); ?></p>
 
                 <div class="hp2-footer-social">
                     <?php foreach ($footer_social_links as $social_item) : ?>
                         <?php
-                        $social_label = $social_item['label'] ?? $social_item['icon_label'] ?? 'Social';
+                        $social_label = $social_item['label'] ?? $social_item['title'] ?? $social_item['icon_label'] ?? 'Social';
                         $social_url = $social_item['url'] ?? $social_item['link'] ?? '#';
                         $social_icon = $social_item['icon'] ?? '';
                         if (is_array($social_icon) && !empty($social_icon['url'])) {
@@ -90,56 +83,33 @@ if (empty($footer_social_links) || !is_array($footer_social_links)) {
                 </div>
             </div>
 
-            <div class="hp2-footer-col">
-                <h5><?php echo esc_html($footer_info_heading); ?></h5>
-                <ul class="hp2-footer-contact-list">
-                    <li><strong>Email</strong><span><a href="<?php echo esc_url('mailto:' . $topbar_email_href); ?>"><?php echo esc_html($topbar_email); ?></a></span></li>
-                    <li><strong>Phone</strong><span><a href="<?php echo esc_url('tel:' . $topbar_phone_href); ?>"><?php echo esc_html($topbar_phone); ?></a></span></li>
-                    <li><strong>Cell No</strong><span><a href="<?php echo esc_url('tel:' . $footer_cell_no_href); ?>"><?php echo esc_html($footer_cell_no); ?></a></span></li>
-                    <li><strong>Fax</strong><span><?php echo esc_html($footer_fax); ?></span></li>
+            <div class="hp2-footer-col hp2-footer-location">
+                <h5><?php echo esc_html($footer_location_heading); ?></h5>
+                <ul class="hp2-footer-location-list">
+                    <li><strong>Office Hours:</strong><span><?php echo esc_html($topbar_hours); ?></span></li>
+                    <li><strong>Address:</strong><span><?php echo nl2br(esc_html($footer_address)); ?></span></li>
                 </ul>
             </div>
 
-            <div class="hp2-footer-col hp2-footer-links">
-                <!-- <h5><?php echo esc_html($footer_services_heading); ?></h5> -->
-
-                <div class="hp2-footer-links-col hp2-footer-links-col-main">
-                    <?php if (!empty($footer_services_links) && is_array($footer_services_links)) : ?>
-                        <?php foreach ($footer_services_links as $item) : ?>
-                            <a href="<?php echo esc_url($item['url'] ?? '#'); ?>"><?php echo esc_html($item['link_label'] ?? $item['label'] ?? 'Link'); ?></a>
-                        <?php endforeach; ?>
-                    <?php else : ?>
-                        <a href="#">All Services</a>
-                        <a href="#">Individual Counselling</a>
-                        <a href="#">Anger management</a>
-                        <a href="#">Family Counselling</a>
-                        <a href="#">Refugee counselling</a>
-                    <?php endif; ?>
-                </div>
-
-                <div class="hp2-footer-links-col hp2-footer-links-col-side">
-                    <!-- <h5><?php echo esc_html($footer_clinic_heading); ?></h5> -->
-                    <?php if (!empty($footer_clinic_links) && is_array($footer_clinic_links)) : ?>
-                        <?php foreach ($footer_clinic_links as $item) : ?>
-                            <a href="<?php echo esc_url($item['url'] ?? '#'); ?>"><?php echo esc_html($item['link_label'] ?? $item['label'] ?? 'Link'); ?></a>
-                        <?php endforeach; ?>
-                    <?php else : ?>
-                        <a href="#">About Us</a>
-                        <a href="#">Our Team</a>
-                        <a href="#">Contact</a>
-                    <?php endif; ?>
-                </div>
+            <div class="hp2-footer-col hp2-footer-contact">
+                <h5><?php echo esc_html($footer_contact_heading); ?></h5>
+                <ul class="hp2-footer-contact-list">
+                    <li><strong>Email</strong><span><a href="<?php echo esc_url('mailto:' . $topbar_email_href); ?>"><?php echo esc_html($topbar_email); ?></a></span></li>
+                    <li><strong>Phone</strong><span><a href="<?php echo esc_url('tel:' . $topbar_phone_href); ?>"><?php echo esc_html($topbar_phone); ?></a></span></li>
+                    <li><strong>Cell:</strong><span><a href="<?php echo esc_url('tel:' . $footer_cell_no_href); ?>"><?php echo esc_html($footer_cell_no); ?></a></span></li>
+                    <li><strong>Fax</strong><span><?php echo esc_html($footer_fax); ?></span></li>
+                </ul>
             </div>
         </div>
 
         <div class="hp2-footer-bottom">
             <div class="hp2-footer-bottom-inner">
-                <span>&copy; <?php echo esc_html(date('Y')); ?> <?php bloginfo('name'); ?>. <?php echo esc_html($footer_copyright_suffix); ?></span>
+                <span>&copy; <?php echo esc_html(wp_date('Y')); ?> <?php echo esc_html(get_bloginfo('name')); ?>. <?php echo esc_html($footer_copyright_suffix); ?></span>
                 <div class="hp2-footer-bottom-links">
                     <?php if (!empty($footer_legal_links) && is_array($footer_legal_links)) : ?>
                         <?php foreach ($footer_legal_links as $legal_index => $legal_item) : ?>
                             <?php if ($legal_index > 0) : ?><span class="hp2-footer-dot" aria-hidden="true"></span><?php endif; ?>
-                            <a href="<?php echo esc_url($legal_item['url'] ?? '#'); ?>"><?php echo esc_html($legal_item['label'] ?? $legal_item['link_label'] ?? 'Policy'); ?></a>
+                            <a href="<?php echo esc_url($legal_item['url'] ?? '#'); ?>"><?php echo esc_html($legal_item['label'] ?? $legal_item['title'] ?? $legal_item['link_label'] ?? 'Policy'); ?></a>
                         <?php endforeach; ?>
                     <?php else : ?>
                         <a href="#">Privacy Policy</a>

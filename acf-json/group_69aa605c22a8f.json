@@ -678,6 +678,48 @@
                     "parent_repeater": "field_69aa76797ca98"
                 }
             ]
+        },
+        {
+            "key": "field_69e0c6f3e0338",
+            "label": "footer_location_heading",
+            "name": "footer_location_heading",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "allow_in_bindings": 0,
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_69e0c70ece073",
+            "label": "footer_contact_heading",
+            "name": "footer_contact_heading",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "allow_in_bindings": 0,
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
         }
     ],
     "location": [
@@ -699,5 +741,5 @@
     "description": "",
     "show_in_rest": 0,
     "display_title": "",
-    "modified": 1774427329
+    "modified": 1776338713
 }
