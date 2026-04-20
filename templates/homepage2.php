@@ -358,6 +358,7 @@ $footer_copyright_suffix = $hp2_get('footer_copyright_suffix', 'All rights reser
             <div class="hp2-section-head hp2-section-head-sm">
                 <span class="hp2-pill"><?php echo esc_html($therapies_eyebrow); ?></span>
                 <h2><?php echo $therapies_heading; ?></h2>
+                <p><?php echo esc_html($services_description); ?></p>
             </div>
 
             <?php
