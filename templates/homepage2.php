@@ -196,10 +196,11 @@ if ($service_showcase_query->have_posts()) {
         }
 
         $desc_text = '';
+
         if (is_string($service_desc) && $service_desc !== '') {
-            $desc_text = wp_strip_all_tags($service_desc);
+            $desc_text = wp_trim_words(wp_strip_all_tags($service_desc), 12);
         } elseif ($short_desc_meta !== '') {
-            $desc_text = wp_strip_all_tags($short_desc_meta);
+            $desc_text = wp_trim_words(wp_strip_all_tags($short_desc_meta), 12);
         } else {
             $desc_text = wp_trim_words(get_the_excerpt(), 12);
         }
