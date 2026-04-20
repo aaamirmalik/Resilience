@@ -148,21 +148,46 @@ $therapies_eyebrow = !empty($therapies['eye_brow']) ? $therapies['eye_brow'] : '
 $therapies_heading = !empty($therapies['heading']) ? $therapies['heading'] : 'Therapies & Counsellors';
 
 $hp2_showcase_cards = [];
+
 $service_showcase_query = new WP_Query([
-    'post_type' => 'crm_services',
-    'post_status' => 'publish',
+    'post_type'      => 'crm_services',
+    'post_status'    => 'publish',
     'posts_per_page' => -1,
-    'order' => 'ASC',
+    'order'          => 'ASC',
+    'orderby'        => 'title',
 ]);
+
 if ($service_showcase_query->have_posts()) {
     while ($service_showcase_query->have_posts()) {
         $service_showcase_query->the_post();
-        $service_image = get_field('service_image');
-        $service_desc = get_field('service_description');
+
+        $post_id = get_the_ID();
+
+        $service_image = get_field('service_image', $post_id);
+        $service_desc  = get_field('service_description', $post_id);
+
+        $crm_service_id   = (string) get_post_meta($post_id, '_crm_service_id', true);
+        $service_code     = (string) get_post_meta($post_id, '_crm_service_code', true);
+        $duration         = (string) get_post_meta($post_id, '_crm_service_duration', true);
+        $base_rate        = (string) get_post_meta($post_id, '_crm_base_rate', true);
+        $category         = (string) get_post_meta($post_id, '_crm_category', true);
+        $categories       = (array) get_post_meta($post_id, '_crm_categories', true);
+        $tags             = (array) get_post_meta($post_id, '_crm_tags', true);
+        $short_desc_meta  = (string) get_post_meta($post_id, '_crm_short_description', true);
+        $crm_image_url    = (string) get_post_meta($post_id, '_crm_service_image_url', true);
+        $crm_icon_url     = (string) get_post_meta($post_id, '_crm_service_icon_url', true);
+        $featured         = (bool) get_post_meta($post_id, '_crm_featured', true);
 
         $image_url = $hp2_image_url($service_image, '');
-        if ($image_url === '' && has_post_thumbnail()) {
-            $thumb_id = get_post_thumbnail_id();
+
+        if ($image_url === '' && $crm_image_url !== '') {
+            $image_url = $crm_image_url;
+        }
+        if ($image_url === '' && $crm_icon_url !== '') {
+            $image_url = $crm_icon_url;
+        }
+        if ($image_url === '' && has_post_thumbnail($post_id)) {
+            $thumb_id  = get_post_thumbnail_id($post_id);
             $thumb_src = wp_get_attachment_image_src($thumb_id, 'large');
             $image_url = !empty($thumb_src[0]) ? $thumb_src[0] : '';
         }
@@ -170,17 +195,34 @@ if ($service_showcase_query->have_posts()) {
             $image_url = $asset_base . '/f600fd28-fd3e-41df-a372-60209ea15e45.png';
         }
 
-        $desc_text = is_string($service_desc) && $service_desc !== '' ? wp_strip_all_tags($service_desc) : wp_trim_words(get_the_excerpt(), 12);
+        $desc_text = '';
+        if (is_string($service_desc) && $service_desc !== '') {
+            $desc_text = wp_strip_all_tags($service_desc);
+        } elseif ($short_desc_meta !== '') {
+            $desc_text = wp_strip_all_tags($short_desc_meta);
+        } else {
+            $desc_text = wp_trim_words(get_the_excerpt(), 12);
+        }
 
         $hp2_showcase_cards[] = [
-            'title' => get_the_title(),
-            'description' => $desc_text,
-            'image' => $image_url,
-            'url' => get_permalink(),
+            'id'             => $crm_service_id !== '' ? $crm_service_id : (string) $post_id,
+            'title'          => get_the_title($post_id),
+            'description'    => $desc_text,
+            'image'          => $image_url,
+            'icon'           => $crm_icon_url,
+            'url'            => get_permalink($post_id),
+            'serviceCode'    => $service_code,
+            'duration'       => $duration,
+            'baseRate'       => $base_rate,
+            'category'       => $category,
+            'categories'     => $categories,
+            'tags'           => $tags,
+            'featured'       => $featured,
         ];
     }
     wp_reset_postdata();
 }
+
 if (!$hp2_showcase_cards) {
     $hp2_showcase_cards = [
         ['title' => 'Individual Counselling', 'description' => 'Support for anxiety, stress, and life transitions.', 'image' => $asset_base . '/e63e346c-2cd4-4b62-9b1f-eb78e4695136.png', 'url' => '#'],
@@ -375,8 +417,8 @@ $footer_copyright_suffix = $hp2_get('footer_copyright_suffix', 'All rights reser
                             <?php
                             $show_title = !empty($showcase_card['title']) ? $showcase_card['title'] : 'Counselling service';
                             $show_desc = !empty($showcase_card['description']) ? $showcase_card['description'] : 'Evidence-based support tailored to your needs.';
+                            $show_image = !empty($showcase_card['icon']) ? $showcase_card['icon'] : $asset_base . '/f600fd28-fd3e-41df-a372-60209ea15e45.png';
                             $show_url = !empty($showcase_card['url']) ? $showcase_card['url'] : '#';
-                            $show_image = $hp2_image_url($showcase_card['image'] ?? '', $asset_base . '/f600fd28-fd3e-41df-a372-60209ea15e45.png');
                             ?>
                             <article class="hp2-showcase-card">
                                 <div class="hp2-showcase-head">
