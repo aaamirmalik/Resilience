@@ -1214,7 +1214,7 @@
 .homepage2-template .hp2-testimonial-slider .hp2-next { right: -30px; }
 
 .homepage2-template .hp2-team-card { flex: 0 0 290px; display: block; text-decoration: none; color: inherit; }
-.homepage2-template .hp2-team-card img { width: 295px; height: 295px; object-fit: cover; border-radius: 300px; display: block; }
+.homepage2-template .hp2-team-card img { width: 295px; height: 295px; object-fit: cover; border-radius: 300px; display: block; background: linear-gradient(180deg, #EFE8E0 0%, #F8F8F8 100%); }
 .homepage2-template .hp2-team-card h3 { margin: 20px 0 6px; color: var(--hp2-primary1-900); font-size: var(--hp2-fs-24) !important; line-height: 32px; letter-spacing: 0; font-weight: 600; text-align: center; }
 .homepage2-template .hp2-team-card h3 {
     display: -webkit-box;
